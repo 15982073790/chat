@@ -1,0 +1,513 @@
+---------------------------------------------------------------
+[ 2022-04-27T16:41:09+08:00 ] 119.122.88.159 GET chat.profittravel.com/platform/passport/login.html
+[运行时间：0.026545s] [吞吐率：37.67req/s] [内存消耗：4,015.32kb] [文件加载：81]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000970s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000132s ]
+[ info ] [ RUN ] app\platform\controller\Passport->login[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/platform/view/passport/login.html [ array (
+  0 => 'option',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:09+08:00 ] 119.122.88.159 GET chat.profittravel.com/platform/passport/resetcaptcha.html
+[运行时间：0.026744s] [吞吐率：37.39req/s] [内存消耗：4,003.19kb] [文件加载：80]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000974s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'resetcaptcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/passport/login.html',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000119s ]
+[ info ] [ RUN ] app\platform\controller\Passport->resetcaptcha[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:09+08:00 ] 119.122.88.159 GET chat.profittravel.com/platform/passport/captcha.html
+[运行时间：0.026359s] [吞吐率：37.94req/s] [内存消耗：4,003.80kb] [文件加载：80]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000929s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'captcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/passport/login.html',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000111s ]
+[ info ] [ RUN ] app\platform\controller\Passport->captcha[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:09+08:00 ] 119.122.88.159 GET chat.profittravel.com/platform/passport/resetcaptcha.html
+[运行时间：0.026698s] [吞吐率：37.46req/s] [内存消耗：4,004.22kb] [文件加载：80]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000923s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'resetcaptcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/passport/login.html',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000107s ]
+[ info ] [ RUN ] app\platform\controller\Passport->resetcaptcha[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:18+08:00 ] 119.122.88.159 POST chat.profittravel.com/platform/passport/login.html
+[运行时间：0.026008s] [吞吐率：38.45req/s] [内存消耗：4,014.88kb] [文件加载：82]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000977s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/passport/login.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://chat.profittravel.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '51',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+)
+[ info ] [ PARAM ] array (
+  'username' => 'admin',
+  'password' => 'admin123.',
+  'captcha_code' => 'sby5',
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000118s ]
+[ info ] [ RUN ] app\platform\controller\Passport->login[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:18+08:00 ] 119.122.88.159 GET chat.profittravel.com/platform/passport/captcha.html?_r=0.8345472133281651
+[运行时间：0.026533s] [吞吐率：37.69req/s] [内存消耗：4,004.24kb] [文件加载：80]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000925s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'captcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/passport/login.html',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  '_r' => '0.8345472133281651',
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000115s ]
+[ info ] [ RUN ] app\platform\controller\Passport->captcha[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:25+08:00 ] 119.122.88.159 POST chat.profittravel.com/platform/passport/login.html
+[运行时间：0.035508s] [吞吐率：28.16req/s] [内存消耗：7,835.84kb] [文件加载：85]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000970s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/passport/login.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://chat.profittravel.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '51',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+)
+[ info ] [ PARAM ] array (
+  'username' => 'admin',
+  'password' => 'admin123.',
+  'captcha_code' => 'dsl4',
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000125s ]
+[ info ] [ RUN ] app\platform\controller\Passport->login[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run Closure @user_login_successed [ RunTime:0.005986s ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:25+08:00 ] 119.122.88.159 GET chat.profittravel.com/platform/user/me.html
+[运行时间：0.029465s] [吞吐率：33.94req/s] [内存消耗：4,150.68kb] [文件加载：85]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000962s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'user',
+    2 => 'me',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u; uid=1; token=048a2aa0-92d3-498d-8d8f-1b52ac364e62',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/passport/login.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000134s ]
+[ info ] [ BEHAVIOR ] Run app\platform\behavior\Permission @action_begin [ RunTime:0.000508s ]
+[ info ] [ RUN ] app\platform\controller\User->me[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/User.php ]
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/platform/view/user/me.html [ array (
+  0 => 'title',
+  1 => 'admin',
+  2 => 'menu',
+  3 => 'route',
+  4 => 'option',
+  5 => 'me',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:29+08:00 ] 119.122.88.159 GET chat.profittravel.com/assets/css/platform/bootstrap.min.css.map
+[运行时间：0.014621s] [吞吐率：68.39req/s] [内存消耗：2,329.99kb] [文件加载：62]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000969s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'platform',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u; uid=1; token=048a2aa0-92d3-498d-8d8f-1b52ac364e62',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:50+08:00 ] 119.122.88.159 GET chat.profittravel.com/platform/app/index.html
+[运行时间：0.032906s] [吞吐率：30.39req/s] [内存消耗：4,486.07kb] [文件加载：90]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000957s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'app',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u; uid=1; token=048a2aa0-92d3-498d-8d8f-1b52ac364e62',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/user/me.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000128s ]
+[ info ] [ BEHAVIOR ] Run app\platform\behavior\Permission @action_begin [ RunTime:0.000483s ]
+[ info ] [ RUN ] app\platform\controller\App->index[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/App.php ]
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/platform/view/app/index.html [ array (
+  0 => 'title',
+  1 => 'admin',
+  2 => 'menu',
+  3 => 'route',
+  4 => 'option',
+  5 => 'page',
+  6 => 'list',
+  7 => 'keyword',
+  8 => 'app_count',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:50+08:00 ] 119.122.88.159 GET chat.profittravel.com/assets/css/platform/bootstrap.min.css.map
+[运行时间：0.014505s] [吞吐率：68.94req/s] [内存消耗：2,329.99kb] [文件加载：62]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000952s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'platform',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u; uid=1; token=048a2aa0-92d3-498d-8d8f-1b52ac364e62',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:51+08:00 ] 119.122.88.159 GET chat.profittravel.com/platform/setting/index.html
+[运行时间：0.038170s] [吞吐率：26.20req/s] [内存消耗：4,570.97kb] [文件加载：91]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000952s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'setting',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u; uid=1; token=048a2aa0-92d3-498d-8d8f-1b52ac364e62',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/app/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000115s ]
+[ info ] [ BEHAVIOR ] Run app\platform\behavior\Permission @action_begin [ RunTime:0.000543s ]
+[ info ] [ RUN ] app\platform\controller\Setting->index[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Setting.php ]
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/platform/view/setting/index.html [ array (
+  0 => 'title',
+  1 => 'admin',
+  2 => 'menu',
+  3 => 'route',
+  4 => 'option',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-27T16:41:53+08:00 ] 119.122.88.159 GET chat.profittravel.com/assets/css/platform/bootstrap.min.css.map
+[运行时间：0.014806s] [吞吐率：67.54req/s] [内存消耗：2,329.99kb] [文件加载：62]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000971s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'platform',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1642583177; service_token=e915AwY5AoAyAkttH9XxXHAjtjilJ5QQT5jcF%252BhKGDFBrA52FcegNHQjXLg; visiter_id=b42488363927353TL63; PHPSESSID=2ng0fmc66880pocsuq95afgm1u; uid=1; token=048a2aa0-92d3-498d-8d8f-1b52ac364e62',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File

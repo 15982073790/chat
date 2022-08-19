@@ -1,0 +1,34 @@
+<div class="my-app">
+    <div class="left"><a href="javascript:" class="btn btn-sm btn-primary mr-3 add-app">投诉信息</a></div>
+</div>
+<table class="table bg-white app-list">
+    <thead>
+    <tr style="font-size: 13px;color: #555555">
+        <th>ID</th>
+        <th>投诉类型</th>
+        <th>投诉内容</th>
+        <th>联系信息</th>
+        <th>来源商家</th>
+        <!--<th>操作</th>-->
+    </tr>
+    </thead>
+
+    {if condition="empty(count($list))"}
+    <tr>
+        <td colspan="5" class="text-center p-5">
+            <span class="text-muted">暂无相关投诉信息</span>
+        </td>
+    </tr>
+    {/if}
+
+    {volist name="list" id="vo"}
+    <tr>
+        <td>{$vo.id}</td>
+        <td>{$reporttype[$vo['type']]}</td>
+        <td>{$vo.content}</td>
+        <td>{$vo.contact}</td>
+        <td>{$vo.business.business_name}</td>
+    </tr>
+    {/volist}
+</table>
+{$page}

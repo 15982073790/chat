@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <title>谈话页面</title>
+    <script>
+    YMWL_ROOT_URL = "{$baseroot}";
+    </script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+    <script src="__libs__/layui/layui.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/jquery/jquery.cookie.js?v=__lkversion__" type="text/javascript"></script>
+    <link href="__libs__/layui/css/layui.css?v=__lkversion__" rel="stylesheet">
+    <link href="__libs__/layui/css/layui.css?v=__lkversion__" rel="stylesheet">
+    <script src="__libs__/push/pusher.min.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/layer/layer.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/jquery/jquery.form.min.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/vue/vue.js?v=__lkversion__" type="text/javascript"></script>
+    <script type="text/javascript" src="__libs__/webrtc/recorder.js?v=__lkversion__"></script>
+    <script>
+        var config = {
+            'app_key': '{$app_key}',
+            'web_host': '{$whost}',
+            'web_port': '{$wport}',
+            'value': '{$value}',
+            'business_id': '{$user["business_id"]}',
+            'service_id': '{$user["service_id"]}',
+            'voice_state': '{$voice}',
+            'voice_address': '{$voice_address}'
+        };
+
+        var pic = '{$avatar}';
+        var imghead = '{$img}';
+        var num = 0;
+        //标记已看消息
+        function getwatch(cha) {
+            $.ajax({
+                url:YMWL_ROOT_URL+"/admin/set/getwatch",
+                type: "post",
+                data: {visiter_id: cha}
+            });
+        }
+
+        // new pusher 链接websocket
+        var wolive_connect = function () {
+            if (config.value == 'true') {
+                var pusher = new Pusher(config.app_key, {
+                    encrypted: true
+                    , enabledTransports: ['wss']
+                    , wsHost: config.web_host
+                    , wssPort: config.web_port
+                    , authEndpoint: '/auth.php'
+                    , disableStats: true
+                });
+            } else {
+                var pusher = new Pusher(config.app_key, {
+                    encrypted: false
+                    , enabledTransports: ['ws']
+                    , wsHost: config.web_host
+                    , wsPort: config.web_port
+                    , authEndpoint: '/auth.php'
+                    , disableStats: true
+                });
+            }
+
+            var value = "{$user['service_id']}";
+            var channel = pusher.subscribe("kefu" + value);
+            // 发送一个推送
+            channel.bind("callbackpusher",function(data){
+                $.post("{:url('admin/set/callback','',true,true)}",data,function(res){
+
+                })
+            });
+//接收消息
+            channel.bind("cu-event", function (data) {
+                if("{$voice}" == 'open'){
+                    document.getElementById("chat-message-audio").play();
+                }
+                var showtime = '';
+                if (data.message.visiter_id == "{$data['visiter_id']}") {
+                    var msg = '';
+                    msg += '<li class="chatmsg"><div class="showtime">' + showtime + '</div><div style="position: absolute;left:12px;">';
+                    msg += '<img class="my-circle  se_pic" src="' + pic + '" ></div>';
+                    msg += "<div class='outer-left'><div class='customer'>";
+                    msg += "<pre>" + data.message.content + "</pre>";
+                    msg += "</div></div>";
+                    msg += "</li>";
+                    $('.conversation').append(msg);
+                    getwatch(data.message.visiter_id);
+                } else {
+                    num++;
+                    if (num > 0) {
+                        $(".newmsg").removeClass('hide');
+                    } else {
+                        $(".newmsg").addClass('hide');
+                    }
+                    $(".newmsg").text(num);
+                }
+                var div = document.getElementById("wrap");
+                div.scrollTop = div.scrollHeight;
+                
+                $("img[src*='upload/images']").parent().parent('.customer').css({
+                    padding: '0',borderRadius: '0'
+                });
+                $("img[src*='upload/images']").parent().parent('.service').css({
+                    padding: '0',borderRadius: '0'
+                });
+
+                setTimeout(function(){
+                    $('.chatmsg').css({
+                        height: 'auto'
+                    });
+                },0)
+            });
+
+            channel.bind('logout', function () {
+                $("#status").text('[离线]');
+            });
+
+            channel.bind('geton', function () {
+                $("#status").text('');
+            });
+
+
+            pusher.connection.bind('state_change', function (states) {
+                // states = {previous: 'oldState', current: 'newState'}
+                if (states.current == 'unavailable' || states.current == "disconnected" || states.current == "failed") {
+
+                    pusher.unsubscribe("kefu" + value);
+                    pusher.unsubscribe("all" + all);
+                    $.cookie("hid", '');
+                    wolive_connect();
+                }
+
+            });
+
+            pusher.connection.bind('connected', function () {
+                $(".chatmsg").remove();
+                $.cookie('hid', '');
+                getdata();
+            });
+        }
+    </script>
+    <link rel="stylesheet" href="__assets__/css/admin/mtalk.css?v=__lkversion__"/>
+    <style type="text/css">
+        #showUserInfo {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 99999;
+        }
+
+        .showUserInfoUl {
+            background: #fff;
+        }
+
+        .showUserInfoUl li {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 8px 12px;
+            position: relative;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .showUserInfoUl li .name {
+            width: 90px;
+        }
+
+        .showUserInfoUl li .value {
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            text-align: left;
+            color: #999999;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .showUserInfoUl li .value input, .showUserInfoUl li .value textarea {
+            width: calc(100% - 10px);
+            padding: 3px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+<audio id="chat-message-audio">
+    <source id="chat-message-audio-source" src="{$voice_address}" type="audio/mpeg"/>
+</audio>
+<header style="width: 100%;height: 50px;background: #25c16f;color: #fff;position:fixed;line-height: 50px;z-index: 99">
+    <span class="newmsg hide"></span>
+    <i class="layui-icon" style="position: absolute;left:10px;font-size: 20px;z-index: 999"
+       onclick="back()">&#xe603;</i>
+    <span id="customer"
+          style="position:absolute;left:0;font-size: 18px;width: 100%;display: flex;justify-content: center;"><span
+            class="user-name">{$data.visiter_name}</span><span
+            id="status"></span></span>
+    <img style="position:absolute;right:15px;width: 18px;height: 18px;top: 16px;" src="__image__/mobile/more.png"
+         class="showUinfo">
+</header>
+<section class="content" id="wrap" style="background-color: #f7f7f7">
+    <div style="height: 55px;width: 100%;"></div>
+    <ul class="conversation" id="log">
+    </ul>
+    <div id="bottom" style="height: 94px;width: 100%;"></div>
+</section>
+<footer style="position:fixed;bottom:0;width: 100%;height: 94px;padding:0">
+    <div class="tool_box">
+        <div class="wl_faces_content">
+            <div class="wl_faces_main">
+            </div>
+        </div>
+    </div>
+    <div class="foot_msg">
+        <div class="footer">
+            <div id="quickreply">
+                <div class="quickreply-list">
+                </div>
+                <div class="quickreply-btn"><i class="layui-icon layui-icon-slider"></i></div>
+            </div>
+
+            <input type="text" id="text_all" placeholder="发消息..." class="layui-input"/>
+            <button class="layui-btn layui-btn-normal send-btn" onclick="send()">发送
+            </button>
+        </div>
+        <div class="msg-toolbar">
+            <a id="face_icon" href="javascript:" onclick="faceon()"><img src="__image__/admin/B/smile.png" alt=""></a>
+            {if $atype == 'open'}
+            <a onclick="getaudio()"><img src="__image__/admin/B/smile.png" alt=""></a>
+            {/if}
+            <a id="images" href="javascript:">
+                <form id="picture" enctype="multipart/form-data">
+                    <div class="layui-box input-but size">
+                        <img src="__image__/admin/B/photo.png" alt="">
+                        <input type="file" name="upload" class="fileinput" onchange="put()"/>
+                    </div>
+                </form>
+            </a>
+            <a id="files" href="javascript:">
+                <form id="file" enctype="multipart/form-data">
+                    <div class="layui-box input-but size">
+                        <img src="__image__/admin/B/file.png" alt="">
+                        <input type="file" name="folder" class="fileinput" onchange="putfile()"/>
+                    </div>
+                </form>
+            </a>
+            <!-- 推送评价 -->
+            <a id="evaluate" href="javascript:" onclick="toEvaluate()"><img src="__image__/mobile/get-evaluate.png"
+                                                                            alt=""></a>
+            <a href="javascript:getblack()"><img src="/assets/images/admin/B/blacklist.png" alt="移入黑名单"
+                                                 title="移入黑名单"></a>
+            <a onclick="getswitch()"><img src="/assets/images/admin/B/transfer.png" alt="客服转接" title="客服转接"></a>
+            <!--<a href="javascript:" onclick="back()"><img src="__image__/admin/B/return.png" alt=""></a>-->
+        </div>
+    </div>
+</footer>
+<div id="vueWrap" v-cloak>
+    <div id='group' class="bg" v-if="openGroup">
+        <div class="group">
+            <div class="group-title">编辑分组</div>
+            <div class="group-list">
+                <div class="group-item" v-for='item in list'>
+                    <input class='checkbox' v-model="item.choose" :value="item.id" name='group' type='checkbox'>
+                    <span class="group-name">{{item.group_name}}<span class="group-num">({{item.count}})</span></span>
+                </div>
+            </div>
+            <div class="group-btn">
+                <div @click="openGroup = false" class="group-cancel">取消</div>
+                <div @click="edit" class="group-submit">确定</div>
+            </div>
+        </div>
+    </div>
+    <div id="showUserInfo" v-if="openUserInfo">
+        <header style="width: 100%;height: 50px;background: #25c16f;color: #fff;position:fixed;line-height: 50px;z-index: 99">
+            <span class="newmsg hide"></span><i class="layui-icon"
+                                                style="position: absolute;left:10px;font-size: 20px;z-index: 999"
+                                                @click="openUserInfo=false" id="hdUserInfo">&#xe603;</i><span
+                style="position:absolute;left:0;font-size: 18px;width: 100%;display: flex;justify-content: center;">
+        <span class="user-name">访客信息</span></span>
+        </header>
+        <section class="content" style="background-color: #f7f7f7">
+            <div style="height: 55px;width: 100%;"></div>
+            <div>
+                <ul class="showUserInfoUl">
+                    <li>
+                        <div class="name">来源：</div>
+                        <div class="value">{{from_url}}</div>
+                    </li>
+                    <li>
+                        <div class="name">地区：</div>
+                        <div class="value">{{ip}}【{{area}}】</div>
+                    </li>
+                    <li>
+                        <div class="name">状态：</div>
+                        <div class="value">{{olstate}}</div>
+                    </li>
+                    <li>
+                        <div class="name">上次登录时间</div>
+                        <div class="value">{{last_login_time}}</div>
+                    </li>
+                    <li>
+                        <div class="name">登录次数：</div>
+                        <div class="value">{{login_times}}</div>
+                    </li>
+                    <li>
+                        <div class="name">登录设备：</div>
+                        <div class="value">{{login_device}}</div>
+                    </li>
+                    <li>
+                        <div class="name">姓名：</div>
+                        <div class="value">
+                            <input type="text" v-model="name" @blur="saveinfo">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="name">电话：</div>
+                        <div class="value">
+                            <input type="text" v-model="tel" @blur="saveinfo">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="name">备注：</div>
+                        <div class="value">
+                       <textarea v-model="comment" @blur="saveinfo">
+
+                       </textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div style="height: 94px;width: 100%;"></div>
+        </section>
+    </div>
+</div>
+
+
+<script type="application/javascript">
+    var se = '{$se.nick_name}';
+    var visiter_id = '{$data.visiter_id}';
+    var img = '{$data.avatar}';
+    var channel = '{$data.channel}';
+    var  nickname='{$data.visiter_name}';
+    var domQuickreplyList=$('.quickreply-list');
+    $(document).on('click','.quickreply-btn',function (){
+        domQuickreplyList.fadeToggle();
+    });
+    $(document).on('click','.quickreply-list div',function (){
+        sendContent($(this).find('.replycont').html());
+        domQuickreplyList.hide();
+    });
+</script>
+<script type="text/javascript" src="__script__/admin/mchat.js?v=__lkversion__"></script>
+
+</body>
+</html>

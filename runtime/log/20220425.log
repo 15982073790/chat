@@ -1,0 +1,791 @@
+---------------------------------------------------------------
+[ 2022-04-25T08:24:39+08:00 ] 106.55.202.186 GET chat.profittravel.com/layer?avatar=&business_id=2&groupid=0&product=%7B%7D&theme=25c16f&visiter_id=&visiter_name=
+[运行时间：0.029214s] [吞吐率：34.23req/s] [内存消耗：4,240.80kb] [文件加载：84]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000982s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'layer',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'avatar' => '',
+  'business_id' => '2',
+  'groupid' => '0',
+  'product' => '{}',
+  'theme' => '25c16f',
+  'visiter_id' => '',
+  'visiter_name' => '',
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000114s ]
+[ info ] [ RUN ] app\layer\controller\Index->index[ /data/wwwroot/dev/chat.profittravel.com/application/layer/controller/Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/layer/view/index/index.html [ array (
+  0 => 'baseroot',
+  1 => 'is_bind_wechat',
+  2 => 'reststate',
+  3 => 'restsetting',
+  4 => 'business_name',
+  5 => 'atype',
+  6 => 'groupid',
+  7 => 'app_key',
+  8 => 'whost',
+  9 => 'value',
+  10 => 'wport',
+  11 => 'port',
+  12 => 'url',
+  13 => 'visiter',
+  14 => 'business_id',
+  15 => 'from_url',
+  16 => 'channel',
+  17 => 'visiter_id',
+  18 => 'avatar',
+  19 => 'special',
+  20 => 'theme',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:25:48+08:00 ] 106.55.201.50 GET chat.profittravel.com/index/index?code=QMFKGzci1Vw4mxVVEH268JhidymaRDrdMT0Cy3pn+z6+PTMOkEIz8+3zJANCE4Q+wyzW06j/
+[运行时间：0.016081s] [吞吐率：62.19req/s] [内存消耗：2,687.72kb] [文件加载：67]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000980s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'code' => 'QMFKGzci1Vw4mxVVEH268JhidymaRDrdMT0Cy3pn z6 PTMOkEIz8 3zJANCE4Q wyzW06j/',
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000103s ]
+[ info ] [ RUN ] app\index\controller\Index->index[ /data/wwwroot/dev/chat.profittravel.com/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:25:49+08:00 ] 106.55.201.50 GET chat.profittravel.com/index/index/errors
+[运行时间：0.015418s] [吞吐率：64.86req/s] [内存消耗：2,720.61kb] [文件加载：67]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000921s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'errors',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000094s ]
+[ info ] [ RUN ] app\index\controller\Index->errors[ /data/wwwroot/dev/chat.profittravel.com/application/index/controller/Index.php ]
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/index/view/index/errors.html [ array (
+  0 => 'baseroot',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:38:14+08:00 ] 106.55.200.233 GET chat.profittravel.com/platform/passport/captcha.html?_r=0.6014471076195826
+[运行时间：0.026835s] [吞吐率：37.26req/s] [内存消耗：4,001.48kb] [文件加载：80]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000969s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'captcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  '_r' => '0.6014471076195826',
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000134s ]
+[ info ] [ RUN ] app\platform\controller\Passport->captcha[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:38:14+08:00 ] 106.55.200.233 GET chat.profittravel.com/admin/set/getwait
+[运行时间：0.017789s] [吞吐率：56.21req/s] [内存消耗：3,098.48kb] [文件加载：71]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000955s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'set',
+    2 => 'getwait',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:38:15+08:00 ] 106.55.200.233 GET chat.profittravel.com/admin/login/index.html
+[运行时间：0.023030s] [吞吐率：43.42req/s] [内存消耗：3,898.06kb] [文件加载：77]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000919s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=0r9vasgbpecr9c30oq0t3mrmqb',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000089s ]
+[ info ] [ RUN ] app\admin\controller\Login->index[ /data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/admin/view/login/index.html [ array (
+  0 => 'business_id',
+  1 => 'baseroot',
+  2 => 'business',
+  3 => 'regist',
+  4 => 'submit',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:38:15+08:00 ] 106.55.200.233 GET chat.profittravel.com/admin/login/captcha.html?t=1184904330
+[运行时间：0.018128s] [吞吐率：55.16req/s] [内存消耗：2,752.62kb] [文件加载：68]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000983s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'captcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=0r9vasgbpecr9c30oq0t3mrmqb',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/admin/login/index.html',
+  'accept' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  't' => '1184904330',
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000089s ]
+[ info ] [ RUN ] app\admin\controller\Login->captcha[ /data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Login.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:38:15+08:00 ] 106.55.200.233 GET chat.profittravel.com/assets/css/platform/bootstrap.min.css.map
+[运行时间：0.014427s] [吞吐率：69.31req/s] [内存消耗：2,328.34kb] [文件加载：62]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000944s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'assets',
+    1 => 'css',
+    2 => 'platform',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:52:44+08:00 ] 106.55.202.186 GET chat.profittravel.com/admin/index/index.html
+[运行时间：0.016815s] [吞吐率：59.47req/s] [内存消耗：2,892.20kb] [文件加载：71]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000951s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:52:44+08:00 ] 106.55.202.186 GET chat.profittravel.com/admin/login/index.html
+[运行时间：0.022422s] [吞吐率：44.60req/s] [内存消耗：3,898.06kb] [文件加载：77]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000995s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=iilsqho3jttrt8q47dl2im002f',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000096s ]
+[ info ] [ RUN ] app\admin\controller\Login->index[ /data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/admin/view/login/index.html [ array (
+  0 => 'business_id',
+  1 => 'baseroot',
+  2 => 'business',
+  3 => 'regist',
+  4 => 'submit',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:52:44+08:00 ] 106.55.202.186 GET chat.profittravel.com/admin/login/captcha.html?t=1457924450
+[运行时间：0.016827s] [吞吐率：59.43req/s] [内存消耗：2,752.62kb] [文件加载：68]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000938s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'captcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=iilsqho3jttrt8q47dl2im002f',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/admin/login/index.html',
+  'accept' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  't' => '1457924450',
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000095s ]
+[ info ] [ RUN ] app\admin\controller\Login->captcha[ /data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Login.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:55:04+08:00 ] 106.55.200.45 GET chat.profittravel.com/admin/login/captcha.html?t=421451971
+[运行时间：0.017309s] [吞吐率：57.77req/s] [内存消耗：2,752.39kb] [文件加载：68]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000943s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'captcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  't' => '421451971',
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000090s ]
+[ info ] [ RUN ] app\admin\controller\Login->captcha[ /data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Login.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:59:36+08:00 ] 106.55.201.50 GET chat.profittravel.com/admin/login/index/business_id/2.html
+[运行时间：0.024431s] [吞吐率：40.93req/s] [内存消耗：3,929.97kb] [文件加载：78]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000962s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'business_id' => '2',
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000100s ]
+[ info ] [ RUN ] app\admin\controller\Login->index[ /data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/admin/view/login/index.html [ array (
+  0 => 'business_id',
+  1 => 'baseroot',
+  2 => 'business',
+  3 => 'regist',
+  4 => 'submit',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T08:59:36+08:00 ] 106.55.201.50 GET chat.profittravel.com/admin/login/captcha.html?t=42892325
+[运行时间：0.017536s] [吞吐率：57.03req/s] [内存消耗：2,753.12kb] [文件加载：68]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000944s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'captcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'YMWL_APP_FLAG=2',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/admin/login/index/business_id/2.html',
+  'accept' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  't' => '42892325',
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000088s ]
+[ info ] [ RUN ] app\admin\controller\Login->captcha[ /data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Login.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T09:06:35+08:00 ] 106.55.200.246 GET chat.profittravel.com/admin/evaluate/index.html
+[运行时间：0.016197s] [吞吐率：61.74req/s] [内存消耗：2,778.95kb] [文件加载：71]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000959s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'evaluate',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T09:06:36+08:00 ] 106.55.200.246 GET chat.profittravel.com/admin/login/index.html
+[运行时间：0.022698s] [吞吐率：44.06req/s] [内存消耗：3,898.06kb] [文件加载：77]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000978s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=245k3tks39tso9l6teq2o9gtlb',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000095s ]
+[ info ] [ RUN ] app\admin\controller\Login->index[ /data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/admin/view/login/index.html [ array (
+  0 => 'business_id',
+  1 => 'baseroot',
+  2 => 'business',
+  3 => 'regist',
+  4 => 'submit',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T09:06:36+08:00 ] 106.55.200.246 GET chat.profittravel.com/admin/login/captcha.html?t=1128061535
+[运行时间：0.018078s] [吞吐率：55.32req/s] [内存消耗：2,752.62kb] [文件加载：68]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000974s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'captcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=245k3tks39tso9l6teq2o9gtlb',
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/admin/login/index.html',
+  'accept' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  't' => '1128061535',
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000093s ]
+[ info ] [ RUN ] app\admin\controller\Login->captcha[ /data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Login.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T09:17:57+08:00 ] 106.55.200.45 GET chat.profittravel.com/platform/app/index.html
+[运行时间：0.022105s] [吞吐率：45.24req/s] [内存消耗：3,702.51kb] [文件加载：80]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000945s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'app',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T09:17:57+08:00 ] 106.55.200.45 GET chat.profittravel.com/platform/passport/login.html
+[运行时间：0.025809s] [吞吐率：38.75req/s] [内存消耗：4,013.27kb] [文件加载：81]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000948s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000124s ]
+[ info ] [ RUN ] app\platform\controller\Passport->login[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ VIEW ] /data/wwwroot/dev/chat.profittravel.com/public/../application/platform/view/passport/login.html [ array (
+  0 => 'option',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T09:17:58+08:00 ] 106.55.200.45 GET chat.profittravel.com/platform/passport/resetcaptcha.html
+[运行时间：0.027126s] [吞吐率：36.86req/s] [内存消耗：4,001.14kb] [文件加载：80]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000960s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'resetcaptcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/passport/login.html',
+  'accept' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000121s ]
+[ info ] [ RUN ] app\platform\controller\Passport->resetcaptcha[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-25T09:17:58+08:00 ] 106.55.200.45 GET chat.profittravel.com/platform/passport/captcha.html
+[运行时间：0.026670s] [吞吐率：37.50req/s] [内存消耗：4,001.09kb] [文件加载：80]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000944s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'platform',
+    1 => 'passport',
+    2 => 'captcha',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://chat.profittravel.com/platform/passport/login.html',
+  'accept' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000105s ]
+[ info ] [ RUN ] app\platform\controller\Passport->captcha[ /data/wwwroot/dev/chat.profittravel.com/application/platform/controller/Passport.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'YMWL',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File

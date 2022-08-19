@@ -1,0 +1,237 @@
+<style>
+    .account-search {
+        width: 196px;
+        height: 54px;
+        padding-left: 16px;
+        position: relative;
+    }
+
+    .account-search input {
+        margin-top: 12px;
+        width: 180px !important;
+        height: 30px;
+        border-radius: 15px;
+        padding-left: 12px;
+    }
+
+    .account-search .btn {
+        position: absolute;
+        height: 14px;
+        width: 14px;
+        padding: 0;
+        line-height: normal;
+        top: 20px;
+        border: 0;
+        right: 12px;
+    }
+
+    .account-search .btn img {
+        height: 14px;
+        width: 14px;
+    }
+
+    .account-list {
+        border: 0;
+        border-top: 1px solid #f7f7f7;
+    }
+
+    .account-list thead, .account-list thead tr {
+        border: 0;
+    }
+
+    .account-list thead th {
+        background-color: #fff;
+        height: 40px;
+        border: 0;
+    }
+
+    .account-list tbody td {
+        height: 56px;
+        line-height: 56px;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top: 1px solid #f7f7f7;
+    }
+
+    .operate a {
+        margin-top: 12px;
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        border-radius: 16px;
+        background-color: #f5f5f5;
+        margin-right: 10px;
+    }
+
+    .operate a img {
+        display: block;
+        margin: 6px;
+        height: 20px;
+        width: 20px;
+    }
+
+    .account-list .remark {
+        line-height: normal;
+        margin-top: -18px;
+    }
+</style>
+<div class="account-search">
+    <form method="get" class="form-inline">
+        <input type="hidden" name="r" value="admin/app/other-app">
+        <input value="{$keyword}" placeholder="手机号/账户" type="text" name="keyword"
+               class="form-control form-control-sm">
+        <button style="cursor: pointer" class="btn btn-link btn-sm"><img src="__image__/admin/A/search.png" alt="">
+        </button>
+    </form>
+</div>
+<table class="account-list table bg-white">
+    <thead>
+    <tr style="font-size: 13px;color: #555555">
+        <th></th>
+        <th>ID</th>
+        <th>账户</th>
+        <th style="text-align: center;">可创建客服系统数量</th>
+        <th style="text-align: center;">已创建客服系统数量</th>
+        <th>有效期</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <col style="width: 32px">
+    <col style="width: 80px">
+    <col style="width: 175px">
+    <col style="width: 150px">
+    <col style="width: 150px">
+    <col style="width: 124px">
+    <col>
+
+    {volist name="data" key="k" id="vo"}
+    <tr style="font-size: 13px;color: #555555">
+        <td style="width: 32px"></td>
+        <td>{$vo.id}</td>
+        <td>
+            <div>{$vo.username}</div>
+            <div class="text-muted remark fs-sm">{$vo.remark}</div>
+        </td>
+        <td style="text-align: center;">
+            {eq name="vo.app_max_count" value="0"}
+            无限制
+            {else/}
+            {$vo.app_max_count}
+            {/eq}
+        </td>
+        <td style="text-align: center;color: #25c16f">
+            {$counts[$k-1]['business_count']}
+        </td>
+        <td>
+            {eq name="vo.expire_time" value="0"}
+            永久
+            {else/}
+            {$vo.expire_time|date="Y-m-d",###}
+            {/eq}
+        </td>
+        <td class="operate">
+            <a href="{:url('user/edit',['id' => $vo['id']])}"><img src="__image__/admin/A/edit.png" alt=""></a>
+
+            {if condition="$vo['id'] != 1"}
+            <a class="modify-password"
+               href="{:url('user/modifypassword', ['id' => $vo['id']])}" data-name="{$vo.username}"><img
+                    src="__image__/admin/A/change.png" alt=""></a>
+            <a class="delete"
+               href="{:url('user/delete', ['id' => $vo['id']])}"><img src="__image__/admin/A/delete.png" alt=""></a>
+            {/if}
+        </td>
+    </tr>
+    {/volist}
+
+</table>
+{$page}
+<script>
+    $(document).on("click", ".modify-password", function () {
+        var href = $(this).attr("href");
+        var username = $(this).attr("data-name");
+        var id = $.randomString();
+        var html = '';
+        html += '<div class="modal fade" data-backdrop="static" id="' + id + '">';
+        html += '<div class="modal-dialog modal-sm" role="document">';
+        html += '<div class="modal-content" style="box-shadow: 0 1px 5px rgba(0,0,0,.25)">';
+        html += '<div class="modal-header">';
+        html += '<h6 class="modal-title">修改用户名或密码</h6>';
+        html += '</div>';
+        html += '<div class="modal-body">';
+        html += '<div>请输入用户名：</div>';
+        html += '<div class="mt-3"><input name="username" value="'+ username +'" class="form-control form-control-sm"></div>';
+        html += '<div style="margin-top: 10px">请输入密码（必填）：</div>';
+        html += '<div class="mt-3"><input name="password" class="form-control form-control-sm"></div>';
+        html += '</div>';
+        html += '<div class="modal-footer">';
+        html += '<button type="button" class="btn btn-sm btn-secondary alert-cancel-btn">取消</button>';
+        html += '<button type="button" class="btn btn-sm btn-primary alert-confirm-btn">确认</button>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        $("body").append(html);
+        $("#" + id).modal("show");
+        $(document).on("click", "#" + id + " .alert-confirm-btn", function () {
+            $("#" + id).modal("hide");
+            var username = $("#" + id).find('[name="username"]').val();
+            var val = $("#" + id).find('[name="password"]').val();
+            if (!val) {
+                $.myToast({
+                    content: "密码不能为空",
+                });
+                return;
+            }
+            $.myLoading({
+                title: "正在提交",
+            });
+            $.ajax({
+                url: href,
+                type: "post",
+                dataType: "json",
+                data: {
+                    username: username,
+                    password: val,
+                },
+                success: function (res) {
+                    $.myLoadingHide();
+                    $.myToast({
+                        content: res.msg,
+                    });
+                    if (res.code == 0) {
+                        location.reload();
+                    }
+                }
+            });
+        });
+        $(document).on("click", "#" + id + " .alert-cancel-btn", function () {
+            $("#" + id).modal("hide");
+        });
+        return false;
+    });
+    $(document).on("click", ".delete", function () {
+        var href = $(this).attr("href");
+        $.myConfirm({
+            content: "确认删除此用户？此操作将不可恢复！",
+            confirm: function () {
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    type: "post",
+                    dataType: "json",
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                        });
+                        location.reload();
+                    }
+                });
+
+            }
+        });
+        return false;
+    });
+</script>

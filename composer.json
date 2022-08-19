@@ -1,0 +1,58 @@
+{
+    "name": "topthink/think",
+    "description": "the new thinkphp framework",
+    "type": "project",
+    "keywords": [
+        "framework",
+        "thinkphp",
+        "ORM"
+    ],
+    "homepage": "http://thinkphp.cn/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "liu21st",
+            "email": "liu21st@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "topthink/framework": "5.0.24",
+        "topthink/think-image": "^1.0",
+        "topthink/think-captcha": "^1.0",
+        "topthink/think-mongo": "^1.0",
+        "topthink/think-migration": "^1.0",
+        "topthink/think-angular": "^1.0",
+        "topthink/think-sae": "^1.0",
+        "topthink/think-worker": "^1.0",
+        "topthink/think-queue": "^1.0",
+        "topthink/think-testing": "^1.0",
+        "alchemy/zippy": "0.4.0",
+        "guzzlehttp/guzzle": "6.3.*",
+        "guzzlehttp/psr7": "1.4.*",
+        "overtrue/easy-sms": "^1.1",
+        "aliyuncs/oss-sdk-php": "~2.0",
+        "paragonie/random_compat": "2.0.19",
+        "symfony/polyfill-php70": "1.19.0",
+        "ezyang/htmlpurifier": "4.13.0",
+        "xemlock/htmlpurifier-html5": "0.1.11",
+        "php-angular/php-angular": "2.0.3",
+        "qiniu/php-sdk": "~7.0",
+        "overtrue/wechat":"~4.1",
+        "symfony/event-dispatcher": "4.3",
+        "5ini99/think-addons": "2.1.0",
+        "qcloud/cos-sdk-v5": "^2.1"
+    },
+    "extra": {
+        "think-path": "thinkphp"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}

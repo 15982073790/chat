@@ -1,0 +1,169 @@
+{include file="public/header"/}
+<style>
+    #container {
+        padding: 0;
+    }
+
+    .am-btn-default {
+        background: #F5FAFF;
+    }
+
+    #gettime .am-btn {
+        border: 0;
+    }
+
+    #container {
+        background-color: #fff;
+    }
+
+    .am-raduis {
+        width: 46px;
+        height: 46px;
+    }
+
+    .fangke .f_img {
+        width: 40px;
+        height: 40px;
+    }
+</style>
+
+<div id="container">
+    <!--  <div id="page-header" class="am-cf">
+     <h1 class="title"><i class="am-icon-bookmark"></i>&nbsp;历史记录</h1>
+     </div> -->
+    <section class="service_list"
+             style="position: absolute;height: 100%;border-right: 2px solid #f7f7f7;overflow-y: auto;width: 20%;">
+        <div style="width: 100%;height:56px;text-align: center;border-radius: 8px 0 0 0 ; border-bottom: 2px solid #f7f7f7;">
+            <h4 style="font-size: 14px;font-weight: bold;position: relative;top:20px;left: -35%;color: #555555;">
+                客服列表</h4>
+        </div>
+
+        <div class="kefu" title="{$arr['service_id']}" name="{$arr['avatar']}" inde
+             style="position: relative;width: 100%;height:80px;cursor: pointer;margin-left: 10px;"
+             onclick="choose(this)">
+            <img class="am-raduis" src="{$arr['avatar']}"
+                 style="position: absolute;top:15px;left: 5px;border-radius: 100%"/>
+            <span style="position: absolute;left:70px;top:33%;font-size: 16px;">{$arr['nick_name']}</span>
+        </div>
+        {foreach $services as $v}
+        <div class="kefu" title="{$v['service_id']}" name="{$v['avatar']}"
+             style="position: relative;width: 100%;height:80px;cursor: pointer;margin-left: 10px;"
+             onclick="choose(this)">
+            <img class="am-raduis" src="{$v['avatar']}"
+                 style="position: absolute;top:15px;left: 5px;border-radius: 100%"/>
+            <span style="position: absolute;left:70px;top:33%;font-size: 16px;">{$v['nick_name']}</span>
+        </div>
+        {/foreach}
+
+    </section>
+
+    <section class="c_content " style="position: absolute;left:20%;height:100%;width: 20%;">
+        <div id="visiter_list" class="hide"
+             style="position: absolute;left: 0px;width: 100%;height: 100%;overflow-y: auto;">
+            <header style="width: 100%;height:56px;text-align: center;">
+                <h4 style="font-size: 14px;font-weight: bold;position: relative;top:20px;left: -35%;">访客列表</h4>
+            </header>
+
+        </div>
+
+        <div id="gettime" class="hide"
+             style="position: absolute;left: 100%;width: 100%;height: 100%;border-left:1px solid #f7f7f7;border-right:1px solid #f7f7f7;">
+            <header style="width: 100%;height:56px;text-align: center;">
+                <h4 style="font-size: 14px;font-weight: bold;position: relative;top:20px;left: -110px;">时间段</h4>
+            </header>
+            <div class="vtimes" title="7"
+                 style="position: relative;width: 100%;height:80px;cursor: pointer;"
+                 onclick="change(this)">
+                <i class=" am-icon-sm" style="position: absolute;top:12px;left: 5px;"></i>
+                <span style="position: absolute;left:6%;top:35%;font-size: 16px;">最近7天</span>
+            </div>
+
+            <div class="vtimes" title="1"
+                 style="position: relative;width: 100%;height:80px;cursor: pointer;"
+                 onclick="change(this)">
+                <i class="am-icon-sm" style="position: absolute;top:12px;left: 5px;"></i>
+                <span style="position: absolute;left:6%;top:35%;font-size: 16px;">最近1个月</span>
+            </div>
+
+            <div class="vtimes"
+                 style="position: relative;width: 100%;height:80px;cursor: pointer;"
+                 onclick="changes(this)">
+                <span style="border:0;position: absolute;left:6%;top:35%;font-size: 16px;">自定义时间</span>
+            </div>
+            <div id="define_time" class="hide">
+
+                <div class="">
+                    <div class="" style="position: relative;width: 100%;height: 40px;">
+                        <button type="button" class="am-btn am-btn-default am-margin-right" id="my-start">开始日期</button>
+                        <span id="my-startDate"></span>
+                    </div>
+                    <div class="" style="position: relative;width: 100%;height: 40px; ">
+                        <button type="button" class="am-btn am-btn-default am-margin-right" id="my-end">结束日期</button>
+                        <span id="my-endDate"></span>
+                    </div>
+                </div>
+                <div class="am-btn am-btn-default"
+                     style="position: relative;width: 100%;height: 40px;"
+                     onclick="puton()">
+                    提交
+                </div>
+            </div>
+        </div>
+
+        <div class="no_history">
+            <i class="no_history_icon"></i>
+        </div>
+
+    </section>
+
+    <section style="position: absolute;left:60%;height:100%;width: 40%">
+        <div id="history_content" style="width: 100%;height: 100%;">
+            <div class="h_content hide"
+                 style="width: 100%;height:96%;overflow-y: auto; overflow-x: hidden;display: block; word-break: normal; border-right: 1px solid #f5f5f5;">
+                <ul id="h_show" class="conversation">
+
+                </ul>
+            </div>
+
+        </div>
+    </section>
+</div>
+<script type="text/javascript">
+    var high =document.body.clientHeight;
+    $('service_list').css("height",(high-70)+"px");
+    $('#visiter_list').css("height",(high -70)+"px");
+
+    window.onresize = function(){
+        var high =document.body.clientHeight;
+        $('service_list').css("height",(high-70)+"px");
+        $('#visiter_list').css("height",(high -70)+"px");
+    }
+
+
+   var getstate =function(obj){
+       
+       var c=obj.children[0];
+ 
+       var state=$(obj).attr('data');
+   
+       if(state == 'play'){
+         c.play();
+         $(obj).attr('data','pause');
+         $(obj).find('i').html("&#xe651;");
+       
+       }else if(state == 'pause'){
+          c.pause();
+         $(obj).attr('data','play');
+          $(obj).find('i').html("&#xe652;");
+       }
+
+        c.addEventListener('ended', function () {  
+         $(obj).attr('data','play');
+         $(obj).find('i').html("&#xe652;");
+        
+       }, false);
+    }
+</script>
+<script type="text/javascript" src="__script__/admin/view.js?v=__lkversion__"></script>
+
+{include file="public/footer"/}

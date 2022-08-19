@@ -1,0 +1,309 @@
+<link href="__style__/jquery.datetimepicker.min.css?v=__lkversion__" rel="stylesheet">
+<style>
+    form {
+        position: relative;
+    }
+
+    .form-disable {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, .75);
+        z-index: 10;
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .new-account {
+        padding: 0 32px;
+        height: 56px;
+        line-height: 56px;
+        font-size: 13px;
+        color: #555555;
+        border: 0;
+        border-bottom: 1px solid #f7f7f7;
+        background-color: #fff;
+    }
+
+    .account-info {
+        float: right;
+        width: auto;
+    }
+
+    .form-control:disabled, .form-control[readonly] {
+        opacity: .5;
+    }
+
+    .new-account .account-info {
+        color: #999999;
+    }
+
+    .new-account .account-info span {
+        color: #25c16f;
+    }
+
+    .account-label span {
+        display: inline-block;
+        font-size: 13px;
+        color: #999999;
+        width: 80px;
+        text-align: left;
+    }
+
+    label.required.account-label::before {
+        left: 100px;
+    }
+
+    .choose-date {
+        height: 20px;
+        width: 20px;
+        margin: 0 4px 0 16px;
+        cursor: pointer;
+    }
+
+    .auto-form-btn {
+        padding: 0;
+        margin-left: 120px;
+        height: 32px;
+        line-height: 32px;
+        width: 66px;
+        border-radius: 16px;
+        font-size: 13px;
+        color: #fff;
+        background-color: #25c16f;
+        border: 1px solid #25c16f;
+    }
+
+    #login-input {
+        position: relative;
+    }
+
+    #login-input .eyes {
+        position: absolute;
+        top: 7px;
+        left: 580px;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+    }
+
+    .text-muted {
+        width: 300px;
+    }
+
+    .modal-dialog {
+        margin-top: 20%;
+    }
+</style>
+
+<form method="post" return="{:url('user/index')}" class="auto-form card">
+    {if condition="$account_over_max"}
+    <div class="form-disable">
+        <div class="alert alert-danger">
+            <div class="mb-2 pl-3 pr-3"><b>子账户创建数量上限！</b></div>
+            <div>当前子账户数量：{$account_count}</div>
+            <div>最大子账户数量：{$account_max}</div>
+        </div>
+    </div>
+    {/if}
+    <div class="card-header new-account">
+        <span class="new-account-title">新增子账户信息</span>
+        <div class="account-info">
+            当前子账户数量 <span>{$account_count}</span>，最大子账户数量 <span>{$account_max == -1 ? '无限制':$account_max}</span>
+        </div>
+    </div>
+    <div class="card-body" style="padding-left: 15%;">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label account-label required"><span>用户名</span></label>
+            <div class="form-input">
+                {if condition="isset($model->id)"}
+                <input class="form-control "
+                       value="{$model->username}" readonly class="form-control-plaintext ">
+                {else/}
+                <input type="text" class="form-control " name="username"
+                       value="">
+                {/if}
+            </div>
+        </div>
+
+        {if condition="!isset($model['id'])"}
+        <div id="login-input" class="form-group row">
+            <label class="col-sm-3 col-form-label account-label required"><span>登录密码</span></label>
+            <div class="form-input">
+                <input type="password" id="password" class="form-control " value="" name="password">
+            </div>
+            <img class="eyes" @click="openPassword" src="__image__/admin/B/close-eyes.png" v-if="eyes" alt="">
+            <img class="eyes" @click="openPassword" src="__image__/admin/B/open-eyes.png" v-if="!eyes" alt="">
+        </div>
+
+        {/if}
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label account-label"><span>手机号</span></label>
+            <div class="form-input">
+                {if condition="isset($model['id'])"}
+                <input class="form-control " value="{$model['mobile']}" name="mobile">
+                {else/}
+                <input class="form-control " value="" name="mobile">
+                {/if}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label account-label"><span>备注</span></label>
+            <div class="form-input">
+                {if condition="isset($model['id'])"}
+                <input class="form-control " value="{$model['remark']}" name="remark">
+                {else/}
+                <input class="form-control " value="" name="remark">
+                {/if}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label account-label required"><span>客服系统数量</span></label>
+            <div class="form-input">
+
+                {if condition="isset($model['id'])"}
+                <input class="form-control " type="number" step="1" min="0"
+                       value="{$model['app_max_count']}" name="app_max_count">
+                <div class="fs-sm text-muted">此用户可以创建的客服系统的数量，填写0则表示不限制用户创建客服系统的数量</div>
+                {else/}
+                <input class="form-control " type="number" step="1" min="0"
+                       value="" name="app_max_count">
+                <div class="fs-sm text-muted">此用户可以创建的客服系统的数量，填写0则表示不限制用户创建客服系统的数量</div>
+                {/if}
+
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label account-label required"><span>账户有效期</span></label>
+            <div class="form-input">
+                <div class="form-inline">
+                    {if condition="isset($model->id) && $model->id == 1"}
+                    <input type="hidden" name="no_expire_time" value="on">
+                    <div class="text-muted" style="padding-top: calc(.5rem - 1px * 2);">总管理员账户此项无法修改</div>
+                    {else/}
+                    <input id="expire_time" class="form-control" value="{:date('Y-m-d', time())}"
+                           name="expire_time" {$model['expire_time'] ? '' : 'readonly'}>
+                    <label class="custom-control custom-checkbox ml-3">
+                        <input {$model['expire_time'] ? '' : 'checked'}
+                        type="checkbox"
+                        name="no_expire_time"
+                        class="custom-control-input no-expire-time">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">永久</span>
+                    </label>
+                    {/if}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label  account-label"><span>权限设置</span></label>
+            <div class="col-sm-6" style="padding-top: calc(.5rem - 1px * 2);">
+                {if condition="isset($model->id) && $model->id == 1"}
+                <input type="hidden" name="permission[]" value="copyright">
+                <div class="text-muted" style="padding-top: calc(.5rem - 1px * 2);">总管理员账户此项无法修改</div>
+                {else/}
+                <label class="custom-control custom-checkbox mr-5">
+                    <input type="checkbox"
+                           class="custom-control-input" name="permission[]" value="copyright" {$is_copyright ? 'checked'
+                    : ''}>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">版权设置</span>
+                </label>
+                <label class="custom-control custom-checkbox mr-5">
+                    <input type="checkbox"
+                           class="custom-control-input" name="permission[storage][]" value="Local" {$is_local ?
+                    'checked' : ''}>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">本地存储</span>
+                </label>
+
+                <label class="custom-control custom-checkbox mr-5">
+                    <input type="checkbox"
+                           class="custom-control-input" name="permission[storage][]" value="AliOss" {$is_alioss ?
+                    'checked' : ''}>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">阿里OSS</span>
+                </label>
+
+                <label class="custom-control custom-checkbox mr-5">
+                    <input type="checkbox"
+                           class="custom-control-input" name="permission[storage][]" value="TxCos" {$is_txcos ?
+                    'checked' : ''}>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">腾讯COS</span>
+                </label>
+
+                <label class="custom-control custom-checkbox mr-5">
+                    <input type="checkbox"
+                           class="custom-control-input" name="permission[storage][]" value="Qiniu" {$is_qiniu ?
+                    'checked' : ''}>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">七牛云存储</span>
+                </label>
+
+                {/if}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3"></label>
+            <div class="form-input offset-sm-3">
+                <a class="btn btn-primary auto-form-btn" href="javascript:">保存</a>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="__script__/jquery.datetimepicker.full.min.js?v=__lkversion__"></script>
+<script>
+    new Vue({
+        el: '#login-input',
+        data() {
+            return {
+                eyes: true,
+            };
+        },
+        created() {
+        },
+        methods: {
+            openPassword() {
+                if($('#password')[0].type == 'password') {
+                    $('#password')[0].type = 'text';
+                    this.eyes = !this.eyes
+                }else if($('#password')[0].type == 'text') {
+                    $('#password')[0].type = "password";
+                    this.eyes = !this.eyes
+                }
+            }
+        }
+    });
+</script>
+<script>
+    $(function(){
+        let url = window.location.pathname;
+        let index = url.indexOf('id');
+        if(index > 0) {
+            $('.new-account-title').text('编辑账户信息')
+        }
+    })
+
+    $.datetimepicker.setLocale('zh');
+
+    var date = $('#expire_time').datetimepicker({
+        timepicker: false,
+        format: 'Y-m-d',
+        minDate: '{:date('Y-m-d')}',
+    });
+
+    $(document).on('change', '.no-expire-time', function () {
+        if ($(this).prop('checked')) {
+            $('#expire_time').prop('readonly', true);
+        } else {
+            $('#expire_time').prop('readonly', false);
+        }
+    });
+</script>

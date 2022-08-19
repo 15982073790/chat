@@ -1,0 +1,612 @@
+.visiter {
+    width: 100%;
+    height: 80px;
+    position: relative;
+}
+.myicon {
+    position: absolute;
+    right: 2px;
+    top: 3px;
+    cursor: pointer;
+}
+.visit_content {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.all_content .layui-this:after {
+    height: 51px;
+    border-bottom: 0 !important;
+}
+
+.all_content .layui-this {
+    position: relative;
+    background-color: #fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.all_content .layui-this .line {
+    position: absolute;
+    left: 40%;
+    bottom: 0;
+    height: 2px;
+    width: 30px;
+    background-color: #25c16f;
+}
+.all_content .layui-tab-content {
+    background-color: #fff;
+}
+.v-avatar {
+    position: absolute;
+    left: 20px;
+    top: 17px;
+    height: 46px;
+    width: 46px;
+    border-radius: 50%;
+}
+.w-avatar {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.wait_name {
+    position: absolute;
+    left: 64px;
+    top: 10px;
+    font-size: 14px;
+}
+.waiter {
+    width: 100%;
+    height: 60px;
+    padding: 12px;
+    position: relative;
+}
+.newmsg {
+    position: absolute;
+    top: 42px;
+    left: 82px;
+    font-size: 12px;
+    color: #999999;
+    width: 52%;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.newmsg p, .newmsg div {
+    display: none;
+}
+
+.c_name {
+    position: absolute;
+    left: 82px;
+    height: 22px;
+    line-height: 22px;
+    top: 16px;
+    font-size: 14px;
+    color: #555555;
+    width: 40%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.c_time {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 12px;
+    color: #999999;
+}
+
+.mygeticon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url('/assets/images/admin/get.png');
+    background-size: 100%;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+}
+
+.onclick {
+    background: #DDDDDD;
+}
+
+.check {
+    background: #F5FAFF;
+}
+
+.onclicks {
+    background: #DDDDDD;
+}
+
+.notice-icon {
+    display: inline-block;
+    color: #FFFFFF;
+    position: absolute;
+    right: 22px;
+    top: 38px;
+    padding: 0 5px;
+    height: 16px;
+    background: #ff5c5c;
+    text-align: center;
+    border-radius: 16px;
+}
+
+.chathead {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.chathead a {
+    position: absolute;
+    right: 2%;
+    top: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.chatinfo {
+    width: 28%;
+    min-width: 322.66px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    background: #f3f3f4;
+}
+
+.layui-layer-title {
+    border-color: #f7f7f7;
+}
+
+.hide {
+    display: none;
+}
+
+.chatmsg img {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.history {
+    text-align: center;
+    font-size: 12px;
+}
+
+.fangke {
+    padding: 18px;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    cursor: pointer;
+}
+
+.f_img {
+    border-radius: 100%;
+    top: 15px;
+    left: 15px;
+}
+
+.f_name {
+    position: absolute;
+    left: 70px;
+    top: 30%;
+    font-size: 16px;
+}
+
+.history a {
+    text-decoration: none;
+    color: #DFD7D7;
+}
+
+#text_in img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.myimg img {
+    width: 100%;
+    height: 100%
+}
+
+.footer_main {
+    width: 100%;
+    height: 45px;
+    background: #2f4050;
+    position: absolute;
+    bottom: 0;
+}
+
+.infomation {
+    position: absolute;
+    left: 10px;
+    height: 45px;
+}
+
+.layui-layer > .layui-layer-title {
+    background-color: #fff;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 0 0 24px;
+    color: #555555;
+    font-size: 13px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+#info_form .sp_line .am-circle {
+    margin-right: 20px;
+}
+
+#info_form .sp_line label {
+    height: 50px;
+    line-height: 50px;
+}
+
+#info_form .sp_line label + div {
+    height: 50px;
+    line-height: 50px;
+}
+
+#info_form .sp_line .choose-img {
+    height: 32px;
+    width: 80px;
+    border-radius: 16px;
+    background-color: #25c16f;
+    font-size: 13px;
+    border: 1px solid #25c16f;
+    color: #fff;
+    cursor: pointer;
+}
+
+#info_form .sp_line .am-form-file {
+    margin-bottom: 0;
+}
+
+#info_form {
+    width: 500px;
+    padding-top: 24px;
+}
+
+.layui-layer label {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    width: 160px;
+    margin-right: 32px;
+    color: #999999;
+    font-size: 13px;
+    text-align: right;
+}
+
+.layui-layer label + span {
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    width: 300px;
+}
+
+.layui-layer label + span input, #info_form #classification {
+    padding-left: 16px;
+    color: #555555;
+    font-size: 13px;
+    border-color: #E5E3E9;
+    width: 300px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 8px;
+}
+
+.layui-layer .info_form_item {
+    margin-bottom: 24px;
+}
+
+.layui-layer {
+    border-radius: 8px;
+}
+
+.layui-layer-btn {
+    padding: 0 0 24px !important;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.layui-layer-btn .layui-layer-btn0, .layui-layer-btn .layui-layer-btn1 {
+    height: 32px;
+    width: 66px;
+    border-radius: 16px;
+    background-color: #f7f7f7;
+    border: 1px solid #f7f7f7;
+    color: #555555;
+    text-align: center;
+}
+
+.layui-layer-btn a {
+    margin: 0 10px;
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+    background-color: #25c16f;
+    border: 1px solid #25c16f;
+    color: #fff;
+}
+
+.edit-ipt {
+    width: 99%;
+    height: 100%;
+    resize: none;
+    white-space: pre-wrap;
+}
+
+.tool_box {
+    width: 272px;
+    height: 195px;
+    position: absolute;
+    bottom: 200px;
+    border: 1px solid #ddd;
+    display: none;
+    background-color: #fff;
+}
+
+.icon_gray {
+    -webkit-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+}
+
+.wl_faces_main ul {
+    margin: 5px 5px;
+    overflow: hidden;
+    border-top: 1px #CCC solid;
+    border-left: 1px #CCC solid;
+    width: 261px;
+}
+
+.wl_faces_main ul li {
+    float: left;
+    border-right: 1px #CCC solid;
+    border-bottom: 1px #CCC solid;
+    height: 30px;
+    width: 26px;
+    text-align: center;
+
+}
+
+.wl_faces_main ul li img {
+    width: 22px;
+    height: 22px;
+    padding: 0px;
+}
+
+.message {
+    position: absolute;
+    top: 50px;
+    left: 1%;
+    width: 98%;
+}
+
+.msgbox {
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+}
+
+.msgbox dl {
+    height: 40px;
+    border-bottom: 1px dotted #ddd;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    line-height: 36px;
+}
+
+.msgtext {
+    font-size: 12px;
+    color: #666;
+    line-height: 25px;
+}
+
+.msgbox span {
+    margin-right: 10px;
+}
+
+.v_content {
+    max-width: 200px;
+    height: auto;
+    overflow: auto;
+}
+
+.v_content img {
+    max-width: 120px;
+    max-height: 12px;
+    min-height: 30px;
+    min-width: 30px;
+}
+
+.my-circle {
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+}
+
+.img_left {
+    position: relative;
+    top: 0;
+}
+
+.tab-box div {
+
+    float: left;
+}
+
+.databox {
+    border: 1px solid #ddd;
+    width: 320px;
+    height: 180px;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.line-top {
+    width: 320px;
+    height: 120px;
+    padding: 32px 0 24px 0;
+}
+
+.line-top p {
+    text-align: center;
+
+}
+
+.data-title {
+    font-weight: bold;
+    color: #555555;
+}
+
+.data_content {
+    font-size: 24px;
+    color: #25c16f;
+    margin-top: 12px;
+}
+.line-bottom {
+    border: 8px;
+}
+
+.line-bottom p {
+    text-align: center;
+    color: #555555;
+}
+
+.record-tab {
+    width: 90%;
+    min-height: 60px;
+    height: auto;
+    border: 1px solid #ddd;
+    position: relative;
+    background: #f3f3f4;
+    margin-bottom: 5px;
+}
+
+.time_data {
+
+    position: relative;
+    left: 5px;
+    top: 10px;
+    width: 50px;
+    text-align: center;
+}
+
+.re_head {
+    width: 100%;
+    hieght: 40%;
+    line-height: 35px;
+}
+
+.re_head a {
+    margin-right: 2px;
+}
+
+.re_content {
+    width: 100%;
+    height: 40%;
+    line-height: 26px;
+}
+
+.re_tool {
+    margin: 15px auto;
+    width: 60%;
+    height: 50%;
+}
+
+.re_time {
+    margin: 13px auto;
+    width: 85%;
+    height: 20px;
+}
+
+.tab_time {
+    position: absolute;
+    left: 0px;
+    width: 10%;
+    height: 100%;
+}
+
+.tab_content {
+    position: absolute;
+    left: 10%;
+    width: 70%;
+    height: 100%;
+}
+
+.tab_delect {
+    position: absolute;
+    left: 90%;
+    width: 10%;
+    height: 100%
+}
+
+.showup div {
+    float: left;
+
+}
+
+.passform {
+    padding-top: 24px;
+}
+
+.wolive_product {
+    overflow: hidden;
+    display: block;
+    width: 480px;
+    height: 100%;
+    position: relative;
+}
+
+.wolive_img {
+    width: 30%;
+}
+
+.wolive_img img {
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.wolive_head {
+    width: 70%;
+    position: absolute;
+    right: 0px;
+    top: 0%;
+}
+
+.wolive_price {
+    color: red;
+}
+
+.wolive_info {
+    margin-top: 5px;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.layui-layer-content {
+    height: auto !important;
+}
+#chat_list div i {
+    z-index: 99;
+}

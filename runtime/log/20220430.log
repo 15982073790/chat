@@ -1,0 +1,76 @@
+---------------------------------------------------------------
+[ 2022-04-30T20:23:35+08:00 ] 27.115.124.44 GET chat.profittravel.com/
+[运行时间：0.079416s] [吞吐率：12.59req/s] [内存消耗：2,584.20kb] [文件加载：64]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.005752s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'rememberMe=1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000426s ]
+[ info ] [ RUN ] app\index\controller\Index->index[ /data/wwwroot/dev/chat.profittravel.com/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-30T20:24:04+08:00 ] 27.115.124.99 GET chat.profittravel.com/robots.txt
+[运行时间：0.053437s] [吞吐率：18.71req/s] [内存消耗：2,326.60kb] [文件加载：62]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001053s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'robots.txt',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Go-http-client/1.1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2022-04-30T20:24:04+08:00 ] 27.115.124.108 GET chat.profittravel.com/sitemap.xml
+[运行时间：0.015122s] [吞吐率：66.13req/s] [内存消耗：2,326.60kb] [文件加载：62]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001003s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sitemap.xml',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Go-http-client/1.1',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File

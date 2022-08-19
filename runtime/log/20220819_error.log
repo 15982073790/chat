@@ -1,0 +1,18 @@
+---------------------------------------------------------------
+[ 2022-08-19T14:21:41+08:00 ] 14.155.88.30 POST chat.wzilu.com/admin/set/getchatnow
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc LIMIT 1' at line 1[/var/www/html/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2022-08-19T14:22:36+08:00 ] 14.155.88.30 POST chat.wzilu.com/admin/set/getchatnow
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc LIMIT 1' at line 1[/var/www/html/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2022-08-19T14:23:31+08:00 ] 14.155.88.30 POST chat.wzilu.com/admin/set/getchatnow
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc LIMIT 1' at line 1[/var/www/html/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2022-08-19T14:23:40+08:00 ] 14.155.88.30 POST chat.wzilu.com/admin/set/getchatnow
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc LIMIT 1' at line 1[/var/www/html/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2022-08-19T14:53:34+08:00 ] 14.155.88.30 POST chat.wzilu.com/admin/set/getchatnow
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc LIMIT 1' at line 1[/var/www/html/thinkphp/library/think/db/Connection.php:388]
+---------------------------------------------------------------
+[ 2022-08-19T14:54:47+08:00 ] 14.155.88.30 POST chat.wzilu.com/admin/set/getchatnow
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc LIMIT 1' at line 1[/var/www/html/thinkphp/library/think/db/Connection.php:388]

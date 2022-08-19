@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-6 me-item">
+        <div class="left-info">
+            <div class="title">用户名</div>
+            <div>{$me.username}</div>
+        </div>
+        <div>
+            <img src="__image__/admin/A/username.png" alt="">
+        </div>
+    </div>
+    <div class="col-6 me-item">
+        <div class="left-info">
+            <div class="title">手机号</div>
+            <div>
+                {if condition="!empty($me['mobile'])"}
+                {$me.mobile}
+                {else/}
+                -
+                {/if}
+            </div>
+        </div>
+        <div>
+            <img src="__image__/admin/A/mobile.png" alt="">
+        </div>
+    </div>
+    <div class="col-6 me-item">
+        <div class="left-info">
+            <div class="title">可创建客服系统数量</div>
+            <div>
+                {eq name="me.app_max_count" value="0"}
+                无限制
+                {else/}
+                {$me.app_max_count}
+                {/eq}
+            </div>
+        </div>
+        <div>
+            <img src="__image__/admin/A/number.png" alt="">
+        </div>
+    </div>
+    <div class="col-6 me-item">
+        <div class="left-info">
+            <div class="title">账户有效期</div>
+            <div>
+                {eq name="me.expire_time" value="0"}
+                永久
+                {else/}
+                {$me.expire_time|date="y-m-d",###}
+                {/eq}
+            </div>
+        </div>
+        <div>
+            <img src="__image__/admin/A/end_time.png" alt="">
+        </div>
+    </div>
+</div>
+
+<style>
+    .row {
+        margin: 40px 0 0 0;
+        padding: 0 40px 150px;
+    }
+
+    .me-item {
+        padding: 0;
+        height: 130px;
+        margin-bottom: 40px;
+        font-size: 24px;
+        color: #555555;
+    }
+
+    .me-item .left-info {
+        float: left;
+        height: 130px;
+        padding-left: 40px;
+    }
+
+    .me-item img {
+        float: right;
+        height: 130px;
+        width: 174px;
+    }
+
+    .me-item .title {
+        font-size: 16px;
+        color: #999999;
+        margin-top: 36px;
+        margin-bottom: 2px;
+    }
+</style>

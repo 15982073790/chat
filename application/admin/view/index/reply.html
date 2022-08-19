@@ -1,0 +1,82 @@
+{include file="public/header"/}
+<div id="container">
+    <div id="page-header" class="am-cf">
+
+        <div class="button">
+            <a id="addword" class="am-btn am-btn-xs am-btn-primary" data-pjax><i class="am-icon-plus"></i> 添加快捷用语</a>
+        </div>
+    </div>
+    <div class="custom" style="position: absolute;left: 1%;top:50px;width: 98%;">
+        <table class="page-table am-table am-table-bordered am-table-striped am-table-hover am-table-compact am-margin-bottom-xs am-table-centered">
+
+            <tr>
+                <th>快捷语</th>
+                <th>操作</th>
+            </tr>
+            {foreach $replylist as $r}
+            <tr>
+                <td>{$r.word}</td>
+                <td>
+                    <a onclick="deletes({$r.id})" class='am-badge am-badge-danger'> <i class='am-icon-recycle'></i>
+                        删除</a>
+                </td>
+            </tr>
+
+            {/foreach}
+        </table>
+        {$page}
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+    $("#addword").on("click", function () {
+        var str = '';
+        str += '<form   class="am-form am-form-horizontal am-form-xs am-g-fixed">';
+        str += '<div style="width:80%;margin:20px auto;"><h3>快捷用语：</h3><p><textarea id="word" name="content" height="60%"></textarea></p></div>';
+        str += '</form>';
+
+        layer.open({
+            title: '添加快捷语',
+            type: 1,
+            area: ['460px', '230px'],
+            content: str,
+            btn: ['提交', '关闭'],
+            yes: function () {
+                $.ajax({
+                    url:YMWL_ROOT_URL+"/admin/manager/addword",
+                    type: "post",
+                    data: {word: $("#word").val()},
+                    success: function (res) {
+                        if (res.code ==0) {
+                            layer.msg(res.msg, {icon: 1,time:2000,end:function () {
+                                location.reload();
+                            }});
+                        }
+                    }
+                });
+            }
+        });
+    });
+  
+  function deletes(id){
+
+    $.ajax({
+      url:YMWL_ROOT_URL+'/admin/manager/delword',
+      type:'post',
+      data:'{id:id}',
+      success:function(res){
+         if(res.code == 0){
+             layer.msg(res.msg,function(){
+                location.reload();
+             });
+         }    
+      }
+    });
+  }
+
+
+
+</script>
+
+{include file="public/footer"/}

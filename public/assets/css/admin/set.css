@@ -1,0 +1,385 @@
+#container {
+    padding: 0 40px;
+}
+
+.page-header {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.handler {
+    width: 245px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.handler .back {
+    height: 32px;
+    width: 110px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 13px;
+    color: #555555;
+    border: 1px solid #e5e3e9;
+    border-radius: 16px;
+}
+
+.handler .button {
+    height: 32px;
+    width: 120px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 13px;
+    color: #25c16f;
+    border: 1px solid #25c16f;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.handler .button a {
+    color: #25c16f;
+}
+
+.layui-table {
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 0;
+}
+
+.layui-table tr th {
+    border: 0;
+    padding-left: 40px;
+    height: 48px;
+    background: #f7f7f7;
+}
+
+.layui-table tr th:first-child {
+    border-radius: 16px 0 0 0;
+}
+
+.layui-table tr th:last-child {
+    border-radius: 0 16px 0 0;
+}
+
+.layui-table tr td {
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    padding-left: 40px;
+    height: 48px;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.layui-table tr td:first-child {
+    border-left: 1px solid #f7f7f7;;
+}
+
+.layui-table tr td:last-child {
+    border-right: 1px solid #f7f7f7;;
+}
+
+.layui-table tr td a {
+    padding-right: 24px;
+    cursor: pointer;
+}
+
+.layui-table tr td a img {
+    width: 20px;
+    height: 20px;
+}
+
+
+.tablist {
+    border-radius: 8px;
+}
+
+.tablist .layui-layer-title {
+    height: 56px;
+    font-size: 14px;
+    color: #555555;
+    border-radius: 8px 8px 0 0;
+    background: #fff;
+    border: 1px solid #f7f7f7;
+}
+
+.tablist input {
+    border: 1px solid #e5e3e9;
+    border-radius: 8px;
+}
+
+.tablist input::placeholder {
+    font-size: 13px;
+    color: #dddddd;
+}
+
+.tablist .layui-layer-btn {
+    text-align: center;
+    margin-top: -16px;
+}
+
+.tablist .layui-layer-btn .layui-layer-btn0 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+    color: #ffffff;
+    font-size: 13px;
+    background-color: #25c16f;
+    border-radius: 16px;
+}
+
+.tablist .layui-layer-btn .layui-layer-btn1 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+
+    color: #555555;
+    font-size: 13px;
+    background-color: #f7f7f7;
+    border-radius: 16px;
+    border: 0;
+}
+
+.tablist .layui-layer-setwin {
+    position: absolute;
+    right: -46px;
+    top: 0px;
+    font-size: 0;
+    line-height: initial;
+}
+
+.question {
+    border-radius: 8px;
+}
+
+.question .layui-layer-title {
+    height: 56px;
+    font-size: 14px;
+    color: #555555;
+    border-radius: 8px 8px 0 0;
+    background: #fff;
+    border: 1px solid #f7f7f7;
+}
+
+.question input {
+    border: 1px solid #e5e3e9;
+    border-radius: 8px;
+}
+
+.question input::placeholder {
+    font-size: 13px;
+    color: #dddddd;
+}
+
+.question .layui-layer-btn {
+    text-align: center;
+    margin-top: -16px;
+}
+
+.question .layui-layer-btn .layui-layer-btn0 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+    color: #ffffff;
+    font-size: 13px;
+    background-color: #25c16f;
+    border-radius: 16px;
+}
+
+.question .layui-layer-btn .layui-layer-btn1 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+
+    color: #555555;
+    font-size: 13px;
+    background-color: #f7f7f7;
+    border-radius: 16px;
+    border: 0;
+}
+
+.question .layui-layer-setwin {
+    position: absolute;
+    right: -46px;
+    top: 0px;
+    font-size: 0;
+    line-height: initial;
+}
+
+.group {
+    border-radius: 8px;
+}
+
+.group .layui-layer-title {
+    height: 56px;
+    font-size: 14px;
+    color: #555555;
+    border-radius: 8px 8px 0 0;
+    background: #fff;
+    border: 1px solid #f7f7f7;
+}
+
+.group input {
+    border: 1px solid #e5e3e9;
+    border-radius: 8px;
+}
+
+.group input::placeholder {
+    font-size: 13px;
+    color: #dddddd;
+}
+
+.group .layui-layer-btn {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.group .layui-layer-btn .layui-layer-btn0 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+    color: #ffffff;
+    font-size: 13px;
+    background-color: #25c16f;
+    border-radius: 16px;
+}
+
+.group .layui-layer-btn .layui-layer-btn1 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+
+    color: #555555;
+    font-size: 13px;
+    background-color: #f7f7f7;
+    border-radius: 16px;
+    border: 0;
+}
+
+.group .layui-layer-setwin {
+    position: absolute;
+    right: -46px;
+    top: 0px;
+    font-size: 0;
+    line-height: initial;
+}
+
+.custom {
+    border-radius: 8px;
+}
+
+.custom .layui-layer-title {
+    height: 56px;
+    font-size: 14px;
+    color: #555555;
+    border-radius: 8px 8px 0 0;
+    background: #fff;
+    border: 1px solid #f7f7f7;
+}
+
+.custom input {
+    border: 1px solid #e5e3e9;
+    border-radius: 8px;
+}
+
+.custom input::placeholder {
+    font-size: 13px;
+    color: #dddddd;
+}
+
+.custom .layui-layer-btn {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.custom .layui-layer-btn .layui-layer-btn0 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+    color: #ffffff;
+    font-size: 13px;
+    background-color: #25c16f;
+    border-radius: 16px;
+}
+
+.custom .layui-layer-btn .layui-layer-btn1 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+
+    color: #555555;
+    font-size: 13px;
+    background-color: #f7f7f7;
+    border-radius: 16px;
+    border: 0;
+}
+
+.custom .layui-layer-setwin {
+    position: absolute;
+    right: -46px;
+    top: 0px;
+    font-size: 0;
+    line-height: initial;
+}
+
+.changepwd {
+    border-radius: 8px;
+}
+
+.changepwd .layui-layer-title {
+    height: 56px;
+    font-size: 14px;
+    color: #555555;
+    border-radius: 8px 8px 0 0;
+    background: #fff;
+    border: 1px solid #f7f7f7;
+}
+
+.changepwd .layui-input-block {
+    padding-top: 7px;
+}
+
+.changepwd input {
+    border: 1px solid #e5e3e9;
+    border-radius: 8px;
+}
+
+.changepwd input::placeholder {
+    font-size: 13px;
+    color: #dddddd;
+}
+
+.changepwd .layui-layer-btn {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.changepwd .layui-layer-btn .layui-layer-btn0 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+    color: #ffffff;
+    font-size: 13px;
+    background-color: #25c16f;
+    border-radius: 16px;
+}
+
+.changepwd .layui-layer-btn .layui-layer-btn1 {
+    width: 66px;
+    height: 32px;
+    line-height: 32px;
+
+    color: #555555;
+    font-size: 13px;
+    background-color: #f7f7f7;
+    border-radius: 16px;
+    border: 0;
+}
+
+.changepwd .layui-layer-setwin {
+    position: absolute;
+    right: -46px;
+    top: 0px;
+    font-size: 0;
+    line-height: initial;
+}

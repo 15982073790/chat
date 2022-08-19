@@ -1,0 +1,143 @@
+---------------------------------------------------------------
+[ 2022-04-24T15:50:34+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:50:43+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:54:17+08:00 ] 120.235.112.145 GET chat.profittravel.com//platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:54:20+08:00 ] 120.235.112.145 GET chat.profittravel.com//platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:55:08+08:00 ] 120.235.112.145 GET chat.profittravel.com//platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:55:11+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:55:52+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:56:38+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:56:38+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:56:38+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:56:39+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:58:45+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:58:46+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated
+---------------------------------------------------------------
+[ 2022-04-24T15:59:12+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated[/data/wwwroot/dev/chat.profittravel.com/thinkphp/library/think/db/Query.php:400]
+---------------------------------------------------------------
+[ 2022-04-24T16:01:29+08:00 ] 120.235.112.145 POST chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated[/data/wwwroot/dev/chat.profittravel.com/application/common/iplocation/Ip.php:52]
+---------------------------------------------------------------
+[ 2022-04-24T16:02:07+08:00 ] 120.235.112.145 POST chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated[/data/wwwroot/dev/chat.profittravel.com/application/common/iplocation/Ip.php:52]
+---------------------------------------------------------------
+[ 2022-04-24T16:05:31+08:00 ] 120.235.112.145 POST chat.profittravel.com/platform/passport/login.html
+[ error ] [8192]Array and string offset access syntax with curly braces is deprecated[/data/wwwroot/dev/chat.profittravel.com/application/common/iplocation/Ip.php:52]
+---------------------------------------------------------------
+[ 2022-04-24T16:06:19+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:123]
+---------------------------------------------------------------
+[ 2022-04-24T16:06:31+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:123]
+---------------------------------------------------------------
+[ 2022-04-24T16:07:10+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:123]
+---------------------------------------------------------------
+[ 2022-04-24T16:10:26+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:123]
+---------------------------------------------------------------
+[ 2022-04-24T16:11:13+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:124]
+---------------------------------------------------------------
+[ 2022-04-24T16:11:26+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:124]
+---------------------------------------------------------------
+[ 2022-04-24T16:11:35+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:124]
+---------------------------------------------------------------
+[ 2022-04-24T16:11:51+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:124]
+---------------------------------------------------------------
+[ 2022-04-24T16:12:02+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:124]
+---------------------------------------------------------------
+[ 2022-04-24T16:12:13+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:124]
+---------------------------------------------------------------
+[ 2022-04-24T16:12:33+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:124]
+---------------------------------------------------------------
+[ 2022-04-24T16:13:07+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:123]
+---------------------------------------------------------------
+[ 2022-04-24T16:14:36+08:00 ] 120.235.112.145 GET chat.profittravel.com/platform/app/edit.html
+[ error ] [8]未定义数组索引: expire_time[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/6f5ef490ae22e7278beffe7f6ad65903.php:128]
+---------------------------------------------------------------
+[ 2022-04-24T16:18:08+08:00 ] 120.235.112.145 GET chat.profittravel.com/admin/set/createFrontjs?isopen=on&open_delay=&m_height=&m_kfbtbg=%2325c16f&theme=%2325c16f
+[ error ] [2]file_get_contents(http://chat.profittravel.com/assets/front/ymwl_2.js): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+[/data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Set.php:1431]
+---------------------------------------------------------------
+[ 2022-04-24T16:19:23+08:00 ] 120.235.112.145 GET chat.profittravel.com/index/index?code=EcQfEj0h0wMuhgNRGyX7tqQ6JXKOFDTcNzwX0EEzryXrOz8ekFc6vIC7MQZCQ8dih3jBg%2Byk7BHvYNjDU22JKwN%2BIVN46NaVQ%2FGraFcsYCZeT9zpbpA5
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:609]
+---------------------------------------------------------------
+[ 2022-04-24T16:20:36+08:00 ] 183.9.215.136 GET chat.profittravel.com/mobile/index?code=QMFKGzci1Vw4mxVVEH268JhidymaRDrdMT0Cy3pn%2Bz6%2BPTMOkEIz8%2B3zJANCE4Q%2BwyzW06j%2F
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/91ad60121546735e8baf14b12bd8769a.php:559]
+---------------------------------------------------------------
+[ 2022-04-24T16:20:46+08:00 ] 120.235.112.145 GET chat.profittravel.com/index/index?code=QMFKGzci1Vw4mxVVEH268JhidymaRDrdMT0Cy3pn%2Bz6%2BPTMOkEIz8%2B3zJANCE4Q%2BwyzW06j%2F
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:609]
+---------------------------------------------------------------
+[ 2022-04-24T16:23:14+08:00 ] 183.9.215.136 GET chat.profittravel.com/index/index?code=EcQfEj0h0wMuhgNRGyX7tqQ6JXKOFDTcNzwX0EEzryXrOz8ekFc6vIC7MQZCQ8dih3jBg%2Byk7BHvYNjDU22JKwN%2BIVN46NaVQ%2FGraFcsYCZeT9zpbpA5
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:609]
+---------------------------------------------------------------
+[ 2022-04-24T16:24:30+08:00 ] 183.9.215.136 GET chat.profittravel.com/index/index?code=EcQfEj0h0wMuhgNRGyX7tqQ6JXKOFDTcNzwX0EEzryXrOz8ekFc6vIC7MQZCQ8dih3jBg%2Byk7BHvYNjDU22JKwN%2BIVN46NaVQ%2FGraFcsYCZeT9zpbpA5
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:613]
+---------------------------------------------------------------
+[ 2022-04-24T16:25:10+08:00 ] 183.9.215.136 GET chat.profittravel.com/index/index?code=EcQfEj0h0wMuhgNRGyX7tqQ6JXKOFDTcNzwX0EEzryXrOz8ekFc6vIC7MQZCQ8dih3jBg%2Byk7BHvYNjDU22JKwN%2BIVN46NaVQ%2FGraFcsYCZeT9zpbpA5
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:615]
+---------------------------------------------------------------
+[ 2022-04-24T16:25:20+08:00 ] 183.9.215.136 GET chat.profittravel.com/index/index?code=EcQfEj0h0wMuhgNRGyX7tqQ6JXKOFDTcNzwX0EEzryXrOz8ekFc6vIC7MQZCQ8dih3jBg%2Byk7BHvYNjDU22JKwN%2BIVN46NaVQ%2FGraFcsYCZeT9zpbpA5
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:615]
+---------------------------------------------------------------
+[ 2022-04-24T16:25:57+08:00 ] 183.9.215.136 GET chat.profittravel.com/index/index?code=EcQfEj0h0wMuhgNRGyX7tqQ6JXKOFDTcNzwX0EEzryXrOz8ekFc6vIC7MQZCQ8dih3jBg%2Byk7BHvYNjDU22JKwN%2BIVN46NaVQ%2FGraFcsYCZeT9zpbpA5
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:615]
+---------------------------------------------------------------
+[ 2022-04-24T16:26:45+08:00 ] 183.9.215.136 GET chat.profittravel.com/index/index?code=EcQfEj0h0wMuhgNRGyX7tqQ6JXKOFDTcNzwX0EEzryXrOz8ekFc6vIC7MQZCQ8dih3jBg%2Byk7BHvYNjDU22JKwN%2BIVN46NaVQ%2FGraFcsYCZeT9zpbpA5
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:615]
+---------------------------------------------------------------
+[ 2022-04-24T16:27:18+08:00 ] 183.9.215.136 GET chat.profittravel.com/index/index?code=EcQfEj0h0wMuhgNRGyX7tqQ6JXKOFDTcNzwX0EEzryXrOz8ekFc6vIC7MQZCQ8dih3jBg%2Byk7BHvYNjDU22JKwN%2BIVN46NaVQ%2FGraFcsYCZeT9zpbpA5
+[ error ] [8]未定义数组索引: name_state[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:615]
+---------------------------------------------------------------
+[ 2022-04-24T16:27:48+08:00 ] 183.9.215.136 GET chat.profittravel.com/index/index?code=EcQfEj0h0wMuhgNRGyX7tqQ6JXKOFDTcNzwX0EEzryXrOz8ekFc6vIC7MQZCQ8dih3jBg%2Byk7BHvYNjDU22JKwN%2BIVN46NaVQ%2FGraFcsYCZeT9zpbpA5
+[ error ] [8]未定义数组索引: tel_state[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/f1628c3c98cc34de62784de498721a6b.php:615]
+---------------------------------------------------------------
+[ 2022-04-24T16:31:26+08:00 ] 183.9.215.136 POST chat.profittravel.com/admin/set/createMinDiyjs
+[ error ] [2]file_get_contents(/data/wwwroot/dev/chat.profittravel.com//assets/layer/ymwl_diy_2.js): failed to open stream: No such file or directory[/data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Set.php:1693]
+---------------------------------------------------------------
+[ 2022-04-24T16:31:29+08:00 ] 183.9.215.136 GET chat.profittravel.com/layer?theme=25c16f&visiter_id=&visiter_name=&avatar=&business_id=2&groupid=0&product=%7B%7D
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/91fee5d0f59f2f27c09f9fb191476a74.php:562]
+---------------------------------------------------------------
+[ 2022-04-24T16:31:57+08:00 ] 183.9.215.136 POST chat.profittravel.com/admin/set/createMinjs
+[ error ] [2]file_get_contents(http://chat.profittravel.com/assets/layer/ymwl_mini2.js): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+[/data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Set.php:1542]
+---------------------------------------------------------------
+[ 2022-04-24T16:33:35+08:00 ] 183.9.215.136 GET chat.profittravel.com/layer?theme=ffffff&visiter_id=&visiter_name=&avatar=&business_id=2&groupid=0&product=%7B%7D
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/91fee5d0f59f2f27c09f9fb191476a74.php:562]
+---------------------------------------------------------------
+[ 2022-04-24T18:17:07+08:00 ] 61.151.178.177 GET chat.profittravel.com/layer?theme=25c16f&visiter_id=&visiter_name=&avatar=&business_id=2&groupid=0&product={}
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/runtime/temp/91fee5d0f59f2f27c09f9fb191476a74.php:562]

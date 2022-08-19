@@ -1,0 +1,337 @@
+{include file="public/header"/}
+
+<style>
+    #container {
+        padding: 0;
+        background-color: #fff;
+    }
+
+    #layui-container {
+        margin: 40px 0 0 40px;
+    }
+
+    .page-header {
+        padding-bottom: 10px;
+        border-bottom: 0;
+    }
+
+    #layui-container .back {
+        height: 32px;
+        width: 110px;
+        line-height: 32px;
+        text-align: center;
+        font-size: 13px;
+        color: #555555;
+        border: 1px solid #e5e3e9;
+        border-radius: 16px;
+        margin-top: -10px;
+    }
+
+    #layui-container .back .img {
+        width: 16px;
+        height: 16px;
+        margin: 6px 0 0 16px;
+        float: left;
+        background: url("__image__/admin/B/back-system.png");
+    }
+
+    .layui-form {
+        margin-top: 20px;
+    }
+
+    .layui-form-item .layui-form-label {
+        font-size: 14px;
+        padding: 10px;
+        color: #999999;
+        width: 166px;
+    }
+
+    .layui-form-item .layui-input-block {
+        margin-left: 188px;
+        width: 1000px;
+    }
+
+    .layui-form-item .layui-input-block input {
+        color: #555555;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    input::-webkit-input-placeholder {
+        color: #dddddd;
+        font-size: 14px;
+    }
+    input:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: #dddddd;
+        font-size: 14px;
+    }
+    input::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #dddddd;
+        font-size: 14px;
+    }
+
+    input:-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: #dddddd;
+        font-size: 14px;
+    }
+
+    button.keep {
+        width: 66px;
+        height: 36px;
+        color: #ffffff;
+        font-size: 13px;
+        background-color: #25c16f;
+        border-radius: 16px;
+    }
+
+    button.reset {
+        width: 66px;
+        height: 36px;
+        color: #555555;
+        font-size: 13px;
+        background-color: #f7f7f7;
+        border-radius: 16px;
+        border: 0;
+    }
+
+    .layui-form-item {
+        margin-bottom: 15px;
+    }
+</style>
+<div id="container" style="padding-bottom: 42px">
+    <div id="layui-container">
+        <h2 class="page-header" style="font-size: 18px;color: #555555;"> 公众号与模板消息设置</h2>
+        <a href="{:url('admin/index/set')}">
+            <div class="back">
+                <i class="img"></i>
+                <span>返回设置</span>
+            </div>
+        </a>
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">原始id</label>
+                <div class="layui-input-block">
+                    <input type="text" name="wx_id" placeholder="请输入公众号原始id"
+                           autocomplete="off" class="layui-input" value="{$template['wx_id']}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">公众号AppId</label>
+                <div class="layui-input-block">
+                    <input type="text" name="app_id" placeholder="请输入公众号AppId"
+                           autocomplete="off" class="layui-input" value="{$template['app_id']}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">公众号AppSecret</label>
+                <div class="layui-input-block">
+                    <input type="text" name="app_secret" placeholder="请输入公众号AppSecret"
+                           autocomplete="off" class="layui-input" value="{$template['app_secret']}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">公众号token</label>
+                <div class="layui-input-block" style="display: flex;flex-wrap: nowrap;">
+                    <input type="text" name="wx_token" id="wx_token" placeholder="请输入公众号token"
+                           autocomplete="off" class="layui-input" value="{$template['wx_token']}">
+                    <button class="layui-btn layui-btn-normal" onclick="creattoken('#wx_token')" type="button">生成token
+                    </button>
+                </div>
+            </div>
+            <!--<div class="layui-form-item">
+                <label class="layui-form-label">关注二维码</label>
+                <div class="layui-input-block" style="display: flex;flex-wrap: nowrap;">
+                    <input type="text" name="wx_erwm" id="wx_erwm" placeholder="请上传公众号二维码"
+                           autocomplete="off" class="layui-input" value=""> <button class="layui-btn" id="test1">上传图片</button>
+                </div>
+            </div>-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否开启引导关注</label>
+                <div class="layui-input-block" style="display: flex;flex-wrap: nowrap;">
+                    <input type="checkbox" name="isscribe" <?php if($template['isscribe'])echo 'checked';?>
+                    lay-skin="switch" lay-filter="switchTest" lay-text="开|关" value="1">
+                    <div style="color: #636c72;position:absolute;left: 60px;top:10px;">关注后支持离线回复来客</div>
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">AESKey</label>
+                <div class="layui-input-block">
+                    <input type="text" name="wx_aeskey" placeholder="消息加解密密钥(EncodingAESKey),明文格式请留空"
+                           autocomplete="off" class="layui-input" value="{$template['wx_aeskey']}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">新访客提醒模板消息ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="visitor_tpl" placeholder="新访客提醒模板消息ID"
+                           autocomplete="off" class="layui-input" value="{$template['visitor_tpl']}">
+                </div>
+                <div style="color: #636c72;position:absolute;left: 235px;padding-bottom: 5px">模板编号: OPENTM416331462 <a
+                        onclick="tpl('visitor_tpl')" href="#" style="color: #0275d8;">查看模板消息格式</a></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">新消息提醒模板消息ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="msg_tpl" placeholder="新消息提醒模板消息ID"
+                           autocomplete="off" class="layui-input" value="{$template['msg_tpl']}">
+                </div>
+                <div style="color: #636c72;position:absolute;left: 235px;padding-bottom: 5px">模板编号: OPENTM411628723 <a
+                        onclick="tpl('msg_tpl')" href="#" style="color: #0275d8;">查看模板消息格式</a>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">客服回复模板消息ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="customer_tpl" placeholder="客服回复提醒模板消息ID"
+                           autocomplete="off" class="layui-input" value="{$template['customer_tpl']}">
+                </div>
+                <div style="color: #636c72;position:absolute;left: 235px;padding-bottom: 5px">模板编号: OPENTM415064191 <a
+                        onclick="tpl('customer_tpl')" href="#" style="color: #0275d8;">查看模板消息格式</a>
+                    此模板消息仅用于微信公众号链接，已关注该公众号并已授权登录的用户
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">一次性订阅消息ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="onesubtpl_id" placeholder="一次性订阅消息ID"
+                           autocomplete="off" class="layui-input" value="{$template['onesubtpl_id']}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">一次性订阅消息标题</label>
+                <div class="layui-input-block">
+                    <input type="text" name="onesubtpl_title" placeholder="请输入订阅消息标题" autocomplete="off"
+                           class="layui-input"
+                           value="{$template['onesubtpl_title']|default='您有新消息，请及时查看'}">
+                </div>
+                <div style="color: #636c72;position:absolute;left: 235px;padding-bottom: 5px">消息标题，15字以内</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">一次性订阅消息内容</label>
+                <div class="layui-input-block">
+                    <textarea name="onesubtpl_desc" placeholder="请输入订阅消息内容" autocomplete="off" class="layui-textarea"
+                              style="width:100%;height: 30px;border: 1px solid #e5e3e9;border-radius: 8px;resize:none;padding: 16px;">{$template['onesubtpl_desc']|default='您有新的消息，请注意查看！'}</textarea>
+                </div>
+                <div style="color: #636c72;position:absolute;left: 235px;padding-bottom: 5px">消息内容，200字以内</div>
+            </div>
+
+            <div class="layui-form-item" style="margin-top: 25px;">
+                <label class="layui-form-label">描述</label>
+                <div class="layui-input-block">
+                    <input type="text" name="desc" placeholder="请输入描述" autocomplete="off" class="layui-input"
+                           value="{$template['desc']}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn keep" lay-submit lay-filter="template">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
+                </div>
+            </div>
+        </form>
+        <div style="width:500px;color:#aaa;padding-bottom: 50px;">
+            <h4 style="margin-bottom:30px;">微信公众平台基本配置</h4>
+            <!--<div class="layui-form-item">
+                <label class="layui-form-label"><b>IP白名单</b></label>
+                <div class="layui-form-label">
+                    <?php echo $_SERVER['REMOTE_ADDR']; ?>                </div>
+
+            </div>-->
+            <div class="layui-form-item">
+                <label class="layui-form-label"><b>服务器地址(URL)</b></label>
+                <div class="layui-input-block">{:url('weixin/index/index',['business_id'=>$business_id],false,true)}
+                    <div style="color: #636c72;">此地址填写到公众号后台服务器地址(URL)中</div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            function creattoken(d,len=32){
+                var $chars = 'I1UuVv9gqoOLlABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+                var maxPos = $chars.length;
+                var pwd = '';
+                for (i = 0; i < len; i++) {
+                    pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+                }
+                $(d).val(pwd);
+                return false;
+            }
+            layui.use(['form','upload'], function () {
+                var form = layui.form,upload = layui.upload;
+                //普通图片上传
+                var uploadInst = upload.render({
+                    elem: '#test1'
+                    ,accept: 'images'
+                    ,url: YMWL_ROOT_URL+'/admin/manager/uploadpic.html' //改成您自己的上传接口
+                    ,before: function(obj){
+                        //预读本地文件示例，不支持ie8
+                    }
+                    ,done: function(res){
+                        //如果上传失败
+                        if(res.code > 0){
+                            return layer.msg('上传失败');
+                        }
+                        //上传成功
+                    }
+                    ,error: function(){
+                        //演示失败状态，并实现重传
+                        var demoText = $('#demoText');
+                        demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                        demoText.find('.demo-reload').on('click', function(){
+                            uploadInst.upload();
+                        });
+                    }
+                });
+                //监听提交
+                form.on('submit(template)', function (data) {
+                    $.post("{:url('template')}", data.field, function (res) {
+                        if (res.code == 0) {
+                            layer.msg(res.msg, {
+                                icon: 1, end: function () {
+                                    location.reload();
+                                }
+                            });
+                        } else {
+                            layer.msg(res.msg, {
+                                icon: 2, end: function () {
+                                    location.reload();
+                                }
+                            });
+                        }
+                    });
+
+                    return false;
+                });
+            });
+
+            function tpl(name)
+            {
+                layer.open({
+                    type: 2,
+                    skin:"tablist",
+                    title:"教程",
+                    area: ['1020px', '800px'],shadeClose:true,
+                    content: YMWL_ROOT_URL + '/assets/images/admin/'+name+'.png'
+                });
+            }
+        </script>
+    </div>
+</div>
+
+<script>
+
+
+</script>
+
+
+{include file="public/footer"/}

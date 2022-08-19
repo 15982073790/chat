@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        YMWL_ROOT_URL = '{$baseroot}';
+    </script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+    <link href="__libs__/amaze/css/amazeui.min.css?v=__lkversion__" type="text/css" rel="stylesheet"/>
+    <script src="__libs__/amaze/js/amazeui.min.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/layer/layer.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/layui/layui.js?v=__lkversion__" type="text/javascript"></script>
+    <link href="__libs__/layui/css/layui.css?v=__lkversion__" rel="stylesheet">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tab_title {
+            font-size: 13px;
+            color: #555555;
+            border: 1px solid #e5e3e9;
+            border-radius: 8px;
+        }
+
+        button.keep {
+            width: 66px;
+            height: 36px;
+            color: #ffffff;
+            font-size: 13px;
+            background-color: #25c16f;
+            border-radius: 16px;
+        }
+
+        button.reset {
+            width: 66px;
+            height: 36px;
+            color: #555555;
+            font-size: 13px;
+            background-color: #f7f7f7;
+            border-radius: 16px;
+            border: 0;
+        }
+
+        .layui-input-block {
+            margin-left: 88px;
+        }
+
+        .layui-form-label {
+            width: 86px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 100%;margin: 10px auto;">
+    <form class="layui-form reply-form" style="margin-right: 10px;">
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="tag">标签</label>
+            <div class="layui-input-block">
+                <input id="tag" type="text" class="layui-input" value="{$data.tag|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="sort">排序：</label>
+            <div class="layui-input-block">
+                <input id="sort" type="text" class="layui-input" value="{$data.sort|default='0'}">
+                <div class="layui-form-mid layui-word-aux">排序字段(数字越大,越靠前)</div>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text"><label class="layui-form-label" for="word">快捷用语</label>
+            <div class="layui-input-block">
+                <textarea id="word" name="content" class="layui-textarea">{$data.word|default=''}</textarea>
+            </div>
+        </div>
+    </form>
+    <div class="layui-form-item" style="margin-top: 24px;text-align: center">
+        <button class="layui-btn keep" onclick="setcustom()" lay-submit lay-filter=" template">保存</button>
+        <button type="reset" onclick="reset()" class="layui-btn layui-btn-primary reset">取消</button>
+    </div>
+</div>
+<script type="text/javascript" src="__assets__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__assets__/ueditor/ueditor.all.js"></script>
+<script type="text/javascript">
+    var editorOption = {
+        UEDITOR_HOME_URL: "__assets__/ueditor/",
+        UEDITOR_ROOT_URL: "__assets__/ueditor/",
+        serverUrl: "{:url('upload/ueditor',['action'=>'config','service_id'=>session('Msg.service_id'),'admin_id'=>0])}",
+        lang: "zh-cn",
+        toolbars: [["source","undo", "redo", "|", "bold", "italic", "underline", "fontborder", "strikethrough", "superscript", "subscript", "removeformat", "formatmatch", "autotypeset", "blockquote",  "|", "forecolor", "backcolor", "selectall", "cleardoc", "|", "lineheight", "|",   "fontfamily", "fontsize", "|", "link", "unlink", "|", "simpleupload", "insertimage", "emotion"]],
+        initialContent: "",
+        pageBreakTag: "_ueditor_page_break_tag_",
+        initialFrameWidth: "100%",
+        initialFrameHeight: "260",
+        initialStyle: "body{font-size:14px}",
+        autoFloatEnabled: false,
+        allowDivTransToP: true,
+        autoHeightEnabled: false,
+        charset: "utf-8",
+    };
+    var DomUe = UE.getEditor("word", editorOption)
+</script>
+</body>
+
+<script>
+    var lock = false;
+var domTag=$("#tag");
+var domSort=$("#sort");
+    function setcustom() {
+        var content = DomUe.getContent(),tag=domTag.val(),sort=domSort.val();
+        tag=$.trim(tag);
+        if(tag===''){
+            layer.msg('标签不能为空', {iocn: 2});
+            return false;
+        }
+        var id = "{$data.id|default=0}";
+        if (content) {
+            if (!lock) {
+                lock = true;
+                $.ajax({
+                    url:YMWL_ROOT_URL+"/admin/manager/addword",
+                    type: "post",
+                    data: {word: content,tag:tag,sort:sort,id:id},
+                    success: function (res) {
+                        if (res.code ==0) {
+                            layer.msg(res.msg, {icon: 1,time:2000,end:function () {
+                                if(id>0){
+                                    $(parent.document).find('#quit_reply #reply'+res.data.id+' .reply-text').text(res.data.tag);
+                                    $(parent.document).find('#quit_reply #reply'+res.data.id+' .reply-about').html(res.data.word);
+                                }else{
+                                    var str ='<div style="position:relative" id="reply'+res.data.id+'">';
+                                    str+='<a class="del-reply" style="display:none;" href="javascript:close('+res.data.id+')"><img src="'+YMWL_ROOT_URL+'/assets/images/admin/B/delete.png" /></a>';
+                                    str+='<a class="reply-text" href="javascript:showon('+res.data.id+')">'+tag+'</a>';
+                                    str+='<span class="reply-border"></span><div class="reply-about">'+res.data.word+'</div></div>';
+                                    $(parent.document).find('#quit_reply').prepend(str);
+                                }
+                                    parent.layer.closeAll();
+                                }});
+                        }else{
+                            layer.msg(res.msg, {iocn: 2});
+                        }
+                    },complete:function (){
+                        lock = false;
+                    }
+                });
+            }
+        } else {
+            layer.msg('请填写好快捷用语内容！', {iocn: 2});
+        }
+    }
+
+    function reset() {
+        parent.layer.closeAll();
+    }
+</script>
+</html>

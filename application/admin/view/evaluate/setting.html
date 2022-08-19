@@ -1,0 +1,294 @@
+{include file="public/header"/}
+<script src="__libs__/vue/vue.js?v=__lkversion__" type="text/javascript"></script>
+<style>
+    .handler .back .img {
+        width: 16px;
+        height: 16px;
+        margin: 6px 0 0 16px;
+        float: left;
+        background: url("__image__/admin/B/back-system.png");
+    }
+
+
+    .layui-form {
+        margin-top: 20px;
+    }
+
+    .layui-form-item {
+        margin-bottom: 24px;
+    }
+
+    .layui-form-item .layui-form-label {
+        font-size: 14px;
+        padding: 10px;
+        color: #747474;
+        width: 120px;
+    }
+
+    .layui-form-item .layui-input-block:first-of-type {
+        margin-top: 0;
+    }
+
+    .layui-form-item .layui-input-block {
+        margin-left: 150px;
+        width: 600px;
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .layui-form-item .layui-input-block input {
+        color: #555555;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .layui-form-item .layui-input-block input.evaluate-item {
+        width: 210px;
+        margin-right: 20px;
+    }
+
+    .layui-form-item .layui-input-block img {
+        height: 16px;
+        width: 16px;
+    }
+
+    input::-webkit-input-placeholder {
+        color: #dddddd;
+        font-size: 14px;
+    }
+
+    input:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: #dddddd;
+        font-size: 14px;
+    }
+    input::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #dddddd;
+        font-size: 14px;
+    }
+
+    input:-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: #dddddd;
+        font-size: 14px;
+    }
+
+    button.keep {
+        width: 66px;
+        height: 32px;
+        line-height: 32px;
+        color: #ffffff;
+        font-size: 13px;
+        background-color: #25c16f;
+        border-radius: 16px;
+    }
+
+    .del-icon {
+        margin-left: 50px;
+        cursor: pointer;
+    }
+
+    .button {
+        height: 32px;
+        width: 120px;
+        line-height: 32px;
+        text-align: center;
+        font-size: 13px;
+        color: #25c16f;
+        border: 1px solid #25c16f;
+        border-radius: 16px;
+        cursor: pointer;
+    }
+
+    .layui-form-switch {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .layui-form-onswitch i {
+        margin-left: -18px;
+    }
+
+    .layui-form-switch i {
+        top: 1px;
+        left: 3px;
+    }
+
+    .layui-form-switch em {
+        margin-left: 28px;
+    }
+
+    .layui-form-switch.layui-form-onswitch i {
+        left: 100%;
+    }
+
+    .layui-form-switch.layui-form-onswitch em {
+        margin-left: 8px;
+    }
+
+    #container {
+        background-color: #fff;
+    }
+</style>
+
+<div id="container" style="padding-bottom: 42px">
+    <h2 class="page-header" style="font-size: 18px;color: #555555;"> 评价设置</h2>
+    <div class="handler">
+        <a href="{:url('admin/index/set')}">
+            <div class="back">
+                <i class="img"></i>
+                <span>返回设置</span>
+            </div>
+        </a>
+    </div>
+    <div class="layui-form" v-show="loading">
+        <div class="layui-form-item">
+            <label class="layui-form-label">评价说明</label>
+            <div class="layui-input-block">
+                <input type="text" v-model="list.title" name="about" placeholder="请输入评价说明"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label style="margin-top: -5px" class="layui-form-label">评价条目<br/><span
+                    style="font-size: 12px;color: #999999">(最多限5条)</span></label>
+            <div class="layui-input-block" v-for="(item,index) in list.comments" :key="index">
+                <input type="text" name="app_secret" placeholder="请输入评价条目名称(限6字)" v-model="list.comments[index]"
+                       autocomplete="off" class="layui-input evaluate-item">
+                <div>
+                    <img src="__image__/index/star-light.png" alt="">
+                    <img src="__image__/index/star-light.png" alt="">
+                    <img src="__image__/index/star-light.png" alt="">
+                    <img src="__image__/index/star-light.png" alt="">
+                    <img src="__image__/index/star-light.png" alt="">
+                </div>
+                <div v-if='list.comments.length > 1' class="del-icon" @click="low(index)">
+                    <img src="__image__/index/del.png" alt="删除条目" title="删除条目">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item" v-if="list.comments.length != 5">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-block">
+                <a @click="add" class="" data-pjax>
+                    <div class="button">
+                        +添加条目
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">文字评价</label>
+            <div class="layui-input-block">
+                <input id="word_switch" type="checkbox" name="switch" lay-skin="switch" lay-filter="switchTest">
+            </div>
+        </div>
+        <div class="layui-form-item text-evaluate" v-if="list.word_switch == 'open'">
+            <label class="layui-form-label">文字评价名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="about" placeholder="请输入文字评价名称(限6字)"
+                       autocomplete="off" class="layui-input evaluate-item" v-model="list.word_title">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn keep" @click="saveSetting('list')">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var app = new Vue({
+        el: '#container',
+        data() {
+            return {
+                loading: false,
+                list: {
+                    comments: [''],
+                    word_switch: 'close'
+                }
+            };
+        },
+        created() {
+            let that  = this;
+            that.getSetting();
+        },
+        methods: {
+            add() {
+            	if(this.list.comments.length < 5) {
+            		let item = '';
+            		this.list.comments.push(item)
+            	}else {
+            		return false
+            	}
+            },
+            low(e) {
+            	this.list.comments.splice(e,1)
+            },
+            getSetting () {
+                let that = this;
+                $.ajax({
+                    url: YMWL_ROOT_URL + '/admin/evaluate/getSetting',
+                    type: 'get',
+                    data: {
+                    },
+                    success: function (res) {
+                        that.loading = true;
+                        if (res.code == 0) {
+                            if(res.data != null) {
+                                that.list = res.data;
+                                if(that.list.word_switch == 'open') {
+                                    $("#word_switch+.layui-form-switch").addClass('layui-form-onswitch')
+                                    $("#word_switch").attr('checked',true)
+                                }
+                            }
+                        }
+                    },
+                    error:function(res) {
+                        that.loading = true;
+                    }
+                });
+            },
+            saveSetting () {
+                let that = this;
+                $.ajax({
+                    url: YMWL_ROOT_URL + '/admin/evaluate/saveSetting',
+                    type: 'post',
+                    data: this.list,
+                    success: function (res) {
+                        if (res.code == 0) {
+                            layer.msg('保存成功');
+                        }else {
+                            layer.alert(res.msg);
+                        }
+                    },
+                    error:function(res) {
+
+                    }
+                });
+            }
+        }
+    });
+
+    layui.use(['form'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            if(this.checked){
+                $('.text-evaluate').show();
+                app.list.word_switch = 'open';
+            }else{
+                $('.text-evaluate').hide();
+                app.list.word_switch = 'close';
+            }
+            //do some ajax opeartiopns;
+        });
+    });
+
+</script>
+{include file="public/footer"/}

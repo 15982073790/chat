@@ -1,0 +1,32 @@
+#!/bin/bash
+set -f
+commitFiles=`hg status -nam`
+
+args='-n -p -s'
+
+phpFiles="";
+
+phpFilesCount=0;
+
+[ -f .csignore ] && ignoreFile="`tr '\n' ',' < .csignore |sed 's/,$//g'`"
+
+for f in $commitFiles; do
+    if [[ ! -e $f ]]; then
+        continue;
+    fi
+    if [[ $f == *.php ]]; then
+        phpFilesCount=$((phpFilesCount+1))
+        phpFiles="$phpFiles $f"
+    fi
+done;
+
+if [[ $phpFilesCount -eq 0 ]]; then
+    exit 0;
+fi
+
+if [[ $phpFilesCount > 2 ]]; then
+    args="$args --report=summary"
+fi
+ignoreFile="$ignoreFile"
+[ -n $ignoreFile ] && args=`echo "${args} --ignore='${ignoreFile}'"`
+eval phpcs $args $phpFiles

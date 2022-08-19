@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <meta charset="utf-8"/>
+    <title>WoLive客服</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        a {
+            color: White
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+        }
+        img {
+            border: 0;
+        }
+        .lg {
+            width: 90%;
+            height: 100%;
+            margin: 300px auto;
+        }
+        .lg_top {
+            width: 100%;
+            height: 260px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .lg_main {
+            width: 100%;
+            height: 300px;
+            margin: 0;
+        }
+        .lg_m_1 {
+            width: 100%;
+            height: 100px;
+        }
+        .ur {
+            height: 100px;
+            border: 0;
+            color: #666;
+            width: 100%;
+            padding-left: 10px;
+            font-size: 46px;
+            font-family: Arial, Helvetica, sans-serif;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+
+        .bn {
+            width: 100%;
+            height: 100px;
+            border: 0;
+            display: block;
+            font-size: 50px;
+            color: #FFF;
+            background: #00A5E3;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+        }
+
+        .lg_foot {
+            width: 100%;
+            height: 120px;
+        }
+    </style>
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+</head>
+<body>
+
+<div class="lg">
+    <form action="/weixin/login/check" method="post">
+        <div class="lg_top">
+            <img src="__image__/index/workerman_logo.png" style="width: 200px;height: 200px;background-size: 100%"/>
+        </div>
+        <div class="lg_main">
+            <div class="lg_m_1">
+                <input name="username" id="username" type="text" placeholder="请输入账号" class="ur"/>
+                <input name="password" id="password" type="password" placeholder="请输入密码" class="ur"/>
+                <input name="openid" type="hidden" value="{$openid}"/>
+            </div>
+        </div>
+        <div class="lg_foot">
+            <button class="bn">登 录</button>
+        </div>
+    </form>
+</div>
+
+<script>
+  
+  // var getup =function(){
+  //       var user =$("#username").val();
+  //       var pass =$("#password").val();
+     
+  //       $.ajax({
+  //          url:YMWL_ROOT_URL+'/weixin/login/check',
+  //          type:'post',
+  //          data:{username:user,password:pass},
+  //          success:function (res) {
+  //             if(res == '登录成功'){
+  //                 window.location.href = "http://www.wolive.tt/weixin/chat";
+  //             }else{
+  //                 alert(res);
+  //             }
+  //          }
+  //       });
+  // }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <title>留言板</title>
+    <script>
+        YMWL_ROOT_URL = '{$baseroot}';
+    </script>
+    <script src="__libs__/jquery/jquery.min.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/layui/layui.js?v=__lkversion__" type="text/javascript"></script>
+    <link href="__libs__/layui/css/layui.css?v=__lkversion__" rel="stylesheet">
+    <script src="__libs__/layer/layer.js?v=__lkversion__" type="text/javascript"></script>
+    <style type="text/css">
+        .hide {
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+<center style='margin-top: 10px'>
+    <h1 style="font-size: 20px;">当前客服不在线，请留言</h1>
+</center>
+
+<div style="width: 70%;text-align: center;margin: 40px auto;">
+
+    <div class="layui-form-item">
+
+        <div class="layui-input-block" style="margin-left: 0px;">
+            <input type="text" id="name" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+
+        <div class="layui-input-block" style="margin-left: 0px;">
+            <input type="text" id="moblie" placeholder="请输入电话" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+
+        <div class="layui-input-block" style="margin-left: 0px;">
+            <input type="text" id="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+
+        <div class="layui-input-block" style="margin-left: 0px;">
+            <textarea placeholder="请输入内容" id="content" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block" style="margin-left: 0px;">
+            <button class="layui-btn" lay-submit onclick="push()">立即提交</button>
+        </div>
+    </div>
+
+
+</div>
+<!--start-copyright-->
+
+<center style="position:absolute;bottom: 10px;width: 100%">
+    <p>Copyright &copy; <a target="_blank" href="">蜗壳</a></p>
+</center>
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+    var change = function () {
+        var value = "";
+        $("#text").text(value);
+    }
+
+    function getQueryString(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var result = window.location.search.substr(1).match(reg);
+        return result ? decodeURIComponent(result[2]) : null;
+    }
+
+
+    var push = function () {
+
+        var web_id = getQueryString("business_id");
+        var name = $("#name").val();
+        var moblie = $("#moblie").val();
+        var email = $("#email").val();
+        var content = $("#content").val();
+
+        $.ajax({
+
+            url:YMWL_ROOT_URL+'/index/message/keep',
+            type: "post",
+            data: {name: name, business_id: web_id, moblie: moblie, email: email, content: content},
+            success: function (res) {
+
+                if (res == '提交成功') {
+                    layer.msg(res, {icon: 1,end:function () {
+                        location.reload();
+                    }});
+                } else {
+                    layer.msg(res, {icon: 2});
+                }
+            }
+
+        });
+    }
+
+
+</script>

@@ -1,0 +1,50 @@
+<style>
+    .auto-form .form-group-label, .auto-form .checkbox-label {
+        height: 36px;
+        line-height: 36px;
+    }
+
+    .auto-form .auto-form-btn {
+        padding: 0;
+        height: 32px;
+        line-height: 32px;
+        width: 66px;
+        border-radius: 16px;
+        font-size: 13px;
+        color: #fff;
+        background-color: #25c16f;
+        border: 1px solid #25c16f;
+    }
+</style>
+
+<form class="auto-form" style="padding: 80px 105px 300px" method="post">
+    <div class="form-group row">
+        <div class="form-group-label text-right">
+            <label style="font-size: 13px;color: #999999;padding-right: 10px;">清除项目</label>
+        </div>
+        <div class="col-sm-8">
+            <label class="checkbox-label">
+                <input name="cache" type="checkbox" class="custom-control-input">
+                <span class="label-icon"></span>
+                <span class="label-text">数据缓存</span>
+            </label>
+            <label class="checkbox-label">
+                <input name="temp" type="checkbox" class="custom-control-input">
+                <span class="label-icon"></span>
+                <span class="label-text">模板缓存</span>
+            </label>
+            <label class="checkbox-label">
+                <input name="log" type="checkbox" class="custom-control-input">
+                <span class="label-icon"></span>
+                <span class="label-text">日志缓存</span>
+            </label>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group-label col-sm-4 text-right">
+        </div>
+        <div class="col-sm-8">
+            <a class="btn btn-primary auto-form-btn" href="javascript:">提交</a>
+        </div>
+    </div>
+</form>

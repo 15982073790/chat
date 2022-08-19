@@ -1,0 +1,140 @@
+{include file="public/header"/}
+<div id="container">
+
+
+    <form id="page-search" class="am-form am-form-inline am-form-xs">
+        <div class="search-icon am-form-group"><span class="am-badge"><i class="am-icon-search" onclick="search()"></i></span>
+        </div>
+        &nbsp;<div class="am-form-group">
+        <select name="pushtime" class="am-form-field" id="time">
+            <option value="">- 所有记录-</option>
+            <option value="1">今天</option>
+            <option value="7">最近7天</option>
+
+        </select></div>&nbsp;
+        <div class="am-btn-group" style="position: absolute;right: 0px;">
+            <button class="am-btn am-btn-danger" onclick="mdelete()" style="margin-right: 5px;"><i
+                    class='am-icon-recycle'></i> 批量 删除
+            </button>
+            <button class="am-btn am-btn-success" onclick="search()"><i class="am-icon-search"></i> 搜索</button>
+        </div>
+    </form>
+
+    <div class="message">
+
+        <section class="panel" style="width: 98%;margin: 5px auto;">
+            <table class="table">
+                <tr id="first">
+                    <th><input type="checkbox" onchange="checkall(this)"></th>
+                    <th>留言者</th>
+                    <th>留言内容</th>
+                    <th>电话</th>
+                    <th>邮箱</th>
+                    <th>留言时间</th>
+                    <th>操作</th>
+                </tr>
+                {volist name='msgdata' id='msg'}
+                <tr>
+                    <td><input type="checkbox" class="list-child" name="mid" value="{$msg.mid}"></td>
+                    <td>{$msg.name}</td>
+                    <td style="max-width:400px;text-align: left">{$msg.content}</td>
+                    <td>{$msg.moblie}</td>
+                    <td>{$msg.email}</td>
+                    <td>{$msg.timestamp}</td>
+                    <td>
+                        <a href='javascript:mdelete();' class='am-badge am-badge-danger'> <i
+                                class='am-icon-recycle'></i> 删除</a>
+                    </td>
+                </tr>
+                {/volist}
+            </table>
+            {$page}
+        </section>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var checkall = function (obj) {
+        if (obj.checked) {
+            $(".list-child").prop('checked', true);
+        } else {
+            $(".list-child").prop("checked", false);
+        }
+    }
+
+
+    var mdelete = function () {
+
+        var chk_value = [];
+        $('input[name="mid"]:checked').each(function () {
+            chk_value.push($(this).val());
+        });
+        if (chk_value == "") {
+            layer.msg("请选择删除项");
+        } else {
+            console.log(chk_value);
+            $.ajax({
+                url:YMWL_ROOT_URL+"/admin/manager/deleteForMsg",
+                type: "post",
+                data: {chk_value:chk_value},
+                success: function (res) {
+
+                    if (res.code == 0) {
+                        layer.msg(res.msg, {icon: 1,time:2000,end:function () {
+                            window.location.href = "message";
+                        }});
+                    } 
+                }
+            });
+        }
+    }
+
+
+    var search = function () {
+
+        $("#page-search").ajaxSubmit({
+            url: '{:url("message")}',
+            type: "get"
+        });
+    }
+
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+
+        var init = function () {
+
+            var Request = new Object();
+            Request = GetRequest();
+            var puttime;
+            pushtime = Request['pushtime'];
+
+            if (pushtime != null) {
+
+                $.cookie("message", pushtime);
+            }
+
+            var value = $.cookie("message");
+
+            $("#time").val(value);
+
+
+        }
+
+
+        window.onload = init();
+</script>
+
+{include file="public/footer"/}
+

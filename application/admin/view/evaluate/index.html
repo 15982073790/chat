@@ -1,0 +1,187 @@
+{include file="public/header"/}
+
+<style>
+    .search {
+        display: inline-block;
+        border-radius: 15px;
+        margin-left: 25px;
+    }
+
+    .search input {
+        border-radius: 15px;
+        width: 180px !important;
+        height: 30px;
+        padding: 0 40px 0 10px;
+        padding-left: 12px;
+    }
+
+    .search .btn {
+        height: 14px;
+        width: 14px;
+        padding: 0;
+        line-height: normal;
+        border: 0;
+        margin-left: -28px;
+    }
+
+    .star-item {
+        height: 26px;
+        line-height: 26px;
+        display: flex;
+    }
+
+    .star-item span {
+        margin-right: 10px;
+        display: inline-block;
+        min-width: 85px;
+        text-align: left;
+    }
+
+    .star-item img {
+        display: block;
+        margin-top: 5px;
+        height: 16px;
+        width: 16px;
+    }
+</style>
+
+<div id="container" style="overflow-y: auto;padding-bottom: 45px;">
+
+    <h2 class="page-header" style="font-size: 18px;color: #555555;"> 评价管理</h2>
+    <div>
+        <form method="get" id="swith" style="display: inline">
+            <select name="star" onchange="swith()"
+                    style="padding: 3px 10px;font-size: 14px;border-radius: 15px;border: 1px solid #e5e3e9;height: 32px;">
+                <option value="0" {if $star== 0} selected{
+                /if}>全部评价</option>
+                <option value="1" {if $star== 1} selected{
+                /if}>一星</option>
+                <option value="2" {if $star== 2} selected{
+                /if}>二星</option>
+                <option value="3" {if $star== 3} selected{
+                /if}>三星</option>
+                <option value="4" {if $star== 4} selected{
+                /if}>四星</option>
+                <option value="5" {if $star== 5} selected{
+                /if}>五星</option>
+            </select>
+        </form>
+        <form method="get" id="chooseGroup" style="display: inline">
+            <select name="group" onchange="chooseGroup()"
+                    style="margin-left: 20px;padding: 3px 10px;font-size: 14px;border-radius: 15px;border: 1px solid #e5e3e9;height: 32px;">
+                <option value="0" selected>全部分组</option>
+                {volist name="groups" id="v"}
+                <option value="{$v.id}" {if $v[
+                'id'] == $group}selected{/if}>{$v.groupname}</option>
+                {/volist}
+            </select>
+        </form>
+        <div class="search">
+            <form method="get" class="form-inline" style="position: relative;">
+                <input placeholder="请输入" type="text" name="keyword" value="{$keyword}"
+                       class="form-control form-control-sm">
+                <button style="cursor: pointer;position: absolute;top:-1px;right: -1px;" class="btn-link btn-sm"><img
+                        src="__image__/admin/A/search.png" alt=""></button>
+            </form>
+        </div>
+        <table class="layui-table">
+            <colgroup>
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col width="300">
+                <col width="320">
+                <col width="300">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>客服</th>
+                <th>分组</th>
+                <th>客户</th>
+                <th>评价时间</th>
+                <th>评价情况</th>
+                <th>文字评价</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {volist name="comments" id="data"}
+
+            <tr>
+                <td>{$data.service.user_name}</td>
+                {if $data.group.groupname}
+                <td>{$data.group.groupname}</td>
+                {else/}
+                <td>通用分组</td>
+                {/if}
+                <td><a href="#" onclick="choose(this)" data-visiter-id="{$data.visiterinfo.vid}"
+                       style="color: #428bca;">{$data.visiter_name}</a></td>
+                <td>{$data.add_time}</td>
+                <td>
+                    {volist name="data.detail" id="v"}
+                    <div class="star-item">
+                        <span>{$v.title}</span>
+                        {if $v.score == 1}
+                        <img src="__image__/index/star-dark.png" alt="">
+                        {/if}
+                        {if $v.score == 2}
+                        <img src="__image__/index/star-dark.png" alt="">
+                        <img src="__image__/index/star-dark.png" alt="">
+                        {/if}
+                        {if $v.score == 3}
+                        <img src="__image__/index/star-light.png" alt="">
+                        <img src="__image__/index/star-light.png" alt="">
+                        <img src="__image__/index/star-light.png" alt="">
+                        {/if}
+                        {if $v.score == 4}
+                        <img src="__image__/index/star-light.png" alt="">
+                        <img src="__image__/index/star-light.png" alt="">
+                        <img src="__image__/index/star-light.png" alt="">
+                        <img src="__image__/index/star-light.png" alt="">
+                        {/if}
+                        {if $v.score == 5}
+                        <img src="__image__/index/star-light.png" alt="">
+                        <img src="__image__/index/star-light.png" alt="">
+                        <img src="__image__/index/star-light.png" alt="">
+                        <img src="__image__/index/star-light.png" alt="">
+                        <img src="__image__/index/star-light.png" alt="">
+                        {/if}
+                    </div>
+
+                    {/volist}
+                </td>
+                {if $data.word_comment}
+                <td>{$data.word_comment}</td>
+                {else/}
+                <td>—</td>
+                {/if}
+            </tr>
+
+            {/volist}
+            </tbody>
+        </table>
+        {$page}
+    </div>
+    <script type="text/javascript">
+function choose(obj)
+	{
+		var vid = $(obj).attr('data-visiter-id');
+		var data =chat_data['visiter'+vid];
+		$.cookie("cu_com", JSON.stringify(data),{ expires: 7, path: YMWL_ROOT_URL + '/admin/index' });
+		window.location.href = YMWL_ROOT_URL + '/admin/index/chats?id=' + vid;
+	}
+
+	//表单提交
+	function swith(){
+		var form = document.getElementById("swith");
+		form.submit();
+	}
+
+	function chooseGroup(){
+		var form = document.getElementById("chooseGroup");
+		form.submit();
+	}
+
+    </script>
+    {include file="public/footer"/}

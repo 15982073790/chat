@@ -1,0 +1,721 @@
+/**
+	重置样式
+	reset.css
+	Created by Andy on 2018-03-21
+ */
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box; /* Firefox 1, probably can drop this */
+    -webkit-box-sizing: border-box; /* Safari 3-4, also probably droppable */
+    box-sizing: border-box; /* Everything else */
+}
+
+html {
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+
+body {
+    background-color: #f8f8f8;
+    font: 12px/1.5 "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0 auto;
+    padding: 0;
+    min-width: 320px;
+    max-width: 750px;
+    height: 100%;
+    width: 100%;
+}
+
+body.overflow {
+    overflow: hidden;
+}
+
+p, ul, ol, dl, dd, h1, h2, h3, h4, h5, h6, img, label, input, button, textarea, select, form {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, em, i, th, caption {
+    font-style: normal;
+    font-weight: normal;
+}
+
+img {
+    border: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a img {
+    vertical-align: top;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+input, textarea {
+    border-radius: 0;
+    outline: none;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th, td {
+    padding: 0;
+}
+
+/* 去除android上a、button、input标签点击产生的边框 */
+a, button, input, label, li {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* __ 清除浮动 */
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+/* 不占位清除浮动 */
+.cls {
+    content: "";
+    clear: both;
+    height: 0px !important;
+    line-height: 0px !important;
+    font-size: 0px !important;
+    overflow: hidden;
+}
+
+/* __ css3文字截取 */
+.clamp1, .clamp2, .clamp3 {
+    display: -webkit-box !important;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+}
+
+.clamp1 {
+    -webkit-line-clamp: 1;
+}
+
+.clamp2 {
+    -webkit-line-clamp: 2;
+}
+
+.clamp3 {
+    -webkit-line-clamp: 3;
+}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* __ 布局控制 */
+.v__top {
+    vertical-align: top !important;
+}
+
+.v__middle {
+    vertical-align: middle !important;
+}
+
+.max__img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+.fl {
+    float: left !important;
+}
+
+.fr {
+    float: right !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.db {
+    display: block !important;
+}
+
+.dib {
+    display: inline-block !important;
+    *zoom: 1;
+    *display: inline;
+}
+
+.pos-rel {
+    position: relative;
+}
+
+.pos-abs {
+    position: absolute;
+}
+
+.align-l {
+    text-align: left !important;
+}
+
+.align-c {
+    text-align: center !important;
+}
+
+.align-r {
+    text-align: right !important;
+}
+
+
+/* __ 字号设置 */
+.fs-20 {
+    font-size: .2rem !important;
+}
+
+.fs-24 {
+    font-size: .24rem !important;
+}
+
+.fs-26 {
+    font-size: .26rem !important;
+}
+
+.fs-28 {
+    font-size: .28rem !important;
+}
+
+.fs-30 {
+    font-size: .3rem !important;
+}
+
+.fs-32 {
+    font-size: .32rem !important;
+}
+
+.fs-36 {
+    font-size: .36rem !important;
+}
+
+.fs-40 {
+    font-size: .4rem !important;
+}
+
+/* __ 字体设置 */
+.ff-vd {
+    font-family: Verdana;
+}
+
+.ff-gg {
+    font-family: Georgia;
+}
+
+.ff-hv {
+    font-family: Helvetica;
+}
+
+.ff-ss {
+    font-family: sans-serif;
+}
+
+.ff-ms {
+    font-family: "Microsoft Yahei";
+}
+
+.ff-ar {
+    font-family: Arial;
+}
+
+.ff-ab {
+    font-family: Arial Black;
+}
+
+.ff-st {
+    font-family: 宋体;
+}
+
+/* __ 间距 */
+.mt-5 {
+    margin-top: .05rem;
+}
+
+.mt-10 {
+    margin-top: .1rem;
+}
+
+.mt-15 {
+    margin-top: .15rem;
+}
+
+.mt-20 {
+    margin-top: .2rem;
+}
+
+.mt-30 {
+    margin-top: .3rem;
+}
+
+.mb-10 {
+    margin-bottom: .1rem;
+}
+
+.mb-15 {
+    margin-bottom: .15rem;
+}
+
+.mb-20 {
+    margin-bottom: .2rem;
+}
+
+.mb-30 {
+    margin-bottom: .3rem;
+}
+
+.ml-10 {
+    margin-left: .1rem;
+}
+
+.ml-15 {
+    margin-left: .15rem;
+}
+
+.ml-20 {
+    margin-left: .2rem;
+}
+
+.ml-30 {
+    margin-left: .3rem;
+}
+
+.mr-10 {
+    margin-right: .1rem;
+}
+
+.mr-15 {
+    margin-right: .15rem;
+}
+
+.mr-20 {
+    margin-right: .2rem;
+}
+
+.mr-30 {
+    margin-right: .3rem;
+}
+
+.pt-10 {
+    padding-top: .1rem;
+}
+
+.pt-15 {
+    padding-top: .15rem;
+}
+
+.pt-20 {
+    padding-top: .2rem;
+}
+
+.pt-30 {
+    padding-top: .3rem;
+}
+
+.pb-10 {
+    padding-bottom: .1rem;
+}
+
+.pb-15 {
+    padding-bottom: .15rem;
+}
+
+.pb-20 {
+    padding-bottom: .2rem;
+}
+
+.pb-30 {
+    padding-bottom: .3rem;
+}
+
+.pl-10 {
+    padding-left: .1rem;
+}
+
+.pl-15 {
+    padding-left: .15rem;
+}
+
+.pl-20 {
+    padding-left: .2rem;
+}
+
+.pl-30 {
+    padding-left: .3rem;
+}
+
+.pr-10 {
+    padding-right: .1rem;
+}
+
+.pr-15 {
+    padding-right: .15rem;
+}
+
+.pr-20 {
+    padding-right: .2rem;
+}
+
+.pr-30 {
+    padding-right: .3rem;
+}
+
+.mar10 {
+    padding: .1rem;
+}
+
+.mar15 {
+    padding: .15rem;
+}
+
+.mar20 {
+    padding: .2rem;
+}
+
+.mar30 {
+    padding: .3rem;
+}
+
+.pad10 {
+    padding: .1rem;
+}
+
+.pad15 {
+    padding: .15rem;
+}
+
+.pad20 {
+    padding: .2rem;
+}
+
+.pad30 {
+    padding: .3rem;
+}
+
+/* __ 颜色 */
+.bg-fff {
+    background: #fff;
+}
+
+.bg-f8f8f8 {
+    background: #f8f8f8;
+}
+
+.bg-fed846 {
+    background: #fed846;
+}
+
+.bg-ffd100 {
+    background: #ffd100;
+}
+
+.bg-ffba00 {
+    background: #ffba00;
+}
+
+.bg-fbf9fe {
+    background: #fbf9fe;
+}
+
+.bg-dccda0 {
+    background: #dccda0;
+}
+
+.bg-373a3f {
+    background: #373a3f;
+}
+
+.c-fff {
+    color: #fff;
+}
+
+.c-aaa {
+    color: #aaa;
+}
+
+.c-ccc {
+    color: #ccc;
+}
+
+.c-333 {
+    color: #333;
+}
+
+.c-666 {
+    color: #666;
+}
+
+.c-999 {
+    color: #999;
+}
+
+.c-f90 {
+    color: #f90;
+}
+
+
+/* …… 重置placeholder颜色 …… */
+::-webkit-input-placeholder {
+    color: #999;
+}
+
+:-moz-placeholder {
+    color: #999;
+}
+
+::-moz-placeholder {
+    color: #999;
+}
+
+:-ms-input-placeholder {
+    color: #999;
+}
+
+/* …… 重置系统滚动条 …… */
+::-webkit-scrollbar {
+    background: rgba(50, 50, 50, .5);
+    border-radius: 0;
+    height: 3px;
+    width: 3px;
+    transition: all .3s ease-in-out;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f8f8f8;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #f8f8f8;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .3);
+    border-radius: 0;
+    min-height: 15px;
+    width: 3px;
+    transition: all .3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, .5)
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, .5)
+}
+
+
+/* …… flex弹性盒子 …… */
+.flexbox {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    display: -ms-flexbox;
+}
+
+.flex-alignt {
+    align-items: flex-start;
+}
+
+.flex-alignc {
+    align-items: center;
+}
+
+.flex-alignb {
+    align-items: flex-end;
+}
+
+.flex-selft {
+    align-self: flex-start;
+}
+
+.flex-selfc {
+    align-self: center;
+}
+
+.flex-selfb {
+    align-self: flex-end;
+}
+
+.flex1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.flex2 {
+    -webkit-box-flex: 2;
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+}
+
+.flex__direction-column {
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+
+/* …… 自定义checkbox …… */
+.cp__checkbox-switch {
+    background: #fff;
+    border: .03rem solid #dedede;
+    border-radius: .3rem;
+    -webkit-border-radius: .3rem;
+    -moz-border-radius: .3rem;
+    cursor: pointer;
+    font-size: .24rem;
+    font-family: Helvetica;
+    outline: 0;
+    height: .61rem;
+    width: 1rem;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    vertical-align: middle;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.3s linear 0s;
+    -webkit-transition: all 0.3s linear 0s;
+    -moz-transition: all 0.3s linear 0s;
+}
+
+.cp__checkbox-switch::before {
+    background: #fff;
+    content: "";
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    height: .53rem;
+    width: .53rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: left 0.3s linear 0s;
+    -webkit-transition: left 0.3s linear 0s;
+    -moz-transition: left 0.3s linear 0s;
+    box-shadow: .01rem .01rem .03rem rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: .01rem .01rem .03rem rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: .01rem .01rem .03rem rgba(0, 0, 0, 0.5);
+}
+
+.cp__checkbox-switch.checked::before {
+    left: .41rem;
+    box-shadow: -.01rem .01rem .03rem rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: -.01rem .01rem .03rem rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: -.01rem .01rem .03rem rgba(0, 0, 0, 0.5);
+}
+
+.cp__checkbox-switch.checked {
+    background: #f60;
+    border-color: #f60;
+}
+
+.cp__checkbox-switch::after {
+    content: "";
+    color: #999;
+    text-transform: uppercase;
+    position: absolute;
+    right: .02rem;
+    top: .02rem;
+}
+
+.cp__checkbox-switch.checked::after {
+    content: "";
+    color: #fff;
+    text-transform: uppercase;
+    left: .05rem;
+}
+
+/* …… 自定义button …… */
+.wc__btn-primary {
+    background-color: #ffd100;
+    border-radius: .07rem;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: .28rem;
+    font-family: "Microsoft Yahei";
+    text-align: center;
+    outline: none;
+    overflow: hidden;
+    padding: 0 .2rem;
+    text-decoration: none;
+    line-height: .9rem;
+    position: relative;
+}
+
+.wc__btn-primary:active {
+    background-color: #f1c500;
+}
+
+.wc__btn-primary:after {
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .14rem;
+    box-sizing: border-box;
+    content: '';
+    height: 200%;
+    width: 200%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scale(.5);
+    -webkit-transform: scale(.5);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+}
+
+/* .wc__btn-primary.disabled, .wc__btn-primary:disabled{background: #fce891; color: rgba(255,255,255,.7);} */
+.wc__btn-default {
+    background: #fff;
+    border: 1px solid #d9d9d9;;
+    border-radius: .07rem;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: .28rem;
+    font-family: "Microsoft Yahei";
+    text-align: center;
+    outline: none;
+    padding: 0 .2rem;
+    line-height: .9rem;
+}
+
+.wc__btn-default:active {
+    background: #e9e9e9;
+}

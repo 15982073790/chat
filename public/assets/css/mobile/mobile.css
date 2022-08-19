@@ -1,0 +1,415 @@
+/**重置标签默认样式*/
+html, body, p, ul, li, img, h1, h2, h3, h4, pre {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+}
+
+html, body, button, input, textarea, pre {
+    font-family: "Helvetica Neue", Helvetica, "Microsoft Yahei", Arial, sans-serif
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    overflow: hidden;
+}
+
+body {
+    background: #fff;
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal
+}
+
+ul {
+    list-style: none
+}
+
+a {
+    text-decoration: none
+}
+
+img {
+    border: none
+}
+
+embed {
+    width: 100%;
+}
+
+* {
+    scrollbar-face-color: #bbb;
+    scrollbar-arrow-color: #bbb;
+    scrollbar-3dlight-color: #c0c0c0;
+    scrollbar-highlight-color: #bbb;
+    scrollbar-shadow-color: #bbb;
+    scrollbar-darkshadow-color: #c0c0c0;
+    scrollbar-track-color: #eee;
+}
+
+pre {
+    border: 0;
+    background: 0;
+    white-space: pre-line;
+    display: block;
+    width: 100%
+}
+
+pre a {
+    display: block;
+    max-width: 98%;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-resizer {
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+* {
+    -webkit-overflow-scrolling: touch;
+}
+
+.outer-right {
+    float: right;
+    width: 80%;
+    position: relative;
+    right: 8px;
+    font-size: 14px;
+}
+
+.outer-left {
+    float: left;
+    width: 80%;
+    position: relative;
+    left: 40px;
+    font-size: 14px;
+}
+
+.outer-iframe-left {
+    float: left;
+    position: relative;
+    clear: both;
+    padding-top: 5px;
+}
+
+
+.outer-right:before, .outer-right > i {
+    width: 0;
+    height: 1px;
+    border-width: 6px 7px;
+    border-style: dashed solid dashed solid;
+    /*border-color: #66afe9 transparent transparent;*/
+    border-color: transparent transparent transparent #5FB878;
+    _border-color: #fff #19CAA6 #fff #eee;
+    font-size: 0;
+    line-height: 0;
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: -12px;
+}
+
+.outer-left:before, .outer-left > i {
+    width: 0;
+    height: 1px;
+    border-width: 6px 7px;
+    border-style: dashed solid dashed solid;
+    border-color: transparent #eee transparent transparent;
+    _border-color: #fff #fff #fff #eee;
+    font-size: 0;
+    line-height: 0;
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: -12px;
+    left: -11px \9;
+    *left: -11px;
+
+}
+
+.customer {
+    /* margin-right: 10px;*/
+    margin-top: 5px;
+    background-color: #5FB878;
+    display: inline-block;
+    padding: 10px 10px;
+    float: right;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #fff;;
+    border-radius: 3px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.service {
+    /*margin-left: 10px;*/
+    margin-top: 5px;
+    *margin-top: 10px;
+    background-color: #eee;
+    display: inline-block;
+    padding: 10px 10px;
+    float: left;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #000;
+    border-radius: 3px;
+    position: relative;
+    left: 0px;
+    max-width: 100%;
+}
+
+.chatmsg, .chatmsg_no {
+    margin-bottom: 20px;
+    position: relative;
+    height: auto;
+}
+
+.chatmsg_no {
+    overflow: hidden;
+}
+
+.chatmsg_no .service img {
+    max-width: 100%;
+}
+
+.chatmsg_notice {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+.chatmsg img {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.wolive_img img {
+    width: 100%;
+    max-height: none;
+}
+
+.chatmsg:after, .chatmsg p {
+    content: "";
+    display: table;
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    /*! autoprefixer: off */
+}
+
+
+.service-name {
+    float: left;
+    display: block;
+    position: relative;
+    font-size: 12px;
+    color: #8D8D8D;
+}
+
+.showtime {
+    color: #D2D2D2;
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+    height: 15px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: #25c16f;
+    height: 45px;
+    color: #fff;
+    line-height: 46px;
+    font-size: 18px;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.foot_all {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+
+}
+
+.tool_box {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 28px;
+    display: none;
+    background-color: #fff;
+
+}
+
+.foot_msg {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+}
+
+.msg-toolbar {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    top: 8px;
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 50px;
+    overflow-y: auto;
+}
+
+.footer span {
+    display: inline-block;
+    width: 16%;
+    height: 70%;
+    background: #ccc;
+    font-size: 22px;
+    line-height: 38px;
+    cursor: pointer;
+    text-align: center;
+    position: absolute;
+    bottom: 14%;
+    right: 2%;
+    border-radius: 6px;
+}
+
+.footer span:hover {
+    color: #fff;
+    background: #999;
+}
+
+.conversation {
+    list-style: none;
+    padding: 0 10px;
+
+}
+
+.msg-toolbar a {
+    float: left;
+    margin: 6px;
+}
+
+.wl_faces_main ul {
+    margin: 5px 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.wl_faces_main ul li {
+    float: left;
+    height: 30px;
+    width: 26px;
+    text-align: center;
+
+}
+
+.wl_faces_main ul li img {
+    width: 22px;
+    height: 22px;
+    padding: 0px;
+}
+
+.edit-ipt {
+    border: 2px solid #ddd;
+    width: 78%;
+    outline: none;
+    text-indent: 10px;
+    border-radius: 6px;
+    margin-left: 5px;
+    background-color: #fff;
+    padding-top: 6px;
+}
+
+.question {
+    width: 100%;
+    cursor: pointer;
+    width: 220px;
+    cursor: pointer;
+    color: blue;
+    margin-top: 10px;
+}
+
+
+.wolive_product {
+    display: block;
+    width: 480px;
+    height: 100%;
+    position: relative;
+    min-width: 170px;
+}
+
+.wolive_img {
+    width: 100%;
+}
+
+.wolive_price {
+    margin-top: 8px;
+    color: red;
+}
+
+.wolive_info {
+    display: -webkit-box !important;
+    margin-top: 8px;
+}
+
+.wolive_head {
+    padding-top: 10px;
+}
+
+.clear {
+    zoom: 1;
+}
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#follow_topbar {
+    padding: 6px 10px;
+    background: rgba(253, 0, 0, 0.2);
+    position: absolute;
+    left: 0;
+    top: 45px;
+    z-index: 999;
+    right: 0;
+    color: #877f79;
+}
+
+#follow_topbar i {
+    color: #faa064;
+    font-size: 1.1em;
+}
+
+#followbtn {
+    background-color: #07c160;
+    margin-top: 4px;
+}
+
+img {
+    -webkit-touch-callout: none;
+}

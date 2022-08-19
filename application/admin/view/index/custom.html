@@ -1,0 +1,207 @@
+{include file="public/header"/}
+<style>
+    .head {
+        margin: 10px 0px;
+        height: 40px;
+        line-height: 40px;
+        background: #ddd;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .head .title {
+        padding: 0px 15px;
+    }
+
+    .handler .back .img {
+        width: 16px;
+        height: 16px;
+        margin: 6px 0 0 16px;
+        float: left;
+        background: url("__image__/admin/B/back-system.png");
+    }
+
+
+    .custom .layui-layer-ico {
+        height: 24px;
+        width: 24px;
+        background: url("__image__/admin/B/cha.png") no-repeat;
+    }
+
+    .custom .layui-layer-content {
+        padding: 0 16px;
+        margin-right: 20px;
+    }
+
+    .recycle {
+        float: left;
+        margin-left: 40px;
+        width: 20px;
+        height: 20px;
+        background: url("__image__/admin/B/delete.png") no-repeat;
+        cursor: pointer;
+    }
+
+    #container {
+        background-color: #fff;
+    }
+</style>
+<div id="container" style="padding-bottom: 42px">
+    <h2 class="page-header" style="font-size: 18px;color: #555555;"> 问候语</h2>
+    <div class="handler">
+        <a href="{:url('admin/index/set')}">
+            <div class="back">
+                <i class="img"></i>
+                <span>返回设置</span>
+            </div>
+        </a>
+
+        <a onclick="editcustom(0)">
+            <div class="button">
+                +添加问候语
+            </div>
+        </a>
+    </div>
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>问候语</th>
+            <th style="width: 100px;">状态</th>
+            <th style="width: 275px;">操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {volist name='lister' id='talk'}
+        <tr>
+            <td style="word-wrap:break-word;max-width: 800px;">{$talk['content']}</td>
+            {if $talk.state == 'using'}
+            <td>
+                <div class="am-btn-primary"
+                     style="border-radius: 13px;font-size: 13px;color: #25c16f;width: 70px;height: 26px;background-color: #F5FAFF;text-align: center;padding-top: 3px">
+                    默认使用
+                </div>
+            </td>
+            {else}
+            <td><i class="am-btn-defulat"></i></td>
+            {/if}
+            <td>
+                <a href='javascript:setdefalut({$talk.sid})' style="float: left;font-size: 13px;"> 设置默认
+                    {if $talk.state == 'using'}
+                    <img src="__image__/admin/B/open.png" style="width: 36px;height: 18px;margin-left: 8px" alt="">
+                    {else}
+                    <img src="__image__/admin/B/close.png" style="width: 36px;height: 18px;margin-left: 8px" alt="">
+                    {/if}
+                </a>
+                <a href='javascript:editcustom({$talk.sid})'>
+                    <img src="__image__/admin/A/edit.png" alt="编辑" title="编辑">
+                </a>
+                <a href='javascript:tdelete({$talk.sid})'>
+                    <img src="__image__/admin/A/delete.png" alt="删除" title="删除">
+                </a>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    {$page}
+</div>
+
+
+<script type="text/javascript">
+    function show(id) {
+        layer.open({
+            skin:"question",
+            type: 2,
+            title: '编辑',
+            area: ['800px', '750px'],
+            content: YMWL_ROOT_URL + '/admin/index/custom_editer?id=' + id
+        });
+    }
+	$("#addword").on("click", function () {
+		var str = '';
+		str += '<form  class="layui-form" style="margin-top:23px;" >';
+		str += '<div class="layui-form-item layui-form-text">';
+		str += '<div class="layui-input-block" style="margin-left:20px;"><textarea id="talks" placeholder="请输入内容" class="layui-textarea" style="width:100%;height: 160px;border: 1px solid #e5e3e9;border-radius: 8px;resize:none;padding: 16px;"></textarea></div></div>';
+		str += '</from>';
+
+		var lock = false;
+		layer.open({
+			skin: 'custom',
+			title: '添加问候语',
+			type: 1,
+			area: ['600px', '316px'],
+			content: str,
+			btn: ['保存', '取消'],
+			yes: function () {
+				if (!lock) {
+					lock = true;
+					$.ajax({
+						url:YMWL_ROOT_URL+"/admin/manager/cmtalk",
+						type: "post",
+						data: {content: $("#talks").val()},
+						success: function (res) {
+							if (res.code ==0) {
+								layer.msg(res.msg, {icon: 1,time:2000,end:function () {
+										location.reload();
+									}});
+
+							}
+
+						}
+					})
+				}
+			}
+		});
+	});
+
+
+	function setdefalut(id) {
+		$.ajax({
+			url:YMWL_ROOT_URL+'/admin/set/settalkdefa',
+			type: 'post',
+			data: {tid: id},
+			success: function (res) {
+				if (res.code == 0) {
+					if(res.data){
+						 layer.msg('设置成功', {icon: 1,time:2000,end:function () {
+							location.reload();
+						}});
+					}
+				  
+				}
+			}
+		});
+	}
+
+
+	function tdelete(id) {
+		$.ajax({
+			url:YMWL_ROOT_URL+'/admin/set/tdelete',
+			type: 'post',
+			data: {tid: id},
+			success: function (res) {
+				if (res.code == 0) {
+					if(res.data){
+					  layer.msg('删除成功',{time:2000,end:function () {
+							  location.href = "{:url('admin/index/custom')}";
+						  }});
+					}
+				}
+			}
+		});
+	}
+
+	function editcustom(sid){
+		layer.open({
+			type: 2,
+			skin:"tablist",
+			title: (sid >0)?'编辑问候语':'新增问候语',
+			area: ['800px', '560px'],
+			content: YMWL_ROOT_URL + '/admin/index/editercustom?sid=' + sid
+		});
+	}
+</script>
+
+{include file="public/footer"/}

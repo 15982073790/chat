@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <title>留言页面</title>
+    <script>
+        YMWL_ROOT_URL = "{$baseroot}";
+
+    </script>
+    <link href="__libs__/layui/css/layui.css?v=__lkversion__" rel="stylesheet">
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+    <script src="__libs__/layui/layui.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/push/pusher.min.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/layer/layer.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/jquery/jquery.cookie.js?v=__lkversion__" type="text/javascript"></script>
+    <link href="__libs__/bootstrap/bootstrap.min.css?v=__lkversion__" type="text/css" rel="stylesheet"/>
+
+</head>
+<style>
+
+    a {
+        color: black;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    .notice {
+        display: inline-block;
+        height: 12px;
+        border-radius: 12px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+
+    .layui-nav-child {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 65px;
+        min-width: 100%;
+        line-height: 36px;
+        padding: 5px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .12);
+        border: 1px solid #d2d2d2;
+        background-color: #fff;
+        z-index: 100;
+        border-radius: 2px;
+        white-space: nowrap;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .wolive-content {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        width: 100%;
+        min-height: 30px;
+        height: auto;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+</style>
+<body>
+<header style="width: 100%;height: 50px;position: relative;border-bottom:1px solid #ddd;box-shadow: 0 0 1px #ccc;background: #fff; ">
+    <div style="position: absolute;left: 20px;top:5px;">
+        <a href="https://www.dianqilai.com">
+            <img src="__image__/index/workerman_logo.png" width="40px" style="border-radius: 10px;"/>
+        </a>
+    </div>
+
+    <div style="position: absolute;left: 80px;top: 10px;font-size: 20px;">
+        <a href="https://www.dianqilai.com">点企来 客服系统</a>
+    </div>
+
+    <div class="layui-nav-item" style="position: absolute;right: 5px;">
+        <a href="javascript:show();" style="color: #b2b2b2;"><i class="layui-icon" style="font-size: 40px;">&#xe60f;</i></a>
+        <dl class="layui-nav-child" style="left:-65px;min-width: 100px;">
+            <dd style="text-align: center;height: 30px;"><a href="/mobile/admin/index">主页</a></dd>
+            <dd style="text-align: center;height: 30px;"><a href="/mobile/admin/chat">对话平台</a></dd>
+        </dl>
+    </div>
+    <span id='wolive_notice' class="layui-badge notice hide"></span>
+</header>
+
+<div class="content">
+
+    <div class="row">
+
+
+        {volist name='msgdata' id='msg'}
+        <div class="row-wd-10" style="width: 90%;margin:20px auto;position: relative;">
+
+            <div class="head" style="">
+                <img src="__image__/admin/avatar-admin.png" style="width: 40px;border-radius: 40px; ">
+                <span style="margin-left: 20px;">{$msg.timestamp}</span>
+            </div>
+            <div class="wolive-content">
+                {$msg.content}
+            </div>
+            <a onclick="showinfo({$msg.mid})" style="position: absolute;right: 10px;top: 10px;color: red;">用户详细</a>
+
+        </div>
+
+        {/volist}
+
+        {if $content !=''}
+        <div style="color: #ddd;margin:80px auto;font-size: 20px;text-align: center;">{$content}</div>
+        {/if}
+    </div>
+    <div class="wolive_end" style="position: absolute;left: 20px;bottom: 5px;">
+        {$page}
+    </div>
+
+</div>
+<script>
+	
+ var show =function(){
+    var value =$('.layui-nav-child').css('display');
+
+    if(value == 'block'){
+
+        $('.layui-nav-child').css('display','none');
+    }else{
+
+       $('.layui-nav-child').css('display','block'); 
+    }  
+  }
+
+
+var showinfo =function(id){
+
+   $.ajax({
+    url:YMWL_ROOT_URL+'/mobile/admin/show',
+    type:'post',
+    data:{mid:id},
+    dataType:'json',
+    success:function(res){
+       if(res.code == 0){
+        
+        var str='';
+            str+='<div><span>用户名:</span>'+res.data.name+'</div>';
+            str+='<div><span>手机:</span>'+res.data.moblie+'</div>';
+            str+='<div><span>邮箱:</span>'+res.data.email+'</div>';
+
+        layer.open({
+            title: '用户详情'
+            ,content:str
+          });     
+
+       }
+    }
+   })
+}
+
+
+
+</script>
+</body>
+</html>

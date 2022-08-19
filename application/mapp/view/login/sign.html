@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <title>WoLive在线客服系统</title>
+    <script>
+        YMWL_ROOT_URL = '{$baseroot}';
+    </script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+    <script src="__libs__/layui/layui.js?v=__lkversion__" type="text/javascript"></script>
+    <link href="__libs__/layui/css/layui.css?v=__lkversion__" rel="stylesheet">
+    <script src="__libs__/layer/layer.js?v=__lkversion__" type="text/javascript"></script>
+
+    <style type="text/css">
+        #regist-captcha {
+            position: absolute;
+            right: 80px;
+            top: 1px;
+            height: 35px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body style="background: rgb(247, 246, 246);">
+
+<div class="header" style="top:0;width:100%;height: 60px;z-index: 10000;box-shadow: 0 0 1px #ccc;background: #fff;">
+    <div class="logo" style="position: absolute;left: 120px;top:10px;">
+        <a href="https://www.dianqilai.com">
+            <img src="__image__/index/workerman_logo.png" width="40px" style="border-radius: 10px;"/>
+        </a>
+    </div>
+    <div class="title-name" style="position: absolute;left: 170px;top: 15px;font-size: 20px;">
+        <a href="https://www.dianqilai.com">点企来 客服系统</a>
+    </div>
+    <div class="connect" style="position: absolute;right: 120px;top: 20px;font-size: 10px;">
+
+    </div>
+</div>
+
+<div style="width: 500px;height: 380px;background: #fff;border-radius: 5px;margin:80px auto; padding-top: 10px;box-shadow: rgba(15, 66, 76, 0.25) 0px 0px 24px 0px;max-width: 100%;">
+    <div id="regist-title" style="text-align: center;font-size: 24px;margin-bottom: 0.8rem;margin-top: 25px;">创建管理员账号
+    </div>
+    <div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input type="text" id="username" placeholder="长度为1~16个字符,只能是字母和数字" autocomplete="off" style="width:80%;"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input type="password" id="password" placeholder="长度为6~16个字符" autocomplete="off" style="width:80%;"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-block">
+                <input type="password" id="password2" placeholder="请再次输入密码" autocomplete="off" style="width:80%;"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">验证码</label>
+            <div class="layui-input-block">
+                <input type="text" id="captcha" placeholder="请输入验证码" autocomplete="off" style="width:80%;"
+                       class="layui-input">
+                <img src="/admin/login/captchaForAdmin" data-captcha="/admin/login/captchaForAdmin" id="regist-captcha"
+                     title="不清楚? 点击换一个"/>
+            </div>
+        </div>
+        <div class="layui-form-item" style="text-align: center;">
+            <button class="layui-btn" id="regist">立即注册</button>
+        </div>
+        <center>已经有账号，可以<a href="{:url('admin/login/index')}" style="cursor: pointer;color:#126BF9;">点击登陆</a></center>
+    </div>
+</div>
+
+<script>
+
+    $("#regist-captcha").on("click", function(){
+        this.src = $(this).data('captcha') + '?_r=' + Math.random();
+    });
+
+    $("#regist").on("click",function(){
+        var user = $("#username").val();
+        var pass1=$("#password").val();
+        var pass2=$("#password2").val();
+        var captcha=$("#captcha").val();
+        $.ajax({
+            url:"{:url('regist')}",
+            type:"post",
+            data:{user_name:user,password:pass1,password2:pass2,captcha:captcha},
+            success:function(res){
+
+                if(res == '注册成功'){
+
+                    // layer.alert(res);
+                    layer.open({
+                        type:1,
+                        title:'信息',
+                        area:['260px','160px'],
+                        content:'<center style="margin-top:20px;font-size:16px;">'+res+'</center>',
+                        btn:['登陆'],
+                        yes:function(){
+                            window.location.href="{:url('admin/login/index')}";
+                        },
+                    });
+
+                }else{
+                    layer.msg(res,{icon:2,offset:"20px"});
+                }
+            }
+        });
+    })
+
+
+</script>
+<footer style="width: 100%;height: 40px;position: fixed;bottom: 0;line-height: 40px;box-shadow: 2px 0px 4px #ccc;">
+    <center>
+        <a href="https://www.dianqilai.com" style="text-align: center;color:#2d2c2ca3;font-size: 14px;"> <span
+                class="copyright">©获取点企来客服系统源码</span></a>
+    </center>
+</footer>
+</body>
+</html>

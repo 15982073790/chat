@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增客服</title>
+
+    <link rel="stylesheet" type="text/css" href="__libs__/layer/skin/layer.css?v=__lkversion__"/>
+    <link rel="stylesheet" type="text/css" href="__libs__/amaze/css/amazeui.min.css?v=__lkversion__"/>
+
+    <script>
+        YMWL_ROOT_URL = '{$baseroot}';
+
+    </script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.form.min.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.cookie.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/layer/layer.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/amaze/js/amazeui.min.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/layui/layui.js?v=__lkversion__"></script>
+    <link rel="stylesheet" type="text/css" href="__libs__/layui/css/layui.css?v=__lkversion__"/>
+    <link rel="stylesheet" type="text/css" href="__libs__/bootstrap/bootstrap.min.css?v=__lkversion__"/>
+
+    <link rel="stylesheet" type="text/css" href="__style__/admin/common.css?v=__lkversion__"/>
+    <link rel="stylesheet" type="text/css" href="__style__/admin/reload.css?v=__lkversion__"/>
+    <script type="text/javascript" src="__script__/admin/functions.js?v=__lkversion__"></script>
+    <link rel="stylesheet" type="text/css" href="__style__/admin/index.css?v=__lkversion__"/>
+    <link rel="stylesheet" type="text/css" href="__style__/admin/index_me.css?v=__lkversion__"/>
+
+    <script type="text/javascript" src="__script__/admin/common_me.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/push/pusher.min.js?v=__lkversion__"></script>
+
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #ffffff;
+            height: 600px;
+            min-width: 600px;
+        }
+
+        .layui-form-label {
+            font-size: 13px;
+            color: #999999;
+            float: left;
+            display: block;
+            padding: 9px 15px;
+            width: 100px;
+            line-height: 20px;
+            text-align: right;
+        }
+
+        .no_chats-pic {
+            display: inline-block;
+            width: 138px;
+            height: 67px;
+            background: url('__image__/admin/bgspirt.png') no-repeat;
+            background-position: -286px;
+            position: absolute;
+            top: 300px;
+            left: 250px;
+        }
+
+        .no_history_icon {
+            display: inline-block;
+            width: 90px;
+            height: 67px;
+            background: url('__image__/admin/bgspirt.png') no-repeat;
+            background-position: -90px;
+            position: absolute;
+            top: 300px;
+            left: 44%;
+        }
+
+        .layui-form-item .layui-input-block {
+
+        }
+
+        .layui-form-item .layui-input-block input {
+            border: 1px solid #f7f7f7;
+            border-radius: 8px;
+        }
+
+        .new-upload {
+            width: 80px;
+            height: 32px;
+            margin-left: 20px;
+            color: #ffffff;
+            font-size: 13px;
+            line-height: 32px;
+            background: #25c16f;
+            border-radius: 16px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        button.keep {
+            width: 66px;
+            height: 36px;
+            color: #ffffff;
+            font-size: 13px;
+            background-color: #25c16f;
+            border-radius: 16px;
+        }
+
+        button.reset {
+            width: 66px;
+            height: 36px;
+            color: #555555;
+            font-size: 13px;
+            background-color: #f7f7f7;
+            border-radius: 16px;
+            border: 0;
+        }
+
+        #layui-layer1 .layui-layer-btn {
+            margin-top: 10px;
+        }
+
+        #layui-layer1 .layui-layer-btn .layui-layer-btn0 {
+            width: 82px;
+        }
+
+        .layui-form-label {
+            position: relative;
+            text-align: left;
+        }
+
+        .layui-form-label.required::before {
+            content: '';
+            position: absolute;
+            background-color: #ff5c5c;
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            top: 14px;
+            left: -18px;
+        }
+    </style>
+<body>
+<div style="width: 70%;height: 600px;margin:0 auto;margin-top: 24px;">
+    <form id="img_form" class="am-form am-form-horizontal am-form-xs am-g-fixed" method="post">
+        <div class="am-form-group am-form-file">
+            <label class="layui-form-label" style="padding-top: 16px">选择头像</label>
+
+            <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                <img class="am-circle" id="imgs" src="__image__/admin/avatar-admin2.png" width="50px"
+                     height="50px">
+                <div class="new-upload">重新上传</div>
+                <input type="file" name="img_head" id="img_head" onchange="put()" multiple>
+            </div>
+        </div>
+    </form>
+
+    <div style="width: 100%;">
+        <div class="layui-form-item">
+            <label class="layui-form-label required">用户名</label>
+            <div class="layui-input-block">
+                <input type="text" id="username" placeholder="1-16个字母或数字" autocomplete="off" class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">昵称</label>
+            <div class="layui-input-block">
+                <input type="text" id="nickname" placeholder="2-20个字符" autocomplete="off" class="layui-input">
+            </div>
+
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">密码</label>
+            <div class="layui-input-block">
+                <input type="password" id="password" placeholder="6-16个字符" autocomplete="off" class="layui-input">
+
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">确认密码</label>
+            <div class="layui-input-block">
+                <input type="password" id="password2" placeholder="确认密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">OpenId</label>
+            <div class="layui-input-block">
+                <input type="open_id" id="open_id" placeholder="用户OpenId" autocomplete="off" class="layui-input">
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input type="email" id="email" placeholder="邮箱" autocomplete="off" class="layui-input">
+            </div>
+
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">客服分组</label>
+            <div class="layui-input-block">
+                <select id="classification"
+                        style="width: 310px;height: 38px;border: 1px solid #f7f7f7; border-radius: 8px;">
+                    <option value="0">通用分组</option>
+                    {foreach $class as $c}
+                    <option value="{$c.id}">{$c.groupname}</option>
+                    {/foreach}
+                </select>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn keep" lay-submit id="add_me">保存</button>
+                <button type="reset" id="add_close" class="layui-btn layui-btn-primary reset layui-layer-close">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+
+
+    var put = function () {
+
+        $("#img_form").ajaxSubmit({
+            url:YMWL_ROOT_URL+'/admin/manager/uploadpic.html',
+            type: "post",
+
+            success: function (res) {
+
+                if (res.code == 0) {
+                    //返回图片路径
+                    $("#imgs").attr('src', res.data);
+                    //把路径存入cookie
+                    $.cookie("pic", res.data);
+                } else {
+
+                    layer.msg(res.msg, {icon: 2});
+                }
+
+            }
+        });
+    }
+
+    $("#add_me").on('click', function () {
+
+        var path = $("#imgs").attr("src");
+        var user = $("#username").val();
+        var nick = $("#nickname").val();
+        var open_id = $("#open_id").val();
+        var pass1 = $("#password").val();
+        var pass2 = $("#password2").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var groupid =$("#classification").val();
+
+        $.ajax({
+            url:YMWL_ROOT_URL+"/admin/manager/registforservice.html",
+            type: "post",
+            data: {
+                user_name: user,
+                nick_name: nick,
+                password: pass1,
+                password2: pass2,
+                email: email,
+                avatar: path,
+                groupid:groupid,
+                open_id:open_id,
+            },
+            dataType:'json',
+            success: function (res) {
+
+                if (res.code == 0) {
+                    layer.open({
+                        id: "kf_list",
+                        type: 1,
+                        title: '信息',
+                        area: ['260px', '200px'],
+                        content: '<center style="margin:20px 0;font-size:16px;">'+res.msg+'</center>',
+                        btn: ['确认'],
+                        yes: function () {
+                            parent.location.reload();
+                           
+                        },
+                        cancel: function(index, layero){
+                            parent.location.reload();
+                        }
+                    });
+                } else {
+
+                    layer.msg(res.msg);
+                }
+                delCookie("pic");
+            }
+
+        });
+
+    });
+
+    $("#add_close").on('click',function(){
+        parent.layer.closeAll();
+    });
+
+
+    var init = function () {
+
+
+        if ($.cookie("pic")) {
+
+
+            $("#imgs").attr('src', $.cookie('pic'));
+        }
+
+
+    }
+
+    window.onload = init();
+
+    function delCookie(name) {
+        var date = new Date();
+        date.setTime(date.getTime() - 10000);
+        document.cookie = name + "=a; expires=" + date.toGMTString();
+    }
+
+
+</script>

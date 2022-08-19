@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="shortcut icon" href="/kefu.ico"/>
+    <title>在线客服系统注册</title>
+    {load href="__libs__/layui/css/layui.css"/}
+    {load href="__libs__/jquery/jquery.min.js"/}
+    {load href="__libs__/layui/layui.js"/}
+    <link rel="stylesheet" type="text/css" href="__style__/admin/login.css?v=__lkversion__">
+</head>
+<body>
+<div class="main">
+    <form class="layui-form" action="{:url('regist')}" method="post">
+        <div class="layui-form-item">
+            <h2>注册客服系统</h2>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="text" name="user_name" required lay-verify="required" placeholder="用户名"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="password" name="password" required lay-verify="required" placeholder="密码"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="password" name="password2" required lay-verify="required" placeholder="密码"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="text" name="captcha" required lay-verify="required" placeholder="验证码" autocomplete="off"
+                       class="layui-input">
+                <img src="/admin/login/captchaForAdmin" data-captcha="/admin/login/captchaForAdmin" id="login-captcha"
+                     title="不清楚? 点击换一个"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="loginForm">立即注册</button>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <a href="{:url('admin/login/index')}">已有账号？点击登录</a>
+        </div>
+    </form>
+</div>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+        //监听提交
+        form.on('submit(loginForm)', function (data) {
+            $.ajax({
+                type: "post",
+                url: data.form.action,
+                data: data.field,
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code == 1) {
+                        layer.open({
+                            type:1,
+                            title:'信息',
+                            area:['260px','160px'],
+                            content:'<h3>注册成功</h3>',
+                            btn:['登录'],
+                            yes:function(){
+                                window.location.href="{:url('admin/login/index')}";
+                            }
+                        });
+                    } else {
+                        layui.layer.msg(res.msg);
+                    }
+                }
+            });
+            return false;
+        });
+    });
+
+    // 验证码切换
+    $("#login-captcha").on("click", function () {
+        this.src = $(this).data('captcha') + '?_r=' + Math.random();
+    });
+
+</script>
+
+</body>
+</html>

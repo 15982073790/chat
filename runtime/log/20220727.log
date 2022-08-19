@@ -1,0 +1,32 @@
+---------------------------------------------------------------
+[ 2022-07-27T23:10:02+08:00 ] 219.134.170.113 GET chat.profittravel.com/
+[运行时间：0.072136s] [吞吐率：13.86req/s] [内存消耗：2,587.83kb] [文件加载：64]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.005268s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => '_ga=GA1.2.698060022.1560934651; cna=Uyx8Fa5Rp1wCAd9J0CHlkU6x; MKT_CKID=1583988845352.xqt0d.0vtz; _RF1=223.73.206.21; _RSG=4YqdXpQ7CwA1dDN6NUeQ4A; _RDG=28c1cca879155a22a131664152dfbb17e6; _RGUID=ae8c1dac-e19f-4884-a11a-a1e5c65cd9c1; pgv_pvi=1580572672; visiter_id=b42488363927353TL63; Hm_lvt_4658bea0bc1dba6b65d320f2ca2fec38=1658909444; _gid=GA1.2.1968989098.1658909445',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000484s ]
+[ info ] [ RUN ] app\index\controller\Index->index[ /data/wwwroot/dev/chat.profittravel.com/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File

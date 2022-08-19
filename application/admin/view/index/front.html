@@ -1,0 +1,370 @@
+{include file="public/header"/}
+<div id="container" style="background-color: #fff;padding: 16px;">
+    <div class="front">
+        <div class="my-setting">
+            <div class="head">
+                <div class="title">
+                    部署网页组件（推荐）：网页咨询组件同时支持桌面网站和移动网站，提供强大的用户行为采集能力和系统对接能力
+                </div>
+
+            </div>
+            <br/>
+            <div class="contents">
+                聊天框样式：
+                <select name="type" id="type" onchange="swith()"
+                        style="margin-left:20px;padding: 3px;font-size: 14px;border-radius: 15px;border: 1px solid #e5e3e9;height: 32px;">
+                    <option value="0" selected>标准窗口</option>
+                    <option value="1">迷你窗口</option>
+                    <option value="2">自定义窗口</option>
+
+                </select>
+
+                <button class="layui-btn layui-btn-normal" onclick="build()">生成js</button>
+                <button id="bulidhtml" class="layui-btn layui-btn-normal" onclick="show()" style="margin-left:10px
+">生成html
+                </button>
+                <button id="buildwechat" class="layui-btn layui-btn-normal" style="margin-left:10px
+" onclick="buildmp()">生成微信公众号链接
+                </button>
+                <button id="buildpersonal" class="layui-btn layui-btn-normal" style="margin-left:10px
+" onclick="buildpersonal()">生成我的专属链接
+                </button>
+                {:hook('generatelinkhook', ['id'=>1])}
+            </div>
+            <br/>
+            <div class="layui-card" style="background-color: #F3F3F3;" id="diy-kf-site">
+                <div class="layui-card-header">自定义设置(请设置好再点击生成)</div>
+                <div class="layui-card-body">
+                    <form class="layui-form" id="form-diy">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 120px">开启弹窗</label>
+                            <div class="layui-input-inline">
+                                <input type="checkbox" checked name="isopen" lay-skin="switch" lay-filter="switchTest"
+                                       lay-text="开|关">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">只对自定义窗口生成js有效</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 120px">弹窗延时</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="open_delay" placeholder="聊天窗口延时时间" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">单位秒，开启弹窗有效（只对自定义窗口生成js有效）</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 120px">弹窗高度</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="m_height" placeholder="聊天窗口弹窗高度" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">单位像素，只针对手机端有效（只对自定义窗口生成js有效）</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 120px">悬浮条背景色</label>
+                            <div class="layui-input-inline">
+                                <input type="hidden" name="m_kfbtbg" placeholder="请选择颜色" class="layui-input"
+                                       id="m_kfbtbg" value="#25c16f">
+                            </div>
+                            <div class="layui-inline">
+                                <div id="test-form"></div>
+                            </div>
+                            <div class="layui-inline">
+                                <div class="layui-form-mid layui-word-aux">客服悬浮条背景色</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width: 120px">主题颜色</label>
+                            <div class="layui-input-inline">
+                                <input type="hidden" name="theme" placeholder="请选择颜色" class="layui-input" id="theme"
+                                       value="#25c16f">
+                            </div>
+                            <div class="layui-inline">
+                                <div id="test-form-theme"></div>
+                            </div>
+                            <div class="layui-inline">
+                                <div class="layui-form-mid layui-word-aux">聊天窗口主题色</div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="method">
+                <div id="codearea" class="hide">
+                          <pre id="wechat-mp" class="copy-js-content hide layui-code" readonly=""
+                               style="padding-bottom: 2em;">
+
+                          </pre>
+                    <pre id="personal" class="copy-js-content hide" readonly="" style="padding-bottom: 2em;">
+                              <span style="color: red">我的专属链接(将二维码保存下来，进行推广，客户通过微信扫码即可和客服聊天):</span><p></p>
+<div class="qrcode_wrap_zs"></div>
+
+                          </pre>
+                    <pre id="wolive-js" class="copy-js-content" readonly>
+                            部署如下代码
+                            <div class="layui-code">
+
+                            </div>
+                        </pre>
+                    <pre id="frontjs" class="copy-js-content hide" style="height: 250px">
+                            部署如下代码
+                            <div class="layui-code">
+
+                            </div>
+                     </pre>
+                    <pre id="minjs" class="copy-js-content hide" style="height: 280px;color:red;">
+                        如果需要添加自身网站用户数据，请部署到上面代码之前，按注释要求添加：
+                         <div class="layui-code">
+                              &lt;script type="text/javascript">
+                            &nbsp;&nbsp;var ymwl={};
+                            &nbsp;&nbsp;ymwl.visiter_id='';//访客id
+                            &nbsp;&nbsp;ymwl.visiter_name='';//访客昵称
+                            &nbsp;&nbsp;ymwl.avatar='';//访客头像绝对路径
+                            &nbsp;&nbsp;ymwl.product='{}';//json数据字符串
+                            &lt;/script>
+                         </div>
+                        /**
+                        格式如下：
+                            {"pid":1,"title":" Apple MacBook Air ","img":"http://www.domain.com/assets/images/pro.jpg","info":"13.3英寸笔记本电脑 银色(2017款Core i5 处理器/8GB内存/128GB闪存 MQD32CH/A)","price":"￥7588.00","url":"http://www.domain.com/demo/index/product1"}
+                         */
+                     </pre>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="demo"></div>
+<script type="text/javascript" src="/assets/js/arale-qrcode.js"></script>
+<script>
+    layui.use(['form','code','colorpicker'], function(){
+        var form = layui.form,colorpicker = layui.colorpicker;
+        //各种基于事件的操作，下面会有进一步介绍
+        colorpicker.render({
+            elem: '#test-form'
+            ,color: '#25c16f'
+            ,done: function(color){
+                $('#m_kfbtbg').val(color);
+            }
+        });
+        colorpicker.render({
+            elem: '#test-form-theme'
+            ,color: '#25c16f'
+            ,done: function(color){
+                $('#theme').val(color);
+            }
+        });
+    });
+var swith=function(){
+
+    $type =$("#type").val();
+    if($type == 0){
+     $("#bulidhtml").removeClass('hide');
+     $("#codearea").addClass('hide');
+        // $("#diy-kf-site").addClass('hide');
+     $("#wolive-js").addClass('hide');
+     $("#frontjs").addClass('hide');
+     $("#ymwl-kefu").remove();
+     $('#buildwechat').removeClass('hide');
+     $('#buildpersonal').removeClass('hide');
+    }else if($type == 1){
+     $("#bulidhtml").addClass('hide');
+        // $("#diy-kf-site").addClass('hide');
+     $("#codearea").addClass('hide');
+     $("#wolive-js").addClass('hide');
+     $('#minjs').addClass('hide');
+     $("#ymwl-kefu").remove();
+     $('#buildwechat').addClass('hide');
+     $('#buildpersonal').addClass('hide');
+    } else if($type == 2){
+        $("#bulidhtml").addClass('hide');
+        $("#codearea").addClass('hide');
+        $("#wolive-js").addClass('hide');
+        $('#minjs').addClass('hide');
+        $("#ymwl-kefu").remove();
+        // $("#diy-kf-site").removeClass('hide');
+        $('#buildwechat').addClass('hide');
+        $('#buildpersonal').addClass('hide');
+    }
+}
+
+var build =function(){
+    $('#wechat-mp').addClass('hide');
+
+    $type =$("#type").val();
+     if($type == 0 ){
+        $("#frontjs").addClass('hide');
+        $.ajax({
+           url:YMWL_ROOT_URL+'/admin/set/createFrontjs',
+           dataType:'json',
+            data:$("#form-diy").serialize(),
+           success:function(res){
+            if(res.code == 0){
+              layer.msg(res.msg,{icon:1,end:function(){
+                $("#wolive-js").removeClass('hide');
+                $("#codearea").removeClass('hide');
+                $("#minjs").removeClass('hide');
+                var str ='&lt;script src="'+res.data+'" charset="UTF-8">&lt;/script>';
+                $("#wolive-js .layui-code").html(str);
+                var newstr='<script src="'+res.data+'">';
+                $('#ymwl-kefu').remove();
+                $("#demo").html(newstr);
+
+              }});
+            }else{
+              layer.msg(res.msg,{icon:2});
+            }
+           }
+        });
+     }else if($type == 1){
+       $.ajax({
+         url:YMWL_ROOT_URL+'/admin/set/createMinjs',
+         dataType:'json',
+           data:$("#form-diy").serialize(),
+           type:"POST",   //请求方式
+         success:function(res){
+          if(res.code == 0){
+            layer.msg(res.msg,{icon:1,end:function(){
+              $("#wolive-js").removeClass('hide');
+              $("#codearea").removeClass('hide');
+              $("#frontjs").addClass('hide');
+              $("#minjs").removeClass('hide');
+              var str ='&lt;script src="'+res.data+'" charset="UTF-8"> &lt;/script>';
+              $("#wolive-js .layui-code").html(str);
+              layui.code({elem:'#wolive-js .layui-code',about: false});
+              var newstr='<script src="'+res.data+'">';
+                    $('#ymwl-kefu').remove();
+                    $('#wolive-talk').remove();
+                    $("#demo").html(newstr);
+            
+            }});
+          }else{
+            layer.msg(res.msg,{icon:2});
+          }
+         }
+       });
+     }else if($type == 2){
+         $.ajax({
+             url:YMWL_ROOT_URL+'/admin/set/createMinDiyjs',
+             dataType:'json',
+             data:$("#form-diy").serialize(),
+             type:"POST",   //请求方式
+             success:function(res){
+                 if(res.code == 0){
+                     layer.msg(res.msg,{icon:1,end:function(){
+                             $("#wolive-js").removeClass('hide');
+                             $("#codearea").removeClass('hide');
+                             $("#frontjs").addClass('hide');
+                             $("#minjs").removeClass('hide');
+                             var str ='&lt;script src="'+res.data+'" charset="UTF-8"> &lt;/script>';
+                             $("#wolive-js .layui-code").html(str);
+                             layui.code({elem:'#wolive-js .layui-code',about: false});
+                             var newstr='<script src="'+res.data+'">';
+                             $('#personal').remove();
+                             $('#ymwl-kefu').remove();
+                             $('#wolive-talk').remove();
+                             $('#blzxMinChatWindowDiv').remove();
+                             $("#demo").html(newstr);
+
+                         }});
+                 }else{
+                     layer.msg(res.msg,{icon:2});
+                 }
+             }
+         });
+     }
+}
+var domWechatMp=$('#wechat-mp');
+var buildmp = function(){
+    $type =$("#type").val();
+    if($type == 0){
+        $.ajax({
+            url:"{:url('admin/set/createWechatUrl','',true,true)}",
+            dataType:'json',
+            data:$("#form-diy").serialize(),
+            type:"POST",   //请求方式
+            success:function(res){
+                if(res.code == 0){
+                    layer.msg(res.msg,{icon:1,end:function(){
+                            $("#codearea").removeClass('hide');
+                            $("#frontjs").addClass('hide');
+                            $("#wolive-js").addClass('hide');
+                            $("#minjs").addClass('hide');
+                            $("#personal").addClass('hide');
+                            domWechatMp.removeClass('hide');
+                            domWechatMp.html(res.data);
+                        }});
+                }else{
+                    layer.msg(res.msg,{icon:2});
+                }
+            }
+        });
+
+    }
+};
+var domPersonal=$("#personal");
+var buildpersonal = function () {
+    $type =$("#type").val();
+    if($type == 0){
+        $("#codearea").removeClass('hide');
+        $("#frontjs").addClass('hide');
+        $("#wolive-js").addClass('hide');
+        $("#minjs").addClass('hide');
+        $('#wechat-mp').addClass('hide');
+        var theme=$('#theme').val();
+        theme=theme.replace("#","");
+        domPersonal.removeClass('hide');
+        var url="{$action}/index/index/home?business_id={$login['business_id']}&groupid={$login['groupid']}&special={$login['service_id']}&theme="+theme;
+        domPersonal.find('p').text(url);
+        qrnode = new AraleQRCode({
+            render: 'canvas',
+            correctLevel: 0,
+            text: url,
+            width: 150,
+            height: 150,
+            background: '#fff',
+            foreground: '#000',
+            image: "{$login.avatar}",
+            imageSize: 40
+        });
+        domPersonal.find('.qrcode_wrap_zs').html(qrnode);
+
+    }
+};
+
+var show =function(){
+    $('#wechat-mp').addClass('hide');
+    $('#personal').addClass('hide');
+   $type =$("#type").val();
+   if($type == 0){
+       $.ajax({
+           url:YMWL_ROOT_URL+'/admin/set/createHtml',
+           dataType:'json',
+           data:$("#form-diy").serialize(),
+           type:"POST",   //请求方式
+           success:function(res){
+               if(res.code == 0){
+                   layer.msg(res.msg,{icon:1,end:function(){
+                           $("#codearea").removeClass('hide');
+                           $("#wolive-js").addClass('hide');
+                           $("#frontjs").removeClass('hide');
+                           $("#minjs").addClass('hide');
+                           $('#ymwl-kefu').remove();
+                           $("#demo").html(res.data);
+                           $("#frontjs .layui-code").text(res.data);
+                           layui.code({elem:'#frontjs .layui-code',about: false});
+                       }});
+               }else{
+                   layer.msg(res.msg,{icon:2});
+               }
+           }
+       });
+
+   }
+}
+
+</script>
+
+{include file="public/footer"/}

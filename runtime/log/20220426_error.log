@@ -1,0 +1,9 @@
+---------------------------------------------------------------
+[ 2022-04-26T17:58:17+08:00 ] 119.139.137.48 GET chat.profittravel.com/platform/user/edit.html
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/application/platform/controller/User.php:125]
+---------------------------------------------------------------
+[ 2022-04-26T18:22:22+08:00 ] 119.139.137.48 POST chat.profittravel.com/admin/set/chats
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Set.php:58]
+---------------------------------------------------------------
+[ 2022-04-26T18:23:02+08:00 ] 119.139.137.48 POST chat.profittravel.com/admin/set/chats
+[ error ] [8]Trying to access array offset on value of type null[/data/wwwroot/dev/chat.profittravel.com/application/admin/controller/Set.php:58]

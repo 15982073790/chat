@@ -1,0 +1,497 @@
+{include file="public/header"/}
+
+<style>
+    #container {
+        background-color: #fff;
+    }
+
+    a {
+        cursor: pointer;
+    }
+    a:hover {
+        color: rgb(59, 180, 242);
+        text-decoration: none;
+    }
+
+    .my-setting {
+        margin: 20px 0;
+        background: #fff;
+        border-radius: 8px;
+        width: 98%;
+        height: 200px;
+        border: 1px solid #f7f7f7;
+    }
+
+    .my-setting > .list {
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .my-setting > .list .item {
+        height: 200px;
+    }
+
+    .my-setting .layui-table {
+        margin: 0px 0px;
+    }
+
+    .my-setting > .list > li {
+        width: 33%;
+        text-align: center;
+        margin: 10px 0px;
+    }
+
+    .my-setting > .list > li div {
+        margin-top: 12px;
+    }
+
+    .my-setting > .list > li > p {
+        height: 30px;
+        line-height: 30px;
+    }
+    .my-setting > .list > li > .name {
+        font-size: 15px;
+        font-weight: bold;
+        padding-top: 16px;
+    }
+    .my-setting > .list > li > .meta {
+        font-size: 14px;
+        color: rgb(180, 180, 180);
+        padding-top: 12px;
+    }
+    .my-setting > .list > li > .meta > select {
+        font-size: 14px;
+        color: #000000;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    .my-setting > .list > li > .name > .layui-form-switch {
+        margin-top: 0px;
+        margin: 0px 3px;
+    }
+    .my-setting > .list > li:not(:last-child) {
+        border-right: 1px solid #f7f7f7;
+    }
+
+    #container {
+        padding: 0 40px;
+    }
+
+    .page-header {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .handler {
+        width: 245px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .handler .back {
+        height: 32px;
+        width: 110px;
+        line-height: 32px;
+        text-align: center;
+        font-size: 13px;
+        color: #555555;
+        border: 1px solid #e5e3e9;
+        border-radius: 16px;
+    }
+
+    .handler .back .img {
+        width: 16px;
+        height: 16px;
+        margin: 6px 0 0 16px;
+        float: left;
+        background: url("__image__/admin/B/back-system.png");
+    }
+
+    .handler .button {
+        height: 32px;
+        width: 120px;
+        line-height: 32px;
+        text-align: center;
+        font-size: 13px;
+        color: #25c16f;
+        border: 1px solid #25c16f;
+        border-radius: 16px;
+    }
+
+    .handler .button a {
+        color: #25c16f;
+    }
+
+    .pusher {
+        margin: 50px 0;
+        padding-top: 50px;
+        background: #fff;
+        border-radius: 8px;
+        width: 98%;
+        height: 200px;
+        border: 1px solid #f7f7f7;
+    }
+
+    .pusher input {
+        color: #555555;
+        border-radius: 8px;
+        font-size: 14px;
+        width: 60%;
+    }
+
+    .pusher button {
+        width: 66px;
+        height: 36px;
+        color: #ffffff;
+        font-size: 13px;
+        background-color: #25c16f;
+        border-radius: 16px;
+    }
+
+    .pusher .layui-form-label {
+        font-size: 14px;
+        color: #999999;
+    }
+</style>
+<div id="container" style="padding-bottom: 42px">
+
+    <h2 class="page-header" style="font-size: 18px;color: #555555;"> 通用设置</h2>
+    <div class="handler">
+        <a href="{:url('admin/index/set')}">
+            <div class="back">
+                <i class="img"></i>
+                <span>返回设置</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="my-setting">
+        <div class="list">
+            <li class="item layui-form">
+                <div>
+                    <img src="__image__/admin/B/voice.png" alt="" width="80px" height="80px">
+                </div>
+                <p class="name">消息提示音</p>
+
+                <p class="meta">
+                    {if $voice == 'open'}
+                    <input type="checkbox" lay-skin="switch" checked lay-filter="voice" lay-text="开启|关闭">
+                    {else}
+                    <input type="checkbox" lay-skin="switch" lay-filter="voice" lay-text="开启|关闭">
+                    {/if}
+                </p>
+
+            </li>
+            <li class="item layui-form">
+                <div>
+                    <img src="__image__/admin/B/template.png" alt="" width="80px" height="80px">
+                </div>
+                <p class="name">模板消息</p>
+
+                <p class="meta">
+                    {if $template == 'open'}
+                    <input type="checkbox" lay-skin="switch" checked lay-filter="template" lay-text="开启|关闭">
+                    {else}
+                    <input type="checkbox" lay-skin="switch" lay-filter="template" lay-text="开启|关闭">
+                    {/if}
+                </p>
+
+            </li>
+            <li class="item layui-form">
+                <div>
+                    <img src="__image__/admin/B/distribution.png" alt="" width="80px" height="80px">
+                </div>
+                <p class="name">智能分配</p>
+                <p class="meta">
+                    {if $method == 'auto'}
+                    <input type="checkbox" lay-skin="switch" lay-filter="method" checked lay-text="开启|关闭">
+                    {else}
+                    <input type="checkbox" lay-skin="switch" lay-filter="method" lay-text="开启|关闭">
+                    {/if}
+                </p>
+
+            </li>
+            <li class="item layui-form">
+                <div>
+                    <img src="__image__/admin/B/tips-voice.png" alt="" width="80px" height="80px">
+                </div>
+                <p class="name">提示音 <a href="javascript: playVoice();"><i class='am-icon-play-circle'></i></a>
+                    <audio src="{$voice_addr}" controls="controls" hidden="true" id="voice_url"></audio>
+                </p>
+                <p class="meta">
+                    <a href="javascript:readyUpload();" class='layui-btn layui-btn-normal'
+                       style="margin-top:10px;height: 30px;line-height: 35px;">上传</a>
+                </p>
+                <div style="display: none;">
+                    <form id="voiceform" class="am-form am-form-xs" style="position: absolute;right: 80px;"
+                          method="post">
+                        <div class="am-form-group am-form-file">
+                            <div style="height: 100%">
+                                <input type="file" name="voice" id="voice" onchange='uploadVoice()' multiple>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+        </div>
+    </div>
+
+    <div class="pusher">
+        <div id="layui-container">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">推送url</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="push_url" placeholder="客服消息推送url"
+                               autocomplete="off" class="layui-input" value="{$push_url}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">入口域名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="domain_entry" placeholder="http://www.baidu.com"
+                               autocomplete="off" class="layui-input" value="{$info['domain_entry']}">
+                        <div style="color: #636c72;">访问入口域名（协议头+域名，如：http://www.baidu.com）,如果是微信公众号链接（请在公众号设置添加此域名）
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">落地域名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="domain_landing" placeholder="http://www.qq.com"
+                               autocomplete="off" class="layui-input" value="{$info['domain_landing']}">
+                        <div style="color: #636c72;">最终聊天窗口域名（协议头+域名，如：http://www.baidu.com）</div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block" style="padding-top: 5px">
+                        <button class="layui-btn keep" lay-submit lay-filter="pusher">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+		layui.use('form', function () {
+		var form = layui.form;
+		//监听提交
+		form.on('submit(pusher)', function (data) {
+			$.post("{:url('admin/set/setpushurl')}", data.field, function (res) {
+				if (res.code == 0) {
+					layer.msg(res.msg, {
+						icon: 1, end: function () {
+							location.reload();
+						}
+					});
+				} else {
+					layer.msg(res.msg, {
+						icon: 2, end: function () {
+						}
+					});
+				}
+			});
+
+			return false;
+		});
+	});
+
+	var playVoice =function(){
+	 $('#voice_url')[0].play();
+	}
+
+	var readyUpload=function(){
+	 $("#voice").click();
+	}
+
+	var uploadVoice=function(){
+
+	  $("#voiceform").ajaxSubmit({
+			url: '{:url("admin/manager/uploadvoice")}',
+			type: "post",
+			dataType:'json',
+			success: function (res) {
+				   if(res.code == 0){
+					   $('#voice_url').attr('src',res.data);
+					   layer.msg(res.msg,{icon:1});
+				   }else{
+					   layer.msg(res.msg,{icon:2});
+				   }
+
+			}
+		});
+
+	}
+
+	var getswitchmethod =function(res){
+	   $.ajax({
+		url:YMWL_ROOT_URL+'/admin/set/getswitchmodel',
+		type:'post',
+		dataType:'json',
+		data:{type:res},
+		success:function(res){
+		   if(res.code == 0){
+					layer.msg(res.data,{icon:1,end:function(){
+					}});
+				}else{
+					layer.msg(res.data,{icon:2,end:function(){
+					}});
+				}
+		}
+	   });
+	} 
+
+	var changeMethod=function(data){
+
+
+		 var checkStatus = data.elem.checked;
+		 if(checkStatus){
+			//智能
+			getswitchmethod('auto');
+		 }else{
+			//认领
+			getswitchmethod('claim');
+		 }
+	};
+
+	var changeTemplate = function(data) {
+	 var checkStatus = data.elem.checked;
+	 if(checkStatus){
+		 // open
+		 gettemplateswitch('open');
+	 }else{
+		 //close
+		 gettemplateswitch('close');
+	 }
+	};
+
+	var gettemplateswitch = function(res){
+
+	 $.ajax({
+		 url:YMWL_ROOT_URL+'/admin/set/templateswitch',
+		 type:'post',
+		 dataType:'json',
+		 data:{type:res},
+		 success:function(res){
+			 if(res.code == 0){
+				 layer.msg(res.data,{icon:1,end:function(){
+					 }});
+			 }else{
+				 layer.msg(res.data,{icon:2,end:function(){
+					 }});
+			 }
+		 }
+	 })
+	};
+
+	var getvideoswitch =function(res){
+
+		$.ajax({
+			url:YMWL_ROOT_URL+'/admin/set/videoswitch',
+			type:'post',
+			dataType:'json',
+			data:{type:res},
+			success:function(res){
+				if(res.code == 0){
+					layer.msg(res.data,{icon:1,end:function(){
+					}});
+				}else{
+					layer.msg(res.data,{icon:2,end:function(){
+					}});
+				}
+			}
+		})
+	}
+
+	var changeVideo=function(data){
+
+	  var checkStatus = data.elem.checked;
+	 if(checkStatus){
+		 // open
+		getvideoswitch('open');
+	 }else{
+		 //close
+		getvideoswitch('close');
+	 }
+
+	}
+
+
+	var getaudioswitch=function(res){
+
+		$.ajax({
+			url:YMWL_ROOT_URL+'/admin/set/audioswitch',
+			type:'post',
+			dataType:'json',
+			data:{type:res},
+			success:function(res){
+				if(res.code == 0){
+					layer.msg(res.data,{icon:1,end:function(){
+					}});
+				}else{
+					layer.msg(res.data,{icon:2,end:function(){
+					}});
+				}
+			}
+		});
+	}
+
+	var changeAudio=function(data){
+
+	 var checkStatus = data.elem.checked;
+	 if(checkStatus){
+		 // open
+		getaudioswitch('open');
+	 }else{
+		 //close
+		getaudioswitch('close');
+	 }
+	}
+	var getswitchvoice =function(res){
+		   $.ajax({
+			url:YMWL_ROOT_URL+'/admin/set/voiceswitch',
+			type:'post',
+			dataType:'json',
+			data:{type:res},
+			success:function(res){
+				if(res.code == 0){
+					layer.msg(res.data,{icon:1,end:function(){
+						// location.reload();
+					}});
+				}else{
+					layer.msg(res.data,{icon:2,end:function(){
+						// location.reload();
+					}});
+				}
+			}
+		})
+
+	}
+
+
+	var changeVoice=function(data){
+
+	  var checkStatus = data.elem.checked;
+	 if(checkStatus){
+		 // open
+		getswitchvoice('open');
+	 }else{
+		 //close
+		getswitchvoice('close');
+	 }
+	}
+
+	layui.use('form', function(){
+	var form = layui.form;
+	form.on('switch(method)',changeMethod);
+	form.on('switch(video)',changeVideo);
+	form.on('switch(audio)',changeAudio);
+	form.on('switch(voice)',changeVoice);
+	form.on('switch(template)',changeTemplate);
+	});
+</script>
+
+{include file="public/footer"/}

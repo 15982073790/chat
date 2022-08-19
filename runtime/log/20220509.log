@@ -1,0 +1,28 @@
+---------------------------------------------------------------
+[ 2022-05-09T03:59:17+08:00 ] 124.223.193.173 GET chat.profittravel.com/
+[运行时间：0.086519s] [吞吐率：11.56req/s] [内存消耗：2,585.05kb] [文件加载：64]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004418s ]
+[ info ] [ LANG ] /data/wwwroot/dev/chat.profittravel.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.36',
+  'host' => 'chat.profittravel.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.000427s ]
+[ info ] [ RUN ] app\index\controller\Index->index[ /data/wwwroot/dev/chat.profittravel.com/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File

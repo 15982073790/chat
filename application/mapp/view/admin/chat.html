@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <title>对话平台</title>
+    <script>
+        YMWL_ROOT_URL = "{$baseroot}";
+    </script>
+    <link href="__libs__/layui/css/layui.css?v=__lkversion__" rel="stylesheet">
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+    <script src="__libs__/layui/layui.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/push/pusher.min.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/layer/layer.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/jquery/jquery.cookie.js?v=__lkversion__" type="text/javascript"></script>
+</head>
+<style>
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .visiter {
+        width: 100%;
+        height: 80px;
+        position: relative;
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .visiter:hover {
+        background: #ddd;
+    }
+
+    .waiter {
+        width: 94%;
+        height: 50px;
+        padding: 12px;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .myicon {
+        position: absolute;
+        right: 2px;
+        top: 3px;
+        cursor: pointer;
+    }
+
+    .visit_content {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        left: 9px;
+        top: 5px;
+        width: 90%;
+        height: 90%;
+    }
+
+    .v-avatar {
+        position: absolute;
+        top: 6px;
+        border-radius: 5px;
+    }
+
+    .c_name {
+        position: absolute;
+        left: 70px;
+        top: 8px;
+        font-size: 20px;
+        font-weight: 200;
+    }
+
+    .newmsg {
+        position: absolute;
+        bottom: 8px;
+        left: 70px;
+        font-size: 16px;
+        color: #8D8D8D;
+        width: 70%;
+        height: 20px;
+        overflow: hidden;
+    }
+
+    .list {
+        display: inline-block;
+        width: 50%;
+        height: 50px;
+        font-size: 20px;
+        text-align: center;
+        line-height: 47px;
+        background: #3c3c3c;
+        border-bottom: 3px solid #c9c9c9;;
+    }
+
+    .onclick {
+        background: #0C0C0C;
+        border-bottom: 3px solid #1b961b;
+    }
+
+    .notice-icon {
+        display: inline-block;
+        color: #FFFFFF;
+        position: absolute;
+        right: 2px;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        background: #D92F2F;
+        text-align: center;
+        border-radius: 20px;
+        line-height: 20px;
+    }
+
+    .icon_gray {
+        -webkit-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        filter: grayscale(100%);
+        filter: gray;
+    }
+
+    .waiticon {
+        display: inline-block;
+        color: #FFFFFF;
+        position: absolute;
+        right: 2px;
+        width: 20px;
+        height: 20px;
+        background: #D92F2F;
+        text-align: center;
+        border-radius: 20px;
+        line-height: 20px;
+        font-size: 15px;
+    }
+
+    .geticon {
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        font-size: 30px;
+    }
+
+    .size {
+        position: absolute;
+        right: 0px;
+        top: 24px;
+        font-size: 30px;
+    }
+</style>
+<body>
+<section>
+
+    <header style="width: 100%;height: 50px;position: relative;border-bottom:1px solid #ddd;box-shadow: 0 0 1px #ccc;background: #fff; ">
+        <div style="position: absolute;left: 20px;top:5px;">
+            <a href="https://www.dianqilai.com">
+                <img src="__image__/index/workerman_logo.png" width="40px" style="border-radius: 10px;"/>
+            </a>
+        </div>
+
+        <div style="position: absolute;left: 80px;top: 10px;font-size: 20px;">
+            <a href="https://www.dianqilai.com">点企来 客服系统</a>
+        </div>
+
+        <div class="layui-nav-item" style="position: absolute;right: 5px;top: 5px;">
+            <a href="javascript:show();" style="color: #b2b2b2;"><i class="layui-icon" style="font-size: 40px;">
+                &#xe60f;</i></a>
+            <dl class="layui-nav-child" style="left:-65px;min-width: 100px;">
+                <dd style="text-align: center;"><a href="/mobile/admin/index">主页</a></dd>
+                <dd style="text-align: center;"><a href="/mobile/admin/message">留言列表</a></dd>
+            </dl>
+        </div>
+    </header>
+
+    <div class="" style="width: 100%;height: 50px;color: #FFFFFF;">
+        <span class="list onclick" title="chat" onclick="choose(this)">当前对话</span><span class="list" title="wait"
+                                                                                        onclick="choose(this)">排队列表<div
+            id="waitnum" class="hide"></div></span>
+    </div>
+    <section id="chatlist" style="overflow-y: auto;">
+    </section>
+    <section id="waitlist" style="overflow-y: auto;display: none;">
+    </section>
+</section>
+
+<script>
+
+    var config = {
+        'app_key': '{$app_key}',
+        'web_host': '{$whost}',
+        'web_port': '{$wport}',
+        'value': '{$value}',
+        'business_id': '{$user["business_id"]}',
+        'service_id': '{$user["service_id"]}',
+        'voice_state': '{$voice}',
+        'voice_address': '{$voice_address}'
+    };
+
+    var choose = function (obj) {
+        $(obj).addClass("onclick");
+        $(obj).siblings().removeClass('onclick');
+        var falg = $(obj).attr('title');
+        if (falg == 'chat') {
+            $("#chatlist").show();
+            $("#waitlist").hide();
+        } else {
+            $("#chatlist").hide();
+            $("#waitlist").show();
+        }
+    }
+
+    var show = function () {
+        var value = $('.layui-nav-child').css('display');
+
+        if (value == 'block') {
+            $('.layui-nav-child').css('display', 'none');
+        } else {
+            $('.layui-nav-child').css('display', 'block');
+        }
+    }
+
+    var wolive_connect = function () {
+
+        if (config.value == 'true') {
+            var pusher = new Pusher(config.app_key, {
+                encrypted: true
+                , enabledTransports: ['wss']
+                , wsHost: config.web_host
+                , wssPort: config.web_port
+                , authEndpoint: '/auth.php'
+                , disableStats: true
+            });
+        } else {
+            var pusher = new Pusher(config.app_key, {
+                encrypted: false
+                , enabledTransports: ['ws']
+                , wsHost: config.web_host
+                , wsPort: config.web_port
+                , authEndpoint: '/auth.php'
+                , disableStats: true
+            });
+        }
+
+
+        var channel = pusher.subscribe("kefu" + config.service_id);
+
+        // 发送一个推送
+        channel.bind("callbackpusher",function(data){
+            $.post("{:url('admin/set/callback','',true,true)}",data,function(res){
+
+            })
+        });
+
+        channel.bind("cu-event", function (data) {
+            // 获取未读消息数
+
+            var str = data.message.content;
+            str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture) {
+
+                var pos = capture.lastIndexOf("/");
+                var value = capture.substring(pos + 1);
+
+                if (value.indexOf("emo") == 0) {
+                    str = '[表情]';
+                } else {
+                    str = '[图片]';
+                }
+            });
+
+            str = str.replace(/<div><a[^<>]+>.+?<\/a><\/div>/, '[文件]');
+
+            str = str.replace(/<img src=['"]([^'"]+)[^>]*>/gi, '[图片]');
+
+            $.cookie(data.message.channel, str);
+            $("#msg" + data.message.channel).html(str);
+            getchat();
+
+        });
+
+
+        // 通知 游客离线
+        channel.bind("logout", function (data) {
+            getchat();
+        });
+
+        channel.bind("geton", function (data) {
+            getchat();
+        });
+
+        // 认领后获取访客信息
+        var channelme = pusher.subscribe("ud" + config.service_id);
+        channelme.bind("on_notice", function (data) {
+            getwait();
+            getchat();
+
+        });
+        // 公共频道
+
+        var channelall = pusher.subscribe("all" + config.business_id);
+        channelall.bind("on_notice", function (data) {
+
+            layer.msg(data.message);
+            getwait();
+        });
+
+
+        pusher.connection.bind('state_change', function (states) {
+            // states = {previous: 'oldState', current: 'newState'}
+            if (states.current == 'unavailable' || states.current == "disconnected" || states.current == "failed") {
+                // pusher.disconnect();
+                pusher.unsubscribe("kefu" + config.service_id);
+                pusher.unsubscribe("all" + config.business_id);
+                pusher.unsubscribe("ud" + config.service_id);
+                wolive_connect();
+            }
+
+        });
+
+        pusher.connection.bind('connected', function () {
+            getchat();
+            getwait();
+        });
+    }
+
+
+    // 获取排队列表
+    function getwait() {
+
+        $.ajax({
+            url:YMWL_ROOT_URL+"/admin/set/getwait",
+            dataType: 'json',
+            success: function (res) {
+
+                if (res.code == 0) {
+                    // alert(res);
+                    $("#waitlist").empty();
+                    var a = "";
+                    $.each(res.data, function (k, v) {
+
+                        if (v.state == "online") {
+                            a += '<div class="waiter">';
+                            a += '<img id="img' + v.visiter_id + '" class="am-radius w-avatar" src="' + v.avatar + '" width="50px" height="50px"><span class="wait_name" style="margin-left:20px;font-size: 20px;">' + v.visiter_name + '</span>';
+                            a += '<i class="layui-icon geticon" title="认领" onclick="get(' + "'" + v.visiter_id + "'" + ')">&#xe654;</i></div>';
+                        } else {
+                            a += '<div class="waiter">';
+                            a += '<img id="img' + v.visiter_id + '"  class="am-radius w-avatar icon_gray"  src="' + v.avatar + '" width="50px" height="50px"><span class="wait_name" style="margin-left:20px;font-size: 20px;">' + v.visiter_name + '</span>';
+                            a += '<i class="layui-icon geticon" title="认领" onclick="get(' + "'" + v.visiter_id + "'" + ')">&#xe654;</i></div>';
+                        }
+
+                    });
+
+                    $("#waitlist").append(a);
+
+                    $("#waitnum").removeClass("hide");
+                    $("#waitnum").addClass("waiticon");
+                    $("#waitnum").text(res.num);
+                } else {
+
+                    $("#waitlist").empty();
+                    $("#waitnum").removeClass("waiticon");
+                    $("#waitnum").addClass("hide");
+                }
+            }
+
+        });
+    }
+
+    // 对话列表
+    function getchat() {
+        $.ajax({
+            url:YMWL_ROOT_URL+"/admin/set/getchats",
+            success: function (res) {
+                $("#chatlist").empty();
+
+                if (res.code == 0) {
+                    var sdata = $.cookie('cu_com');
+                    if (sdata) {
+                        var json = $.parseJSON(sdata);
+                        var debug = json.visiter_id;
+                    } else {
+                        var debug = "";
+                    }
+                    var data = res.data;
+                    var a = '';
+                    $.each(data, function (k, v) {
+
+                        var str = JSON.stringify(v);
+
+
+                        if (v.state == 'online') {
+
+                            if (v.count == 0) {
+                                a += '<div class="visiter">';
+                                a += '<i class="layui-icon size" title="删除"  onclick="cut(' + "'" + v.visiter_id + "'" + ')">&#xe640;</i>';
+                                a += '<a class="visit_content" href="/mobile/admin/talk?channel=' + v.channel + '&avatar=' + v.avatar + '">';
+                                a += '<img class="v-avatar" src="' + v.avatar + '" width="60px" height="60px">';
+                                a += '<span class="c_name">' + v.visiter_name + '</span><div id="msg' + v.visiter_id + '" class="newmsg">' + v.content + '</div></a>';
+                                a += '<span id="c' + v.visiter_id + '" class="notice-icon" style="display: none;"></span></div>';
+                            } else {
+                                a += '<div class="visiter">';
+                                a += '<i class="layui-icon size" title="删除" onclick="cut(' + "'" + v.visiter_id + "'" + ')">&#xe640;</i>';
+                                a += '<a class="visit_content" href="/mobile/admin/talk?channel=' + v.channel + '&avatar=' + v.avatar + '">';
+                                a += '<img class="v-avatar" src="' + v.avatar + '" width="60px" height="60px">';
+                                a += '<span class="c_name">' + v.visiter_name + '</span><div id="msg' + v.visiter_id + '" class="newmsg">' + v.content + '</div></a>';
+                                a += '<span id="c' + v.visiter_id + '" class="notice-icon">' + v.count + '</span></div>';
+                            }
+
+                        } else {
+
+                            if (v.count == 0) {
+                                a += '<div class="visiter">';
+                                a += '<i class="layui-icon size" title="删除" onclick="cut(' + "'" + v.visiter_id + "'" + ')">&#xe640;</i>';
+                                a += '<a class="visit_content" href="/mobile/admin/talk?channel=' + v.channel + '&avatar=' + v.avatar + '">';
+                                a += '<img class="v-avatar icon_gray" src="' + v.avatar + '" width="60px" height="60px">';
+                                a += '<span class="c_name">' + v.visiter_name + '</span><div id="msg' + v.visiter_id + '" class="newmsg">' + v.content + '</div></a>';
+                                a += '<span id="c' + v.visiter_id + '" class="notice-icon" style="display: none;"></span></div>';
+                            } else {
+                                a += '<div class="visiter">';
+                                a += '<i class="layui-icon size" title="删除"  onclick="cut(' + "'" + v.visiter_id + "'" + ')">&#xe640;</i>';
+                                a += '<a class="visit_content" href="/mobile/admin/talk?channel=' + v.channel + '&avatar=' + v.avatar + '">';
+                                a += '<img class="v-avatar icon_gray" src="' + v.avatar + '" width="60px" height="60px">';
+                                a += '<span class="c_name">' + v.visiter_name + '</span><div id="msg' + v.visiter_id + '" class="newmsg">' + v.content + '</div></a>';
+                                a += '<span id="c' + v.visiter_id + '" class="notice-icon">' + v.count + '</span></div>';
+
+                            }
+                        }
+
+                    });
+                    $("#chatlist").append(a);
+                }
+            }
+        });
+    }
+
+
+    // 认领
+    function get(id) {
+        $.ajax({
+            url:YMWL_ROOT_URL+"/admin/set/get",
+            type: "post",
+            data: {visiter_id: id},
+            success: function (res) {
+                layer.msg("认领成功", {offset: "20px"});
+                getwait();
+                getchat();
+            }
+        });
+    }
+
+    // 删除
+    function cut(id) {
+
+        var data = $.cookie("cu_com");
+        var visiter_checked;
+        if (data) {
+            var jsondata = $.parseJSON(data);
+            visiter_checked = jsondata.visiter_id;
+        }
+        $.ajax({
+            url:YMWL_ROOT_URL+"/admin/set/deletes",
+            type: "post",
+            data: {
+                visiter_id: id
+            },
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == 0) {
+                    layer.msg("删除成功", {offset: "20px"});
+                }
+                // 删除修改
+                getchat();
+            }
+        })
+    }
+
+    var init = function () {
+        wolive_connect();
+        getwait();
+        getchat();
+    }
+
+    window.onload = init();
+
+</script>
+
+</body>
+</html>

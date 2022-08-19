@@ -1,0 +1,32 @@
+{include file="public/header"/}
+
+<!-- 消息推送 -->
+<div id="re_warp" style="width: 80%;height: 90%;margin:80px auto;"></div>
+
+</div>
+<script>
+    var init =function(){
+
+        var value = localstroage.getItem('record');
+        if(value){
+            var data =$.parseJSON(value);
+            dataarr=data;
+
+            getrdata();
+        }
+    }
+
+    window.onload = init();
+
+    function sdelete(num) {
+
+        $("#" + num).remove();
+
+    }
+</script>
+</script>
+
+
+{include file="public/footer"/}
+
+

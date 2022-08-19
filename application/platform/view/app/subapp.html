@@ -1,0 +1,367 @@
+<style>
+    .subapp-search {
+        width: 196px;
+        height: 54px;
+        padding-left: 16px;
+        position: relative;
+    }
+
+    .subapp-search input {
+        margin-top: 12px;
+        width: 180px !important;
+        height: 30px;
+        border-radius: 15px;
+        padding-left: 12px;
+    }
+
+    .subapp-search .btn {
+        position: absolute;
+        height: 14px;
+        width: 14px;
+        padding: 0;
+        line-height: normal;
+        top: 20px;
+        border: 0;
+        right: 12px;
+    }
+
+    .subapp-search .btn img {
+        height: 14px;
+        width: 14px;
+    }
+
+    .subapp-list {
+        border: 0;
+        border-top: 1px solid #f7f7f7;
+    }
+
+    .subapp-list thead, .subapp-list thead tr {
+        border: 0;
+    }
+
+    .subapp-list thead th {
+        background-color: #fff;
+        height: 40px;
+        border: 0;
+    }
+
+    .subapp-list tbody td {
+        height: 76px;
+        line-height: 76px;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top: 1px solid #f7f7f7;
+    }
+
+    .operate a {
+        margin-top: 12px;
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        border-radius: 16px;
+        background-color: #f5f5f5;
+        margin-right: 10px;
+    }
+
+    .operate a img {
+        display: block;
+        margin: 6px;
+        height: 20px;
+        width: 20px;
+    }
+
+    .add-app {
+        display: inline-block;
+        padding: 0;
+        height: 32px;
+        line-height: 32px;
+        width: 104px;
+        border-radius: 16px;
+        font-size: 13px;
+        color: #fff;
+        background-color: #25c16f;
+        border: 1px solid #25c16f;
+    }
+
+    .add-modal .modal-dialog .modal-content {
+        width: 600px;
+    }
+
+    .add-modal .form-input {
+        width: 300px;
+    }
+
+    .add-modal .modal-body {
+        padding: 0
+    }
+
+    .add-modal .modal-dialog {
+        margin-top: 5%;
+    }
+
+    .clean-modal .modal-dialog .modal-content {
+        width: 500px;
+    }
+
+    .clean-modal .modal-body {
+        padding: 25px;
+    }
+
+    .clean-modal .modal-dialog {
+        margin-top: 10%;
+        position: relative;
+    }
+
+    .search {
+        display: inline-block;
+        border-radius: 15px;
+    }
+
+    .search input {
+        border-radius: 15px;
+        width: 180px !important;
+        height: 30px;
+        padding-left: 12px;
+    }
+
+    .clean-item {
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .clean-item input[type='checkbox'] {
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        background: url("/assets/images/admin/none.png") no-repeat center;
+        font-size: 12px;
+        display: inline-block;
+        border: 0;
+        position: relative;
+        top: 4px;
+        margin-right: 5px;
+        -webkit-appearance: none;
+        outline: none;
+    }
+
+    .clean-item input[type=checkbox]:checked {
+        background: url("/assets/images/admin/over.png") no-repeat center;
+    }
+
+    .clean-item select {
+        margin-left: 20px;
+        border-color: #E5E3E9;
+        border-radius: 5px;
+        padding: 5px;
+        padding-top: 0;
+        vertical-align: middle;
+    }
+
+    .clean-item select:disabled {
+        background-color: #F7F7F7;
+    }
+
+    .clean-modal .to-clean {
+        color: #fff;
+        background-color: #25c16f;
+        border: 1px solid #25c16f;
+        margin: 30px auto 0;
+        height: 32px;
+        line-height: 32px;
+        width: 80px;
+        border-radius: 16px;
+        font-size: 13px;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .nothing .clean-item-title {
+        color: #CECECE
+    }
+
+    .clean-item.nothing input[type='checkbox'] {
+        background-color: #F7F7F7;
+    }
+    .float-text {
+        float: right;
+    }
+</style>
+<div class="subapp-search">
+    <form method="get" class="form-inline">
+        <input type="hidden" name="r" value="admin/app/other-app">
+        <input value="{$keyword}" placeholder="名称/账户" type="text" name="keyword"
+               class="form-control form-control-sm">
+        <button style="cursor: pointer" class="btn btn-link btn-sm"><img src="__image__/admin/A/search.png" alt="">
+        </button>
+    </form>
+</div>
+<div class="modal add-modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="myModalLabel"><b>添加客服系统</b></div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="add-modal-body modal-body"></div>
+        </div>
+    </div>
+</div>
+<table class="subapp-list table bg-white">
+    <thead>
+    <tr style="font-size: 13px;color: #555555">
+        <th></th>
+        <th>ID</th>
+        <th>账户</th>
+        <th>名称</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    {if condition="count($list) == 0"}
+    <tr>
+        <td colspan="5" class="text-center p-5">
+            <!--<a href="javascript:" class="add-app">添加客服系统商城</a>-->
+            <span class="text-muted">暂无相关客服系统</>
+        </td>
+    </tr>
+    {/if}
+    {volist name="list" id="item"}
+    <col style="width: 32px">
+    <col style="width: 94px">
+    <col style="width: 208px">
+    <col style="width: 220px">
+    <col style="width: 164px">
+    <col>
+    <tr>
+        <td></td>
+        <td>{$item['id']}</td>
+        <td>{$item['admin']['username']}</td>
+        <td>
+            {if condition="$item['is_recycle'] == 0 "}
+            <a style="color: #25c16f;text-decoration: none;" href="{:url('app/entry', ['id' => $item['id']])}">{$item['business_name']}</a>
+            {else/}
+            {$item['business_name']}
+            {/if}
+        </td>
+        <td>
+            {$item['is_recycle'] == 1 ? '回收站': '正常'}
+        </td>
+        <td class="operate">
+            <a href="#" data-toggle="modal" class="edit-app" id="{:url('platform/app/edit', ['id' => $item['id']])}"
+               data-target="#add-modal"><img src="__image__/admin/A/edit.png" alt="编辑"></a>
+            <a href="#" data-toggle="modal" class="clean-app"
+               id="{:url('platform/app/truncate',  ['id' => $item['id']])}" data-target="#clean-modal">
+                <img src="__image__/platform/truncate.png" alt="清理磁盘" title="清理磁盘"></a>
+            {if condition="$item['is_recycle'] == 0"}
+            <a class="recycle-btn"
+               data-desc="确认将客服系统放进回收站？"
+               href="{:url('app/setRecycle', ['id' => $item['id'],'action'=>1])}"><img
+                    src="__image__/admin/A/restore.png" alt=""></a>
+            {else/}
+            <a class="recycle-btn"
+               data-desc="确认恢复客服系统？"
+               href="{:url('app/setRecycle', ['id' => $item['id'],'action'=>0])}"><img
+                    src="__image__/admin/A/recover.png" alt=""></a>
+            {/if}
+            <a class="delete-btn" href="{:url('app/delete', ['id' => $item['id']])}"><img
+                    src="__image__/admin/A/delete.png" alt=""></a>
+        </td>
+    </tr>
+    {/volist}
+</table>
+<!-- 清理功能 -->
+<div class="modal clean-modal fade" id="clean-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- 标题 -->
+            <div class="modal-header">
+                <div class="modal-title" id="myModalLabel"><b>清理磁盘空间</b><b style="color: red;">无法找回,请谨慎操作！！！</b></div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="clean-modal-body modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+{$page}
+<script>
+    $(document).on("click", ".delete-btn", function () {
+        var href = $(this).attr("href");
+        $.myConfirm({
+            content: "确认将客服系统删除？请谨慎操作",
+            confirm: function () {
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    dataType: "json",
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                            callback: function () {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+
+            }
+        });
+        return false;
+    });
+
+    $(document).on("click", ".recycle-btn", function () {
+        var href = $(this).attr("href");
+        var desc = $(this).attr("data-desc");
+        $.myConfirm({
+            content: desc,
+            confirm: function () {
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    dataType: "json",
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                            callback: function () {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        return false;
+    });
+
+    $(document).on("click",".clean-app",function () {
+        let id = this.id;
+        $.ajax({
+            url: id,
+            success: function (data) {
+                var result = $(data);
+                $(".clean-modal-body").html(result);
+            }
+        })
+    });
+
+    $(document).on("click", ".edit-app", function () {
+        let id = this.id;
+        $('.add-modal').find('.modal-title').text('编辑客服系统')
+        $.ajax({
+            url: id,
+            success: function (data) {
+                var result = $(data);
+                $(".add-modal-body").html(result);
+            }
+        })
+    });
+</script>

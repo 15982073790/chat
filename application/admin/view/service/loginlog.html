@@ -1,0 +1,82 @@
+{include file="public/header"/}
+<style>
+    .head {
+        margin: 10px 0px;
+        height: 40px;
+        line-height: 40px;
+        background: #ddd;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .head .title {
+        padding: 0px 15px;
+    }
+
+    .handler .back .img {
+        width: 16px;
+        height: 16px;
+        margin: 6px 0 0 16px;
+        float: left;
+        background: url("__image__/admin/B/back-system.png");
+    }
+
+    .changepwd .layui-layer-ico {
+        height: 24px;
+        width: 24px;
+        background: url("__image__/admin/B/cha.png") no-repeat;
+    }
+
+    .changepwd .layui-layer-content {
+        padding: 0 16px;
+        margin-right: 20px;
+    }
+
+    .recycle {
+        float: left;
+        margin-left: 40px;
+        width: 20px;
+        height: 20px;
+        background: url("__image__/admin/B/delete.png") no-repeat;
+        cursor: pointer;
+    }
+
+    .copybtn:focus {
+        outline: 0;
+    }
+
+    #container {
+        background-color: #fff;
+    }
+</style>
+<div id="container" style="overflow-y: auto;padding-bottom: 42px">
+    <h2 class="page-header" style="font-size: 18px;color: #555555;">登录日志</h2>
+    <div class="handler">
+    </div>
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>用户名</th>
+            <th>登录IP</th>
+            <th>登录地址</th>
+            <th>登录端</th>
+            <th>登录时间</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {volist name='list' id='admins'}
+        <tr>
+            <td>{$admins.name}</td>
+            <td>{$admins.ip}</td>
+            <td>{$admins.area}</td>
+            <td><?php if($admins['login_side']==2){echo '手机端登录';}else{echo '电脑端登录';} ?></td>
+            <td>{:date('Y-m-d H:i:s',$admins['createtime'])}</td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    {$list->render()}
+
+</div>
+{include file="public/footer"/}

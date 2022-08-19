@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>editer</title>
+    <script>
+        YMWL_ROOT_URL = '{$baseroot}';
+    </script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+    <link href="__libs__/amaze/css/amazeui.min.css?v=__lkversion__" type="text/css" rel="stylesheet"/>
+    <script src="__libs__/amaze/js/amazeui.min.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/layer/layer.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/layui/layui.js?v=__lkversion__" type="text/javascript"></script>
+    <link href="__libs__/layui/css/layui.css?v=__lkversion__" rel="stylesheet">
+    <link rel="stylesheet" href="__libs__/myeditor/css/editormd.css?v=__lkversion__"/>
+    <script src='__libs__/myeditor/editormd.js'></script>
+    <script src="__libs__/myeditor/lib/marked.min.js?v=__lkversion__"></script>
+    <script src="__libs__/myeditor/lib/prettify.min.js?v=__lkversion__"></script>
+    <script src="__libs__/myeditor/lib/raphael.min.js?v=__lkversion__"></script>
+    <script src="__libs__/myeditor/lib/underscore.min.js?v=__lkversion__"></script>
+    <script src="__libs__/myeditor/lib/sequence-diagram.min.js?v=__lkversion__"></script>
+    <script src="__libs__/myeditor/lib/flowchart.min.js?v=__lkversion__"></script>
+</head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    #question {
+        font-size: 13px;
+        color: #555555;
+        border: 1px solid #e5e3e9;
+        border-radius: 8px;
+    }
+    button.keep {
+        width: 66px;
+        height: 36px;
+        color: #ffffff;
+        font-size: 13px;
+        background-color: #25c16f;
+        border-radius: 16px;
+    }
+
+    button.reset {
+        width: 66px;
+        height: 36px;
+        color: #555555;
+        font-size: 13px;
+        background-color: #f7f7f7;
+        border-radius: 16px;
+        border: 0;
+    }
+
+    .item-p {
+        font-size: 13px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 2px;
+        color: #999999
+    }
+
+    img {
+        max-width: 100%;
+    }
+</style>
+<body>
+<div style="width: 90%;height: 100%;margin:5px auto;">
+    <p class="item-p">常见问题：</p>
+    <input type="text" id="question" class="layui-input" value="{$question}">
+
+    <p class="item-p">关键词(最多6个字)：</p>
+    <input type="text" id="keyword" class="layui-input" value="{$keyword}">
+
+    <p class="item-p">排序字段(数字越大,越靠前)：</p>
+    <input type="text" id="sort" class="layui-input" value="{$sort}">
+
+    <p class="item-p">是否显示（客户端是否展示）：</p>
+    <select name="status" id="status"
+            style="padding: 3px 10px;font-size: 14px;border-radius: 15px;border: 1px solid #e5e3e9;height: 32px;">
+        <option value="1" {if $status== 1} selected{
+        /if}>显示</option>
+        <option value="0" {if $status== 0} selected{
+        /if}>不显示</option>
+    </select>
+
+    <p class="item-p">解决回答：</p>
+    <div id="a-editormd" style="width: 100%;">
+        <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"
+                  id="a_editormd" style="height: 260px;">{$answer}</textarea>
+    </div>
+    <div class="layui-form-item" style="margin-top: 12px;text-align: center">
+        <button class="layui-btn keep" onclick="geton()" lay-submit lay-filter=" template">保存</button>
+        <button type="reset" onclick="reset()" class="layui-btn layui-btn-primary reset">取消</button>
+    </div>
+</div>
+<script type="text/javascript" src="__assets__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__assets__/ueditor/ueditor.all.js"></script>
+<script type="text/javascript">
+    var editorOption = {
+        UEDITOR_HOME_URL: "__assets__/ueditor/",
+        UEDITOR_ROOT_URL: "__assets__/ueditor/",
+        serverUrl: "{:url('upload/ueditor',['action'=>'config','service_id'=>session('Msg.service_id'),'admin_id'=>0])}",
+        lang: "zh-cn",
+        toolbars: [["undo", "redo", "|", "bold", "italic", "underline", "fontborder", "strikethrough", "superscript", "subscript", "removeformat", "formatmatch", "autotypeset", "blockquote", "pasteplain", "|", "forecolor", "backcolor",  "selectall", "cleardoc", "|","lineheight", "|", "customstyle", "paragraph", "fontfamily", "fontsize", "|",  "link", "unlink","|", "simpleupload", "insertimage", "emotion"]],
+        initialContent: "",
+        pageBreakTag: "_ueditor_page_break_tag_",
+        initialFrameWidth: "100%",
+        initialFrameHeight: "260",
+        initialStyle: "body{font-size:14px}",
+        autoFloatEnabled: false,
+        allowDivTransToP: true,
+        autoHeightEnabled: false,
+        charset: "utf-8",
+    };
+    var DomUe=UE.getEditor("a_editormd",editorOption)
+</script>
+</body>
+<script>
+    var lock = false;
+    function geton() {
+        var q = $("#question").val();
+        var k = $("#keyword").val();
+        var a = DomUe.getContent();
+        var sort = $("#sort").val();
+        var status = $("#status").val();
+        var qid = {$qid};
+        // a = a.replace(/><img/g, ' target="_blank"><img');
+        if (q) {
+            if (!lock) {
+                lock = true;
+                $.ajax({
+                    url: YMWL_ROOT_URL + '/admin/manager/addquestion',
+                    type: 'post',
+                    data: {question: q,keyword:k, answer: a, qid: qid,sort:sort,status:status},
+                    success: function (res) {
+
+                        if (res.code == 0) {
+                            layer.msg(res.msg, {
+                                icon: 1, end: function () {
+                                    parent.location.reload();
+                                }
+                            });
+                        } else {
+                            layer.msg(res.msg, {
+                                icon: 2
+                            });
+                        }
+                        lock = false;
+                    }
+                });
+            }
+        } else {
+            layer.msg('数据不完整');
+        }
+    }
+
+    function reset(){
+        parent.layer.closeAll();
+    }
+
+</script>
+</html>

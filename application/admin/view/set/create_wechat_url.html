@@ -1,0 +1,23 @@
+
+<span style="color: red">{$speciallink.group_name}(将二维码保存下来，进行推广，客户通过微信扫码即可和客服聊天):</span><p>{$speciallink.url}</p>
+<div class="qrcode_wrap"></div>
+{volist name='wechat' id='data'}
+<span style="color: red">{$data.group_name}:</span><p>{$data.url}</p>
+{/volist}
+<script>
+var qrcode = function (){
+var qrnode = new AraleQRCode({
+render: 'canvas',
+correctLevel: 0,
+text: "{$speciallink.url}",
+width: 150,
+height: 150,
+background: '#fff',
+foreground: '#000',
+image: "{$login.avatar}",
+imageSize: 40
+});
+$('.qrcode_wrap').html(qrnode).removeClass('hide');
+};
+qrcode();
+</script>

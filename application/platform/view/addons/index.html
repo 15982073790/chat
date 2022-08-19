@@ -1,0 +1,255 @@
+<script type="text/javascript" src="/assets/ueditor/third-party/webuploader/webuploader.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/ueditor/third-party/webuploader/webuploader.css">
+<style type="text/css">
+    .add-app {
+        display: inline-block;
+        padding: 0;
+        height: 32px;
+        line-height: 32px;
+        width: 104px;
+        border-radius: 16px;
+        font-size: 13px;
+        color: #fff;
+        background-color: #25c16f;
+        border: 1px solid #25c16f;
+    }
+
+    .my-app {
+        height: 56px;
+        padding: 12px 16px;
+        position: relative;
+        border-bottom: 1px solid #f7f7f7;
+    }
+
+    #orderImportXls input {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+    .webuploader-pick {
+        background: none;
+        padding: 0;
+    }
+
+    .webuploader-pick-hover {
+        background: none;
+        padding: 0;
+    }
+
+    /*左浮动固定宽度，右边盒子overflow:hidden触发bfc，使其不与浮动盒子区域重叠，因此会重新计算宽度。*/
+    .container1 .left {
+        float: left;
+
+    }
+
+    .container1 .right {
+        overflow: hidden;
+        line-height: 32px;
+    }
+
+    /*清除浮动*/
+    .container1:after {
+        content: "";
+        height: 0;
+        line-height: 0;
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+</style>
+<div class="my-app container1">
+
+    <div class="left"><a href="javascript:" class="btn btn-sm btn-primary mr-3 add-app" id="ImportAddons"><i
+            class="layui-icon layui-icon-add-circle-fine"></i>上传插件</a></div>
+    <div id="thelist" class="right"></div>
+</div>
+<table class="table bg-white app-list">
+    <thead>
+    <tr style="font-size: 13px;color: #555555">
+        <th></th>
+        <th>插件标识</th>
+        <th>插件名称</th>
+        <th>作者</th>
+        <th>版本</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    {if condition="empty($list)"}
+    <tr>
+        <td colspan="7" class="text-center p-5">
+            <span class="text-muted">暂无相关插件</span>
+        </td>
+    </tr>
+    {/if}
+    {volist name="list" id="vo"}
+    <tr>
+        <td></td>
+        <td>{$vo.name}</td>
+        <td>{$vo.title}</td>
+        <td>{$vo.author}</td>
+        <td>{$vo.version}</td>
+        <td class="td-status">
+            {eq name="vo.status" value="1"}
+            <span class="layui-btn layui-btn-xs">已安装</span>
+            {else/}
+            <span class="layui-btn  layui-btn-warm layui-btn-xs">未安装</span>
+            {/eq}
+        </td>
+        <td class="td-manage">
+
+            {eq name="vo.status" value="1"}
+            <a href="{:url('Addons/uninstall',['name'=>$vo.name])}"
+               class="layui-btn layui-btn-danger layui-btn-xs">卸载</a>
+            {else/}
+            <a href="{:url('Addons/install',['name'=>$vo.name])}" class="layui-btn layui-btn-normal layui-btn-xs">安装</a>
+            {/eq}
+
+        </td>
+    </tr>
+    {/volist}
+</table>
+<script src="__script__/platform/clipboard.min.js?v=__lkversion__"></script>
+<script src="__script__/jquery.datetimepicker.full.min.js?v=__lkversion__"></script>
+<script>
+    var layer;
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
+    //文件信息显示区域
+    var $list = $('#thelist');
+    //当前状态
+    var state = 'pending';
+    //初始化Web Uploader
+    var uploader = WebUploader.create({
+
+        // swf文件路径
+        swf: '/assets/ueditor/third-party/webuploader/Uploader.swf',
+        // 文件接收服务端。
+        server: "{:url('Addons/lxinstall')}",
+
+        // 选择文件的按钮。可选。
+        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+        pick:  {
+            id: '#ImportAddons',
+            multiple:false,
+            innerHTML: '<i class="layui-icon layui-icon-add-circle-fine"></i>上传插件'
+        },
+        // 开启分片上传。
+        chunked: true,
+        //每个分片的大小（这里设为2M）
+        chunkSize:2*1024*1024,
+        accept: {
+            extensions: "zip",
+            mimeTypes: ".zip"
+        }
+        ,//允许重复上传
+        duplicate :true
+    });
+    // 当有文件被添加进队列的时候（选择文件后调用）
+    uploader.on( 'fileQueued', function( file ) {
+        uploader.upload();
+        $list.append( '<div id="' + file.id + '" class="item">' +
+            '<p class="state">等待上传...</p>' +
+            '</div>' );
+    });
+
+
+    // 文件上传过程中创建进度条实时显示。
+    uploader.on( 'uploadProgress', function( file, percentage ) {
+        var $li = $( '#'+file.id );
+        $li.find('p.state').text('上传中（' + parseInt(percentage * 100) + '%）');
+    });
+
+    // 文件上传成功后会调用
+    uploader.on( 'uploadSuccess', function( file ,response) {
+        console.log('文件上传成功后会调用',file);
+        console.log(response.msg);
+        if(response.code>0){
+            //表示成功
+            layer.msg(response.msg,function (){
+                var location  = window.location;
+                location.href = location.pathname + location.search;});
+        }else{
+            //表示失败
+            layer.msg(response.msg,{icon: 2,time: 3000});
+        }
+        $list.empty();
+    });
+
+    // 文件上传失败后会调用
+    uploader.on( 'uploadError', function( file ) {
+        console.log(file);
+        $( '#'+file.id ).find('p.state').text('上传出错');
+    });
+
+    // 文件上传完毕后会调用（不管成功还是失败）
+    uploader.on( 'uploadComplete', function( file ) {
+        $( '#'+file.id ).find('.progress').fadeOut();
+        uploader.reset();
+    });
+
+    // all事件（所有的事件触发都会响应到）
+    uploader.on( 'all', function( type ) {
+        if ( type === 'startUpload' ) {
+            state = 'uploading';
+        } else if ( type === 'stopUpload' ) {
+            state = 'paused';
+        } else if ( type === 'uploadFinished' ) {
+            state = 'done';
+        }
+
+        // if ( state === 'uploading' ) {
+        //     $btn.text('暂停上传');
+        // } else {
+        //     $btn.text('开始上传');
+        // }
+    });
+    var clipboard = new ClipboardJS('.copybtn');
+    clipboard.on('success', function(e) {
+        $.alert({
+            content:'复制成功'
+        });
+        e.clearSelection();
+    });
+    clipboard.on('error', function(e) {
+        $.alert({
+            content:'复制失败,请手动复制'
+        });
+    });
+
+    $(document).on("click", ".modify-password", function () {
+        var href = $(this).attr("href");
+        $.myPrompt({
+            title: "修改密码",
+            content: "请输入新密码：",
+            confirm: function (val) {
+                if (!val) {
+                    $.myToast({
+                        content: "密码不能为空",
+                    });
+                    return;
+                }
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        password: val,
+                    },
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                        });
+                    }
+                });
+
+            }
+        });
+        return false;
+    });
+</script>

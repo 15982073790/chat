@@ -1,0 +1,155 @@
+{include file="public/header"/}
+<style>
+    .part {
+        width: 96%;
+        margin-top: 20px;
+    }
+    .person-setting {
+        height: 208px;
+    }
+    .system-setting {
+        height: 208px;
+    }
+    .part-item {
+        width: 120px;
+        height: 120px;
+        position: relative;
+        cursor: pointer;
+        float: left;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+/*        box-shadow: 6px 11px 41px -28px #a99de7;23c771
+        background-image: linear-gradient(230deg, #759bff, #843cf6);*/
+        box-shadow: 6px 11px 41px -28px #1dc46c;
+        background-image: linear-gradient(230deg, #72dca5, #03ca62);
+    }
+    .part-item:first-child {
+        margin-left: 40px;
+    }
+
+    .part-item:hover {
+        background-image: linear-gradient(230deg, #03ca62, #72dca5);
+        box-shadow: 0 0 8px 2px rgba(0, 0, 0, .1);
+    }
+
+    .part-item .part-szico {
+        margin-top: 20px;
+        font-size: 50px;
+        position: absolute;
+        left: 35px;
+        color: #fff;
+    }
+
+
+    .part-item span {
+        position: absolute;
+        bottom: 10px;
+        width: 120px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .page-header {
+        border-bottom: 0;
+        margin-left: 40px;
+    }
+</style>
+<div id="container" style="overflow-y: auto">
+    <div class="layui-fluid">
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header" style="font-size:20px;">
+                    个人设置
+                </div>
+            </div>
+        </div>
+        <div class="layui-row layui-col-space15" style="background-color: #fff;">
+            <div class="layui-col-sm6 layui-col-md3">
+                <div class="part">
+                    <a href="{:url('admin/index/custom')}">
+                        <div class="part-item">
+                            <i class="layui-icon part-szico">&#xe63a;</i>
+                            <span>首次对话问候语</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {if $user['level'] != 'service'}
+    <div class="layui-fluid">
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header" style="font-size:20px;">
+                    系统设置
+                </div>
+            </div>
+        </div>
+        <div class="layui-row layui-col-space15" style="background-color: #fff;">
+            <div class="layui-col-sm12">
+                <div style="margin-top: 20px;">
+                    <a href="{:url('admin/index/setup')}">
+                        <div class="part-item">
+                            <i class="layui-icon part-szico">&#xe716;</i>
+                            <span>通用基础设置</span>
+                        </div>
+                    </a>
+
+                    <a href="{:url('admin/manager/info')}">
+                        <div class="part-item">
+                            <i class="layui-icon part-szico">&#xe61f;</i>
+                            <span>客服添加与管理</span>
+                        </div>
+                    </a>
+
+                    <a href="{:url('admin/manager/group')}">
+                        <div class="part-item">
+                            <i class="layui-icon part-szico">&#xe610;</i>
+                            <span>客服分组管理</span>
+                        </div>
+
+                    </a>
+
+                    <a href="{:url('admin/evaluate/setting')}">
+                        <div class="part-item">
+                            <i class="layui-icon part-szico">&#xe600;</i>
+                            <span>客服评价设置</span>
+                        </div>
+                    </a>
+
+                    <a href="{:url('admin/index/question')}">
+                        <div class="part-item">
+                            <i class="layui-icon part-szico">&#xe615;</i>
+                            <span>常见问题管理</span>
+                        </div>
+                    </a>
+
+
+                    <a href="{:url('admin/rest/setting')}">
+                        <div class="part-item">
+                            <i class="layui-icon part-szico">&#xe637;</i>
+                            <span>上下班设置</span>
+                        </div>
+
+                    </a>
+
+                    <a href="{:url('admin/index/tablist')}">
+                        <div class="part-item">
+                            <i class="layui-icon part-szico">&#xe632;</i>
+                            <span>TAB栏编辑</span>
+                        </div>
+
+                    </a>
+
+                    <a href="{:url('admin/index/template')}">
+                        <div class="part-item">
+                            <i class="layui-icon part-szico">&#xe677;</i>
+                            <span>客服微信对接</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {/if}
+        </div>
+        {include file="public/footer"/}

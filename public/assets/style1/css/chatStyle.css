@@ -1,0 +1,2313 @@
+#openleftpanelicon {
+    position: absolute;
+    left: 1px;
+    top: 220px;
+    cursor: pointer;
+    display: none;
+}
+
+#closeleftpanelicon {
+    position: absolute;
+    left: 241px;
+    top: 220px;
+    cursor: pointer;
+}
+
+#mnrightPanel {
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    left: 251px;
+    bottom: 0px;
+}
+
+.xtbtnStyle:hover {
+    background: #f47c20;
+}
+
+.xtMobileChatWindowDivStyle {
+    background-color: #FFFFFF;
+    border-color: #F48533;
+}
+
+.xtMobileChatWindowThemStyle {
+    background-color: #FDE2B5;
+}
+
+#toppanel {
+    background-color: #969597;
+    position: relative;
+}
+
+#chatpanel {
+    height: 100%;
+    width: 100%;
+}
+
+#leftpanel {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    top: 50px;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    vertical-align: top;
+}
+
+#leftpanelcontent {
+    width: 250px;
+    height: 100%;
+    border: none;
+    border-right: solid 1px #ccc;
+    vertical-align: top;
+}
+
+#agentinfoPanel {
+    width: 100%;
+    border: none;
+    color: #333;
+    padding-bottom: 15px;
+}
+
+.agentInfoLabel {
+    line-height: 25px;
+    text-align: right;
+    text-decoration: right;
+    padding-left: 8px;
+    color: #999;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.agentInfoTitle {
+    vertical-align: top;
+    word-break: break-all;
+    padding-left: 2px;
+    line-height: 25px;
+}
+
+#agentInfoTitleHead {
+    width: 100%;
+    height: 30px;
+    vertical-align: middle;
+}
+
+#agentInfoTitleHead div {
+    float: left;
+    width: 4px;
+    height: 20px;
+    margin-left: 10px;
+    background: #333;
+    margin-top: 5px;
+}
+
+#agentInfoTitleHead span {
+    float: left;
+    line-height: 30px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#leftadpanel {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    color: #333;
+    padding-top: 10px;
+}
+
+#leftadpanelinner {
+    margin: 5px 24px 5px 24px;
+    line-height: 1.7;
+    text-indent: 2em;
+}
+
+.xtMobileChatWindowShodawStyle {
+    background-color: #fff;
+}
+
+#xtChatWindowSendmsgDiv {
+    height: 162px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: #FFFFFF;
+    border: solid 0px #ccc;
+    border-top-width: 1px;
+    vertical-align: top;
+    padding-right: 5px;
+}
+
+#xtSendMsgButtonContainer {
+    width: 100%;
+    height: 45px;
+    text-align: right;
+}
+
+#msgInputBoxdiv {
+    width: 100%;
+}
+
+#xtChatWindowMsgInputBox {
+    width: 100%;
+    height: 80px;
+    border: solid 0px #faa51a;
+    color: #33333;
+    resize: none;
+    outline: 0 none;
+    max-height: 80px;
+    font: 14px Arial;
+    -webkit-writing-mode: horizontal-tb;
+    ackground-color: white;
+    overflow: auto;
+    margin: 0px 15px 5px 5px;
+}
+
+#xtChatWindowMsgInputBox::-webkit-input-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+#xtChatWindowMsgInputBox:-moz-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+#xtChatWindowMsgInputBox::-moz-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+#xtChatWindowMsgInputBox:-ms-input-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+#faceButton {
+    float: left;
+    display: inline-block;
+    padding: 5px 8px 5px 8px;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(chatting_img.png) no-repeat;
+}
+
+#insertImgButton {
+    float: left;
+    display: inline-block;
+    padding: 5px 8px 5px 8px;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(insertimg.png) no-repeat;
+}
+
+#insertFileButton {
+    float: left;
+    display: inline-block;
+    padding: 5px 8px 5px 8px;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(sendfile.png) no-repeat;
+}
+
+#mntelButton {
+    float: left;
+    display: inline-block;
+    padding: 5px 8px 5px 8px;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(telphone.png) no-repeat;
+}
+
+#uploadimagediv {
+    width: 320px;
+    height: 50px;
+    border: solid 1px #ccc;
+    position: absolute;
+    margin: 2px;
+    -webkit-box-shadow: 0 0 3px #0CC;
+    -moz-box-shadow: 0 0 3px #0CC;
+    box-shadow: 0 0 3px #0CC;
+    overflow: hidden;
+}
+
+#uploadimageiframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow: hidden;
+}
+
+#facediv {
+    position: absolute;
+    width: 345px;
+    height: auto;
+    border: solid 1px #ccc;
+    background: #f7f7f7;
+    margin: 5px;
+    -webkit-box-shadow: 0 0 3px #0CC;
+    -moz-box-shadow: 0 0 3px #0CC;
+    box-shadow: 0 0 3px #0CC;
+}
+
+#titlelabel {
+    float: left;
+    line-height: 50px;
+    margin-left: 30px;
+    color: #fff;
+    font-size: 16px;
+}
+
+#mainagentSignature {
+    float: left;
+    line-height: 50px;
+    margin-left: 8px;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    max-width: 500px;
+}
+
+#changeagentbuttoncontainer {
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    margin-top: 5px;
+    margin-right: 5px;
+    position: absolute;
+    right: 130px;
+}
+
+#chattabtoolbar {
+    background: #f5f5f5;
+    height: 33px;
+    border: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    padding-bottom: 1px;
+    border-bottom: solid 1px #e6e6e6;
+}
+
+.chattabtoolbartab {
+    float: left;
+    height: 100%;
+    width: 100px;
+    vertical-align: middle;
+    line-height: 33px;
+    text-align: center;
+    cursor: pointer;
+    color: #b2b2b2;
+}
+
+.chattabtoolbartabselect {
+    float: left;
+    height: 100%;
+    width: 100px;
+    vertical-align: middle;
+    line-height: 33px;
+    text-align: center;
+    cursor: pointer;
+    color: #333;
+    border-bottom: solid 2px #969597;
+}
+
+#xtChatWindowMsgBox {
+    height: 100%;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#xtrobotChatWindowMsgBox {
+    display: none;
+    height: 100%;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#xtChatWindowVoideoBox {
+    display: none;
+    height: 100%;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+#agentheadicon {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#xtSendMsgButton {
+    color: #fef4e9;
+    border: 0px;
+    background: #969597;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    width: 65px;
+    height: 35px;
+}
+
+#chattoolbar {
+    width: 100%;
+    height: 32px;
+}
+
+#maincontainer {
+    vertical-align: top;
+    position: absolute;
+    left: 0px;
+    top: 35px;
+    right: 0px;
+    bottom: 162px;
+    padding: 3px;
+    overflow-y: auto;
+}
+
+#xtChatWindowDiv {
+    position: fixed;
+    border: none;
+    border-bottom: solid 1px #e9e9e9;
+    right: 5px;
+    bottom: 5px;
+    width: 280px;
+    -webkit-box-shadow: 0 0 15px #ccc;
+    -moz-box-shadow: 0 0 15px #ccc;
+    box-shadow: 0 0 15px #ccc;
+    font-size: 12px;
+    margin: 0px 0px 0px 0px;
+    height: auto;
+    padding: 0px;
+    letter-spacing: 0.05em;
+    z-index: 2147483647;
+    font-family: 微软雅黑, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+#xtChatWindowDiv * {
+    font-size: 12px;
+    font-family: 微软雅黑, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+
+#xtmsgtitlecontainer {
+    display: block;
+    width: 100%;
+    background-color: #969597;
+    height: 60px;
+    color: #fff;
+    cursor: move;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    border: none;
+    border-left: solid 1px #969597;
+    border-right: solid 1px #969597;
+}
+
+#xtmsgtitlecontainersub {
+    float: left;
+    width: 220px;
+    height: 60px;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-all;
+    padding: 0px;
+    margin: 0px;
+}
+
+#xtmsgtitlecontainersubtop {
+    padding: 0px;
+    margin: 0px;
+    display: block;
+    width: auto;
+    height: 32px;
+    overflow: hidden;
+}
+
+#mnagentSignature {
+    display: block;
+    width: auto;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    line-height: 20px;
+    color: #fff;
+}
+
+#xtmsgtitlecontainerlabel {
+    float: left;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-all;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #fff;
+}
+
+#xtmsgtitlecontainerclosebutton {
+    float: right;
+    width: auto;
+    height: auto;
+    margin: 0px;
+    margin-top: 26px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+#xtmsgbodycontainer {
+    background: #f7f9fa;
+    height: 300px;
+    width: 100%;
+    overflow-y: auto;
+    border-bottom: solid 1px #E9E9E9;
+    border-left: solid 1px #E9E9E9;
+    border-right: solid 1px #E9E9E9;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    position: relative;
+}
+
+#xtmsgbodycontainercontext {
+    padding: 3px;
+    border: none;
+    height: 97%;
+    width: auto;
+    margin: 0px 0px 0px 0px;
+}
+
+
+#xtmsgbuttoncontainer {
+    background: #fff;
+    height: 36px;
+    vertical-align: middle;
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    padding: 0px;
+    border-left: solid 1px #e9e9e9;
+    border-right: solid 1px #e9e9e9;
+}
+
+#xtmsgbuttonopenbutton {
+    cursor: default;
+    float: right;
+    display: inline-block;
+    color: #fff;
+    border: 0px;
+    padding: 4px 4px 4px 4px;
+    background: #969597;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px 2px 2px;
+    width: 60px;
+    height: auto;
+    line-height: 20px;
+}
+
+#xtOnlineServiceDiv * {
+    border: none;
+    width: auto;
+    height: auto;
+}
+
+
+.xtOnlineServiceDivstyle {
+    width: auto;
+    height: auto;
+    position: fixed;
+    border: solid 1px #ccc;
+    background: #f0f0f0;
+    padding: 5px;
+    vertical-align: middle;
+    -webkit-box-shadow: 0 0 3px #0CC;
+    -moz-box-shadow: 0 0 3px #0CC;
+    box-shadow: 0 0 3px #0CC;
+
+}
+
+
+.xtstds {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: 12px;
+    line-height: 100%;
+    color: #333;
+    background-color: transparent;
+    border: 0px;
+}
+
+
+a.xtsitelinkcss {
+    color: #000000
+}
+
+a.xtsitelinkcss:hover {
+    color: #333333;
+    text-decoration: none;
+}
+
+
+.xtbtnStyle {
+    BORDER-RIGHT: #f90 1px solid;
+    BORDER-TOP: #f90 1px solid;
+    BORDER-LEFT: #f90 1px solid;
+    BORDER-BOTTOM: #f90 1px solid;
+    PADDING-RIGHT: 4px;
+    PADDING-LEFT: 4px;
+    PADDING-TOP: 2px;
+    padding-bottom: 2px;
+    FONT-SIZE: 12px;
+    CURSOR: pointer;
+    COLOR: black;
+    background-color: #FFC;
+}
+
+.xtcontrolDiv {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #f90;
+    background-color: #FFC;
+    width: 60px;
+    height: 26px;
+}
+
+.xtcontrolDivAmount {
+    border-style: none;
+    border-width: 0px;
+    background-color: #FFC;
+    width: 35px;
+    line-height: 26px;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.xtcontrolDivTop {
+    border-style: solid;
+    border-left-width: 1px;
+    border-bottom-width: 1px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    background-color: #FFC;
+    padding-bottom: 4px;
+    padding-top: 0px;
+    margin-top: 0px;
+    border-color: #f90;
+    width: 25px;
+    height: 13px;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: top;
+    font-size: 11px;
+}
+
+.xtcontrolDivBottom {
+    border-style: solid;
+    border-left-width: 1px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    background-color: #FFC;
+    border-color: #f90;
+    padding-bottom: 4px;
+    padding-top: 0px;
+    width: 25px;
+    height: 13px;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 11px;
+}
+
+.xtInputTextStyle {
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: #999999;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #999999;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #999999;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #999999;
+    font-family: SimSun;
+    font-size: 9pt;
+    color: #33333;
+    background-color: transparent;
+}
+
+.agentRowStyle {
+    color: #333;
+    height: auto;
+    width: auto;
+    vertical-align: middle;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    padding: 0px;
+    margin: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #e6e6e6;
+}
+
+.agentRowStyle img {
+    vertical-align: middle;
+    display: inline;
+    border: none;
+    width: auto;
+    height: auto;
+}
+
+.agentRowStyle a {
+    text-decoration: none;
+}
+
+.agentGroupStyle {
+    color: #333;
+    height: 24px;
+    line-height: 24px;
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    background-color: #f0f0f0;
+}
+
+.thirdSoftRowStyle {
+    color: #333;
+    height: auto;
+    width: auto;
+    vertical-align: middle;
+    text-align: center;;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    padding: 4px 0px 4px 0px;
+    margin: 0px;
+}
+
+.thirdSoftRowStyle img {
+    vertical-align: middle;
+    display: inline;
+    border: none;
+    width: auto;
+    height: auto;
+}
+
+.thirdSoftRowStyle a {
+    text-decoration: none;
+    color: #333;
+}
+
+.agentlistheadstyle {
+    margin-left: 5px;
+    cursor: pointer;
+    margin-right: 6px;
+    float: left;
+}
+
+.agentlistheadstyle img {
+    margin-right: 5px;
+    width: auto;
+    height: auto;
+}
+
+.agentlistmediaiconstyle {
+    float: right;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.agentlistmiciconstyle {
+    float: right;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.xtsitelinkstyle {
+    display: none;
+}
+
+#appraiseWindowBox {
+    display: none;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+
+}
+
+#appraiseWindowtable {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: solid 1px #DEDEDE;
+    min-width: 400px;
+    display: inline-block;
+    color: #333;
+}
+
+#appraiseTitle {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 3px;
+}
+
+.appraisetablerowtd {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: left;
+    min-width: 400px;
+}
+
+#appraiseButton {
+    color: #fef4e9;
+    border: 0px;
+    background: #969597;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+}
+
+#appraiseButtontd {
+    text-align: center;
+    padding: 2px;
+}
+
+#thanksappraiseinfo {
+    font-size: 1.5em;
+    color: red;
+    text-align: center;
+    padding: 10px;
+    display: none;
+}
+
+#appraiseCloseButtontd {
+    text-align: center;
+    padding: 5px;
+    display: none;
+}
+
+#appraiseCloseButton {
+    color: #333;
+    border: 0px;
+    background: #CC6;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+}
+
+#appraiseNotetd {
+    vertical-align: text-top;
+    border-top: solid 1px #E6E6E6;
+    padding: 2px 0px 0px 0px;
+}
+
+#appraiseNote {
+    resize: none;
+    width: 335px;
+    height: 55px;
+    border: dotted 1px #E6E6E6;
+    padding: 5px;
+    outline: none;
+    overflow: auto;
+}
+
+#appraisenotetable {
+    width: 400px;
+    border: solid 0px #E6E6E6;
+    color: #333;
+}
+
+#loadingdiv {
+    position: absolute;
+    display: none;
+    border: solid 1px #999;
+    background: #fff;
+    width: auto;
+    height: 40px;
+    line-heignt: 40px;
+}
+
+#loadingdiv img {
+    float: left;
+    margin: 3px;
+}
+
+#loadingdiv label {
+    float: left;
+    line-heignt: 40px;
+}
+
+#selectLangDiv {
+    float: right;
+    width: auto;
+    height: 50px;
+    vertical-align: middle;
+    padding-right: 5px;
+    font-size: 12px;
+}
+
+.selectLangStyle {
+    float: left;
+    margin: 0px;
+    margin-right: 3px;
+    margin-top: 12px;
+    display: inline-block;
+    padding: 3px 5px 3px 5px;
+    border: solid 1px #fff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+.selectLangStyleActive {
+    float: left;
+    margin: 0px;
+    margin-right: 3px;
+    margin-top: 12px;
+    display: inline-block;
+    padding: 3px 5px 3px 5px;
+    border: solid 1px #fff;
+    background: #666;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+#customerInfoWindowBox {
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#customerInfoWindowtable {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: solid 1px #DEDEDE;
+    width: 415px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.customerInfotablerowtd {
+    padding: 4px;
+    color: #333;
+}
+
+.customerInfotablerowinuttd {
+    width: 300px;
+}
+
+
+.customerInfotablerowlabeltd {
+    text-align: right;
+    width: 75px;
+}
+
+#customerInfoButton {
+    color: #fef4e9;
+    border: 0px;
+    background: #969597;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+}
+
+.mncustomerinputTextStyle {
+    border: solid 1px #dedede;
+    padding: 8px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 95%;
+}
+
+#customerSubmitInfo {
+    color: red;
+    font-size: 1.1em;
+}
+
+#inputStateDiv {
+    float: left;
+    display: inline-block;
+    border: 0px;
+    width: auto;
+    color: #999;
+    height: 32px;
+    line-height: 32px;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+#xtWinlogo {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-left: 12px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+#xtNewBigWin {
+    float: right;
+    width: auto;
+    height: auto;
+    border: none;
+    margin: 7px;
+    margin-right: 13px;
+    margin-top: 24px;
+    cursor: pointer;
+    border: none;
+}
+
+#minichattoolbar {
+    width: 100%;
+    height: 32px;
+    background: #fff;
+    vertical-align: top;
+    margin: 0px 0px 0px 0px;
+    border-left: solid 1px #e9e9e9;
+    border-right: solid 1px #e9e9e9;
+    padding: 0px;
+}
+
+
+#minifaceButton {
+    float: left;
+    display: inline-block;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(mini_chatting_img.png) no-repeat;
+    padding: 0px;
+}
+
+#miniinsertImgButton {
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(mini_insertimg.png) no-repeat;
+    padding: 0px;
+}
+
+#miniinsertFileButton {
+    float: left;
+    display: inline-block;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(mini_sendfile.png) no-repeat;
+    overflow: hidden;
+    padding: 0px;
+}
+
+#miniappraiseButton {
+    float: left;
+    display: inline-block;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(appraiseicon.png) no-repeat;
+    padding: 0px;
+}
+
+#miniinputStateDiv {
+    float: left;
+    display: inline-block;
+    border: 0px;
+    width: auto;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+
+#miniinputStateDiv:after {
+    display: table;
+    content: "";
+    width: 0;
+    clear: both;
+}
+
+#minimsgInputBoxdiv {
+    width: 100%;
+    height: 60px;
+    vertical-align: middle;
+    text-align: center;
+    background: #fff;
+    border-left: solid 1px #e9e9e9;
+    border-right: solid 1px #e9e9e9;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+#minixtChatWindowMsgInputBox {
+    margin: 0px;
+    width: 98%;
+    height: 50px;
+    resize: none;
+    outline: 0 none;
+    border: none;
+    padding: 0px;
+    display: inline-block;
+    overflow: auto;
+    color: #333;
+    background-color: #ffffff
+}
+
+#minixtChatWindowMsgInputBox::-webkit-input-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+#minixtChatWindowMsgInputBox:-moz-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+#minixtChatWindowMsgInputBox::-moz-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+#minixtChatWindowMsgInputBox:-ms-input-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+
+#minifacediv {
+    position: fixed;
+    width: 260px;
+    height: auto;
+    border: solid 1px #ccc;
+    background: #f7f7f7;
+    margin: 5px;
+    -webkit-box-shadow: 0 0 3px #0CC;
+    -moz-box-shadow: 0 0 3px #0CC;
+    box-shadow: 0 0 3px #0CC;
+    padding: 0px;
+    z-index: 2147483647;
+}
+
+#miniloadingdiv {
+    position: fixed;
+    display: none;
+    border: solid 1px #999;
+    background: #fff;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    padding-top: 2px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    padding-right: 2px;
+    margin: 0px;
+}
+
+#miniloadingdiv img {
+    border: none;
+    height: auto;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#miniloadingdiv label {
+    height: auto;
+    width: auto;
+    display: inline-block;
+}
+
+#miniuploadimg {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#miniuploadfile {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#miniappraiseWindowBox {
+    width: 90%;
+    height: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    clear: both;
+    color: #666;
+    margin: 0px 0px 8px 13px;
+    padding: 3px;
+    background: #fff;
+    position: relative;
+}
+
+.mnclosePanelIcon {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 13px;
+    height: 13px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    cursor: pointer;
+    background: url(closepanel.png) no-repeat;
+}
+
+
+#miniappraisesubmitbutton {
+    color: #fef4e9;
+    border: 0px;
+    background: #969597;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+}
+
+.miniappraiseitem {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 5px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+#miniappraiseTitle {
+    width: 100%;
+    height: 20px;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+#miniappraisesubmitlayout {
+    height: 35px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 5px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+#miniappraiseremarks {
+    width: 95%;
+    margin-left: 5px;
+    height: 30px;
+    border: solid 1px #f5f5f5;
+    resize: none;
+    outline: none;
+    overflow: auto;
+}
+
+#miniappraiseItems {
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    padding: 0px;
+}
+
+#miniappraiseremarklayout {
+    border: none;
+    width: 100%;
+    height: auto;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+
+#miniCustomerInfoButton {
+    float: left;
+    display: inline-block;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(customericon.png) no-repeat;
+    padding: 0px;
+}
+
+#miniTelphoneButton {
+    float: left;
+    display: inline-block;
+    border: 0px;
+    margin: 5px;
+    width: 22px;
+    height: 22px;
+    background: url(telphone.png) no-repeat;
+    padding: 0px;
+}
+
+#miniCustomerInfoWindowBox {
+    width: 90%;
+    height: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    border: solid 1px #ccc;
+    -webkit-box-shadow: 0 0 3px #0CC;
+    -moz-box-shadow: 0 0 3px #0CC;
+    box-shadow: 0 0 3px #0CC;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    clear: both;
+    margin: 0px;
+    margin-left: 13px;
+    color: #666;
+    margin-bottom: 8px;
+    padding: 3px;
+    position: relative;
+}
+
+.minicustomerinforow {
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    padding: 0px;
+}
+
+#minicustomerinfosubmitbutton {
+    color: #fef4e9;
+    border: 0px;
+    background: #969597;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+}
+
+#minicustomersubmitlayout {
+    height: 35px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 5px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+#minacustomerInfoTitle {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+#minicustomercontent {
+    width: 100%;
+    padding: 5px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+.minicustomerinputTextStyle {
+    border: solid 1px #dedede;
+    padding: 8px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 90%;
+    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #999;
+}
+
+#blzxMinChatWindowDiv {
+    z-index: 2147483647;
+    position: fixed;
+    border: none;
+    right: 0px;
+    bottom: 0px;
+    width: 250px;
+    height: 40px;
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 0.05em;
+    font-family: 微软雅黑, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+#blzxMinChatWindowDiv * {
+    font-size: 12px;
+    font-family: 微软雅黑, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+#minblzxmsgtitlecontainer {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #969597;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#minblzxmsgtitlecontainerlabel {
+    float: left;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+    cursor: default;
+    color: #fff;
+}
+
+#minblzxmsgtitlecontainerclosebutton {
+    float: right;
+    width: auto;
+    height: auto;
+    margin: 14px 12px 14px 5px;
+    cursor: pointer;
+    border: none;
+}
+
+#minblzxWinlogo {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin: 8px;
+    border: none;
+}
+
+#minblzxNewBigWin {
+    float: right;
+    width: auto;
+    height: auto;
+    border: none;
+    margin: 15px 6px 14px 8px;
+    cursor: pointer;
+}
+
+.minichatrecordrow {
+    clear: both;
+    padding: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: auto;
+    margin: 0px 0px 0px 0px;
+    position: relative;
+}
+
+.minichatrecordheadIconleft {
+    display: block;
+    text-align: left;
+    width: auto;
+    margin: 0px 0px 0px 0px;
+    padding: 3px;
+    padding-left: 10px;
+    color: #808080;
+}
+
+.chatrecordheadIconleft {
+    float: left;
+    text-align: left;
+    width: auto;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    padding-left: 5px;
+    color: #808080;
+}
+
+.chatrecordheadIconright {
+    float: right;
+    text-align: right;
+    width: auto;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    padding-right: 5px;
+    color: #808080;
+}
+
+.minichatrecordheadIconright {
+    display: block;
+    text-align: right;
+    width: auto;
+    margin: 0px 0px 0px 0px;
+    padding: 3px;
+    padding-right: 5px;
+    color: #808080;
+}
+
+
+#mnshowimagdiv {
+    width: auto;
+    height: auto;
+    max-width: 800px;
+    max-height: 700px;
+    border: solid 1px #999;
+    -webkit-box-shadow: 0 0 3px #0CC;
+    -moz-box-shadow: 0 0 3px #0CC;
+    box-shadow: 0 0 3px #0CC;
+    position: fixed;
+    padding: 0px;
+    margin: 0px;
+    background: #fff;
+}
+
+#mnshowimagdivtitle {
+    height: 26px;
+    width: 100%;
+    line-height: 26px;
+    text-align: right;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    background: #969597;
+    color: #fff;
+    border-bottom: solid 1px #999;
+    overflow: hidden;
+}
+
+#mnshowimagdivtitle span {
+    cursor: pointer;
+    height: 24px;
+    width: auto;
+    line-height: 24px;
+    margin: 0px;
+    margin-right: 10px;
+    font-size: 16px;
+    overflow: hidden;
+    padding: 0px;
+}
+
+#mnshowimagdivbody {
+    width: auto;
+    height: auto;
+    overflow: auto;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+#agentListdiv {
+    padding: 0px;
+    margin: 0px;
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    -webkit-box-shadow: 0 0 15px #ccc;
+    -moz-box-shadow: 0 0 15px #ccc;
+    box-shadow: 0 0 15px #ccc;
+    letter-spacing: 0.05em;
+    font-family: 微软雅黑, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+#xtminititletab {
+    float: right;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    width: auto;
+    height: auto;
+    margin-top: 7px;
+    margin-right: 8px;
+    color: #969597;
+    cursor: pointer;
+}
+
+#xtmsgrobotbodycontainercontext {
+    padding: 3px;
+    border: none;
+    height: 97%;
+    width: auto;
+    margin: 0px 0px 0px 0px;
+    display: none;
+}
+
+#agentInviteListdiv {
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+    height: auto;
+}
+
+#miniwinvideopanel {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 180px;
+    background-color: #999;
+    display: none;
+    color: #fff;
+    font-size: 14px;
+    border-left: solid 1px #E9E9E9;
+    border-right: solid 1px #E9E9E9;
+}
+
+#mnvideolayout {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#miniwinwaitingpanel {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border: none;
+    border-left: solid 1px #e9e9e9;
+    border-right: solid 1px #e9e9e9;
+    background-color: #f7f9fa;
+    display: none;
+    color: #666;
+}
+
+#xtwaitingpanel {
+    color: #666;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    margin-left: 20px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff;
+    float: left;
+}
+
+#mnsoftinfolabel {
+    width: 100%;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+    line-height: 20px;
+    background: #fafafa;
+    border: none;
+    border-left: solid 1px #ccc;
+    border-right: solid 1px #ccc;
+    vertical-align: middle;
+    text-align: center;
+    color: #ccc;
+}
+
+#mnsoftinfolabel img {
+    margin: 3px 5px 3px 0px;
+    vertical-align: middle;
+    width: auto;
+    height: auto;
+    display: inline;
+}
+
+#mnsoftinfolabel a {
+    color: #ccc;
+    font-style: normal;
+    font-stretch: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.serviceMenuClickActionStyle {
+    color: #89888A;
+    cursor: pointer;
+    background: url(point.png) no-repeat 0px 8px;
+    padding-left: 15px;
+    line-height: 25px;
+}
+
+.serviceMenuClickActionLine {
+    cursor: pointer;
+    color: #e6e6e6;
+    height: 1px;
+    background: #e6e6e6;
+    margin: 0px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+    padding: 0px;
+    width: 100%;
+    line-height: 1px;
+}
+
+#agenttitlehandler {
+    background-color: #969597;
+    width: auto;
+    height: 30px;
+    padding: 0px;
+    margin: 0px;
+    line-height: 30px;
+    cursor: move;
+}
+
+#mnagenlistbody {
+    border: solid 1px #E9E9E9;
+    border-top: none;
+    background-color: #fff;
+    padding: 0px;
+    margin: 0px;
+    width: auto;
+    height: auto;
+}
+
+#mnagenttitlelabel {
+    float: left;
+    width: auto;
+    vertical-align: middle;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    margin-left: 5px;
+    color: #fff;
+}
+
+#agentListCloseIcon {
+    float: right;
+    vertical-align: middle;
+    border: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+}
+
+#agentListCloseIcon:after {
+    display: table;
+    content: "";
+    width: 0;
+    clear: both;
+}
+
+#mnserviceListIcondiv {
+    padding: 0px;
+    margin: 0px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    border: none;
+    border-bottom: solid 1px #e6e6e6;
+}
+
+#moningaddiv {
+    padding: 0px;
+    margin: 0px;
+    width: auto;
+    height: auto;
+    text-align: center;
+}
+
+#moningaddiv img {
+    width: 126px;
+    height: 162px;
+    border: none;
+    vertical-align: middle;
+}
+
+#mnserviceListMsgdiv {
+    padding: 0px;
+    max-width: 140px;
+    height: auto;
+    text-align: center;
+    margin: 3px auto;
+}
+
+#mnsoftinfodiv {
+    padding: 3px 0px 3px 0px;
+    margin: 0px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    background-color: #fafafa;
+    border: none;
+}
+
+#mnsoftinfodiv img {
+    width: auto;
+    height: auto;
+}
+
+
+#mnsoftinfodiv a {
+    color: #ccc;
+    font-style: normal;
+    font-stretch: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#mnserviceListIcondiv img {
+    border: none;
+    max-width: 100%;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+}
+
+#mnagentlistcontext {
+    padding: 0px;
+    margin: 0px;
+    width: auto;
+    height: auto;
+}
+
+
+#miniTelpanelWindowBox {
+    width: 250px;
+    height: auto;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    clear: both;
+    margin: 0px;
+    margin-left: 8px;
+    color: #666;
+    margin-bottom: 8px;
+    padding: 5px;
+    background-color: #ffffff
+}
+
+#mntelpaneltitle {
+    height: auto;
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 1px;
+    padding: 3px;
+    text-align: center;
+    color: #666;
+}
+
+#mntelpaneldesc {
+    height: auto;
+    width: 100%;
+    margin: 0px;
+    padding: 1px;
+    padding-left: 5px;
+    text-align: left;
+    color: #999;
+}
+
+#mntelpaneldesc ul {
+    margin: 2px;
+    padding: 0px 0px 0px 20px;
+}
+
+#mntelpaneldesc ul li {
+    list-style-type: disc;
+    color: #999;
+    float: none;
+}
+
+#mntelpanelinput {
+    height: auto;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    color: #666;
+    display: table;
+    border-collapse: separate;
+}
+
+#mntelpanelinput input:first-child {
+    border: solid 1px #9f89fc;
+    padding: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #999;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 30px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#mntelpanelinput span {
+    background-color: #9f89fc;
+    padding: 0px 0px 0px 0px;
+    border: 0px;
+    text-align: center;
+    border-radius: 5px;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height: 30px;
+    width: 50px;
+    display: table-cell;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#mntelpanelinput div {
+    height: 22px;
+    width: 22px;
+    background: url(gophone.png) no-repeat;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+    margin-top: 3px;
+}
+
+#mntelpanelfooter {
+    height: auto;
+    width: 100%;
+    margin: 0px;
+    padding: 3px;
+    color: #ff4f4f;
+    text-align: center;
+}
+
+
+#mnsendproductbutton {
+    color: #fef4e9;
+    border: 0px;
+    background: #969597;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+    height: 35px;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#mnnewsMsgContainer {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+}
+
+#mnnewsMsgImg {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#mnnewsMsgImg img {
+    border: 0;
+    width: 100%;
+    height: auto;
+}
+
+#mnnewsMsgTitle {
+    width: 95%;
+    height: auto;
+    padding: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0px;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+#mnnewsMsgTitle span {
+    padding: 5px;
+}
+
+#mnnewsMsgDesc {
+    width: 95%;
+    height: auto;
+    max-height: 70px;
+    padding: 0px;
+    padding-bottom: 5px;
+    margin: 0px;
+    color: #999999;
+    overflow: hidden;
+    text-decoration: none;
+    padding-left: 5px;
+}
+
+#mnnewsMsgDesc span {
+    padding: 5px;
+    word-wrap: break-word;
+}
+
+
+.agentListverticalStyle {
+    position: fixed;
+    max-width: 80px;
+    width: auto;
+    height: auto;
+    padding: 8px 8px 8px 8px;
+    margin: 0px;
+    background-color: #969597;
+    font-size: 12px;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+}
+
+.mnagentlistitemverticalStyle {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.mnagentlistitemverticalStyle li {
+    margin: 0px;
+    float: none;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    border: none;
+    padding: 5px 0px 16px 0px;
+    border-bottom: 1px solid #fff;
+    width: auto;
+    height: auto;
+}
+
+.mnagentlistitemverticalStyle li img {
+    border: 0px;
+    vertical-align: middle;
+    max-width: none;
+    max-height: none;
+}
+
+.mnagentlistitemverticalStyle li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.mnagentlistitemverticalStyle li:last-child {
+    border-bottom: 0px;
+    padding: 5px 5px 5px 5px;
+}
+
+.mnagentminilistinfopanel {
+    position: absolute;
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+    height: auto;
+    width: auto;
+    top: 0px;
+    border-radius: 5px;
+    display: none;
+    min-width: 120px;
+    color: #666666;
+    padding: 5px 5px 5px 5px;
+    margin: 0px;
+    line-height: 30px;
+    white-space: nowrap;
+}
+
+.mnagentminilistinfopanel a {
+    color: #666666 !important;
+    white-space: nowrap;
+}
+
+
+#mninnerwinbody {
+    width: auto;
+    height: auto;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+#mninnerwinbodyleft {
+    width: auto;
+    height: auto;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+}
+
+#mninnerwinbodyright {
+    display: none;
+    width: 227px;
+    height: auto;
+    border: none;
+    padding: 10px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#mnloading {
+    display: none;
+    background: transparent;
+    height: auto;
+    border: none;
+    position: absolute;
+    top: 34px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    padding: 3px;
+    margin: 0px;
+    width: 100%;
+    z-index: 2147483647;
+}
+
+#mnchatmsgloading {
+    display: none;
+    background: transparent;
+    height: auto;
+    border: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    padding: 3px;
+    margin: 0px;
+    width: 100%;
+    z-index: 2147483647;
+}
+
+
+#mninnerwinbodyrightcontent {
+    padding: 0px 0px 0px 0px;;
+    margin: 0px 0px 0px 0px;;
+    overflow: hidden;
+    width: 100%;
+}
+
+.mn_msg {
+    width: auto;
+    max-width: 75%;
+    padding: 6px;
+    line-height: 1.7;
+    margin: 0px 0px 10px 0px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.mn_msg-content {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: visible;
+    text-align: left;
+    padding: 3px;
+    width: auto;
+    margin: 0px 0px 0px 0px
+}
+
+.mn_msg-content a {
+    text-decoration: underline;
+}
+
+.mn_msg-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.mn_msg-server {
+    color: #333;
+    float: left;
+    margin: 0px 0px 5px 10px;
+    border: none;
+    background: #f7f7f7;
+    border: solid 1px #e6e6e6
+}
+
+.mn_msg-client {
+    color: #fff;
+    float: right;
+    margin: 0px 0px 5px 0px;
+    border: none;
+    background: #969597;
+}
+
+.mn_msg-cursor-server {
+    position: absolute;
+    left: 0px;
+    height: 11px;
+    width: 6px;
+    background: url(arrow_l.png) no-repeat;
+    margin: 9px 0px 0px 5px;
+    padding: 0px;
+}
+
+.msg-cursor-server {
+    position: absolute;
+    left: 35px;
+    height: 11px;
+    width: 6px;
+    background: url(arrow_l.png) no-repeat;
+    margin: 9px 0px 0px 5px;
+    padding: 0px;
+}
+
+.mn_msg-cursor-client {
+    float: right;
+    height: 0px;
+    width: 0px;
+    margin: 9px 5px 0px 0px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 6px;
+    border-color: transparent transparent transparent #969597;
+}
+
+#wolive-talk {
+    width: 400px;
+    height: 560px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999999999;
+}
+
+.blzx-close {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: url(../img/down_arrow.png) no-repeat;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    cursor: pointer;
+}
+
+#wolive-iframe {
+    width: 100%;
+    height: 100%;
+    box-shadow: rgba(15, 66, 76, 0.25) 0 0 24px 0;
+    border-radius: 10px 10px 0 0;
+    border: none;
+}

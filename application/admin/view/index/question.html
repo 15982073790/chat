@@ -1,0 +1,117 @@
+{include file="public/header"/}
+<style>
+    .handler .back .img {
+        width: 16px;
+        height: 16px;
+        margin: 6px 0 0 16px;
+        float: left;
+        background: url("__image__/admin/B/back-system.png");
+    }
+
+    .question .layui-layer-ico {
+        height: 24px;
+        width: 24px;
+        background: url("__image__/admin/B/cha.png") no-repeat;
+    }
+
+    .recycle {
+        width: 20px;
+        height: 20px;
+        background: url("__image__/admin/B/delete.png");
+        cursor: pointer;
+    }
+
+    #container {
+        overflow: auto;
+        padding-bottom: 30px;
+        background-color: #fff;
+    }
+</style>
+
+<div id="container" style="padding-bottom: 42px">
+
+    <h2 class="page-header" style="font-size: 18px;color: #555555;"> 常见问题设置</h2>
+    <div class="handler">
+        <a href="{:url('admin/index/set')}">
+            <div class="back">
+                <i class="img"></i>
+                <span>返回设置</span>
+            </div>
+        </a>
+
+        <a onclick="show(0)" class="" data-pjax>
+            <div class="button">
+                +添加常见问题
+            </div>
+        </a>
+    </div>
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>问题</th>
+            <th>关键字</th>
+            <th>回答</th>
+            <th>排序</th>
+            <th style="width: 120px;">是否展示</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        {volist name='lister' id='talk'}
+
+        <tr>
+            <td style="padding-left: 40px">{$talk.question}</td>
+            <td>{$talk.keyword}</td>
+            <td>{$talk.answer}</td>
+            <td>{$talk.sort}</td>
+            <td>
+                <?php  if($talk['status']){echo '显示';}else{echo '不显示';} ?>
+            <td>
+                <a onclick='show({$talk.qid})'>
+                    <img src="__image__/admin/A/edit.png" alt="编辑" title="编辑">
+                </a>
+                <a onclick="getdelete({$talk.qid})">
+                    <img src="__image__/admin/A/delete.png" alt="删除" title="删除">
+                </a>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    {$page}
+</div>
+<div id='bianji' style="margin-top:10px;display:none;">
+</div>
+</div>
+<script>
+    function show(id) {
+        layer.open({
+            skin:"question",
+            type: 2,
+            title: id>0?'编辑':'添加',
+            area: ['800px', '750px'],
+            content: YMWL_ROOT_URL + '/admin/index/editer?qid=' + id
+        });
+    }
+    function getdelete(id) {
+
+        $.ajax({
+            url: YMWL_ROOT_URL + '/admin/set/getdeleteQuestion',
+            type: 'post',
+            data: {qid: id},
+            success: function (res) {
+                if (res.code == 0) {
+                    layer.msg(res.msg, {
+                        icon: 1, end: function () {
+                            location.href = "{:url('admin/index/question')}"
+                        }
+                    })
+                }
+            }
+        })
+    }
+</script>
+{include file="public/footer"/}

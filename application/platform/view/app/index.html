@@ -1,0 +1,250 @@
+<link href="__style__/jquery.datetimepicker.min.css?v=__lkversion__" rel="stylesheet">
+<div class="my-app">
+    <a href="javascript:" class="btn btn-sm btn-primary mr-3 add-app" data-toggle="modal" data-target="#add-modal">添加客服系统</a>
+    <div class="search">
+        <form method="get" class="form-inline">
+            <input type="hidden" name="r" value="">
+            <input value="{$keyword}" placeholder="名称" type="text" name="keyword"
+                   class="form-control form-control-sm">
+            <button style="cursor: pointer" class="btn btn-link btn-sm"><img src="__image__/admin/A/search.png" alt="">
+            </button>
+        </form>
+    </div>
+    <span class="app-info">
+        <span>可创建客服系统数量 <span
+                style="color: #25c16f;">{$admin['app_max_count'] ?$admin['app_max_count']:'无限制'}</span></span>
+        {if condition="$admin['app_max_count'] != 0 "}
+            <span>，剩余创建个数 <span style="color: #25c16f;">{$admin['app_max_count'] - $app_count}</span></span>
+        {/if}
+    </span>
+</div>
+<table class="table bg-white app-list">
+    <thead>
+    <tr style="font-size: 13px;color: #555555">
+        <th>ID</th>
+        <th>名称</th>
+        <th>帐号有效期</th>
+        <th>域名</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+
+    {if condition="empty(count($list))"}
+    <tr>
+        <td colspan="5" class="text-center p-5">
+            <span class="text-muted">暂无相关客服系统</span>
+        </td>
+    </tr>
+    {/if}
+
+    {volist name="list" id="vo"}
+    <tr>
+        <td>{$vo.id}</td>
+        <td>
+            <a style="color: #25c16f;text-decoration: none;" href="{:url('app/entry', ['id' => $vo['id']])}">{$vo.business_name}</a>
+        </td>
+        <td>
+            {if condition="$vo['expire_time'] == null"}
+            永久
+            {else/}
+            {:date('Y-m-d', $vo['expire_time'])}
+            {/if}
+        </td>
+        <td>
+            <div class="input-group">
+                <input class="business" style="line-height:normal;" id="copy_{$vo['id']}"
+                       value="{:url('admin/login/index',['business_id'=>$vo['id']],true,true)}">
+                <button href="#" class="copybtn btn" data-clipboard-target="#copy_{$vo['id']}">
+                    复制
+                </button>
+            </div>
+        </td>
+        <td class="operate" style="padding-top: 10px">
+            <a href="#" data-toggle="modal" class="edit-app" id="{:url('platform/app/edit', ['id' => $vo['id']])}"
+               data-target="#add-modal"><img src="__image__/admin/A/edit.png" alt="编辑" title="编辑"></a>
+            <a class="modify-password"
+               href="{:url('app/modifypassword', ['id' => $vo['id']])}"><img src="__image__/admin/A/change.png" alt=""
+                                                                             title="重置密码"></a>
+            <a href="#" data-toggle="modal" class="clean-app" id="{:url('platform/app/truncate', ['id' => $vo['id']])}"
+               data-target="#clean-modal"><img src="__image__/platform/truncate.png" alt="清理磁盘" title="清理磁盘"></a>
+            <input type="hidden" value="{:url('admin/login/index',['business_id'=>$vo['id']])}" id="link">
+            <a class="recycle-btn"
+               href="{:url('app/setRecycle', ['id' => $vo['id'],'action'=>1])}"><img src="__image__/admin/A/delete.png"
+                                                                                     alt="放入回收站" title="放入回收站"></a>
+            <a class="disabled-btn"
+               href="{:url('app/disabled', ['id' => $vo['id'],'action' => $vo['state']])}"><img
+                    src="__image__/admin/A/{$vo['state'] == 'close' ? 'unblock' : 'disable' }.png" alt="禁用"
+                    title="禁用"><span style="display: none">{$vo['state'] == 'close' ? '解除禁用' : '禁用' }</span></a>
+        </td>
+    </tr>
+    {/volist}
+</table>
+<div class="modal add-modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="myModalLabel"><b>添加客服系统</b></div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="add-modal-body modal-body"></div>
+        </div>
+    </div>
+</div>
+<!-- 清理功能 -->
+<div class="modal clean-modal fade" id="clean-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- 标题 -->
+            <div class="modal-header">
+                <div class="modal-title" id="myModalLabel"><b>清理磁盘空间</b><b style="color: red;">无法找回,请谨慎操作！！！</b></div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="clean-modal-body modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+{$page}
+<script src="__script__/platform/clipboard.min.js?v=__lkversion__"></script>
+<script src="__script__/jquery.datetimepicker.full.min.js?v=__lkversion__"></script>
+<script>
+    var clipboard = new ClipboardJS('.copybtn');
+    clipboard.on('success', function(e) {
+        $.alert({
+            content:'复制成功'
+        });
+        e.clearSelection();
+    });
+    clipboard.on('error', function(e) {
+        $.alert({
+            content:'复制失败,请手动复制'
+        });
+    });
+
+    $(document).on("click", ".modify-password", function () {
+        var href = $(this).attr("href");
+        $.myPrompt({
+            title: "修改密码",
+            content: "请输入新密码：",
+            confirm: function (val) {
+                if (!val) {
+                    $.myToast({
+                        content: "密码不能为空",
+                    });
+                    return;
+                }
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        password: val,
+                    },
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                        });
+                    }
+                });
+
+            }
+        });
+        return false;
+    });
+
+    $(document).on("click", ".add-app", function () {
+        $.ajax({
+            url: '{:url('platform/app/edit')}',
+            success: function (data) {
+                var result = $(data);
+                $(".add-modal-body").html(result);
+            }
+        })
+    });
+
+    $(document).on("click", ".edit-app", function () {
+        let id = this.id;
+        $('.add-modal').find('.modal-title').text('编辑客服系统')
+        $.ajax({
+            url: id,
+            success: function (data) {
+                var result = $(data);
+                $(".add-modal-body").html(result);
+            }
+        })
+    });
+
+    $(document).on("click",".clean-app",function () {
+        let id = this.id;
+        $.ajax({
+            url: id,
+            success: function (data) {
+                var result = $(data);
+                $(".clean-modal-body").html(result);
+            }
+        })
+    });
+
+    $(document).on("click", ".recycle-btn", function () {
+        var href = $(this).attr("href");
+        $.myConfirm({
+            content: "确认将客服系统放进回收站？可以从回收站恢复。",
+            confirm: function () {
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    dataType: "json",
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                            callback: function () {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+
+            }
+        });
+        return false;
+    });
+
+    $(document).on("click", ".disabled-btn", function () {
+        var href = $(this).attr("href");
+        var aText = $(this).text();
+        console.log(aText);
+        $.myConfirm({
+            content: "确认将客服系统" + aText + "?",
+            confirm: function () {
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    dataType: "json",
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                            callback: function () {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+
+            }
+        });
+        return false;
+    });
+</script>

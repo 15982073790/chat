@@ -1,0 +1,141 @@
+/* Layer Skin Class */
+.layer-message-tips .layui-layer-content {
+    padding: 0 !important;
+}
+
+.layer-message-tips .layui-layer-content .am-alert {
+    position: relative;
+    min-width: 240px;
+    padding: 8px 40px 8px 35px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.layer-message-tips .layui-layer-content .am-alert > [class^=am-icon-] {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    font-size: 30px;
+}
+
+.layer-message-tips .layui-layer-content .am-alert .close {
+    position: absolute;
+    right: 12px;
+}
+
+.layer-message-alert {
+    width: 460px;
+}
+
+.layer-message-alert .layui-layer-setwin {
+    top: 9px;
+}
+
+.layer-message-alert .layui-layer-title {
+    height: 34px;
+    line-height: 34px;
+    padding-left: 15px;
+}
+
+.layer-message-alert .layui-layer-content {
+    min-height: 90px;
+}
+
+.layer-message-alert .layui-layer-btn {
+    text-align: center;
+    padding: 5px;
+}
+
+.layer-message-alert .layui-layer-btn a {
+    display: table-cell;
+    width: 1%;
+    float: none;
+    text-align: center;
+}
+
+/* Amazeui Extend CSS */
+.am-input-xs {
+    font-size: 1.2rem !important;
+}
+
+.am-form-group-xs .am-checkbox,
+.am-form-group-xs .am-radio,
+.am-form-group-xs .am-radio-inline,
+.am-form-group-xs .am-form-label,
+.am-form-group-xs .am-form-field {
+    font-size: 1.2rem !important;
+}
+
+.am-form-xs .am-checkbox,
+.am-form-xs .am-radio,
+.am-form-xs .am-radio-inline,
+.am-form-xs .am-form-label,
+.am-form-xs .am-form-field,
+.am-form-xs .am-btn {
+    font-size: 1.2rem !important;
+}
+
+.am-form-sm .am-checkbox,
+.am-form-sm .am-radio,
+.am-form-sm .am-radio-inline,
+.am-form-sm .am-form-label,
+.am-form-sm .am-form-field,
+.am-form-sm .am-btn {
+    font-size: 1.3rem !important;
+}
+
+.am-form-xs .am-form-label {
+    padding-top: .4em !important;
+}
+
+.am-form-xs .am-radio-inline {
+    padding-top: .4em !important;
+}
+
+.am-form-xs .am-radio-inline input[type=checkbox],
+.am-form-xs .am-radio-inline input[type=radio] {
+    margin-top: 2px !important;
+}
+
+.am-form-xs select, select.am-input-xs {
+    padding-right: 20px;
+    height: 28px;
+}
+
+.am-form-xs.am-form-horizontal .am-form-help {
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.am-form legend {
+    font-size: 1.3em;
+    padding: 5px 10px;
+}
+
+.am-form-password {
+    position: relative;
+}
+
+.am-form-password input {
+    padding-right: 28px;
+}
+
+.am-form-password .am-password-icon {
+    position: absolute;
+    width: 18px;
+    left: inherit;
+    right: 6px;
+    top: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.am-form-icon .am-password-icon {
+    top: 50%;
+}
+
+/* Select2 CSS Reload */
+.select2-selection {
+    border-radius: 0 !important;
+    border: 1px solid #cccccc !important;
+}

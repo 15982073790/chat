@@ -1,0 +1,33 @@
+<form method="post" return="{:url('app/index')}" action="{$action_url}" class="auto-form">
+    <!-- 聊天记录 -->
+    <div class="talk clean-item">
+        <!-- 勾选聊天记录 && 若大小为0B input增加disabled属性 -->
+        <input id="talk" name="talk" type="checkbox">
+        <label for="talk"><span class="clean-item-title">聊天记录</span></label>
+        <!-- 日期筛选 -->
+        <select name="talk_time" disabled>
+            <option label="全部" value="0"></option>
+            <option label="7天前" value="1"></option>
+            <option label="1个月前" value="2"></option>
+            <option label="3个月前" value="3"></option>
+            <option label="1年前" value="4"></option>
+        </select>
+        <!-- 所占空间 -->
+        <span class="float-text">{$count}条</span>
+    </div>
+    <div style="display: flex;justify-content: center;">
+        <!-- 清理按钮 -->
+        <button class="to-clean auto-form auto-form-btn">立即清理</button>
+    </div>
+</form>
+<script>
+    // 根据勾选聊天记录选项判断日期选择项禁用状态
+    $("#talk").click(function () {
+        if ($(this).prop("checked")) {
+            $(".talk select").removeAttr("disabled")
+        } else {
+            $(".talk select").attr("disabled","disabled");
+        }
+    });
+
+</script>

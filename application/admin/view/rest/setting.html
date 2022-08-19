@@ -1,0 +1,398 @@
+{include file="public/header"/}
+<script src="__libs__/vue/vue.js?v=__lkversion__" type="text/javascript"></script>
+<style>
+    .handler .back .img {
+        width: 16px;
+        height: 16px;
+        margin: 6px 0 0 16px;
+        float: left;
+        background: url("__image__/admin/B/back-system.png");
+    }
+
+
+    .layui-form {
+        margin-top: 20px;
+    }
+
+    .layui-form-item {
+        margin-bottom: 24px;
+    }
+
+    .layui-form-item .layui-form-label {
+        font-size: 14px;
+        padding: 10px;
+        color: #747474;
+        width: 120px;
+    }
+
+    .layui-form-item .layui-input-block:first-of-type {
+        margin-top: 0;
+    }
+
+    .layui-form-item .layui-input-block {
+        margin-left: 150px;
+        width: 600px;
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .layui-form-item .layui-input-block input {
+        color: #555555;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .layui-form-item .layui-input-block input.evaluate-item {
+        width: 210px;
+        margin-right: 20px;
+    }
+
+    .layui-form-item .layui-input-block img {
+        height: 16px;
+        width: 16px;
+    }
+
+    input::-webkit-input-placeholder {
+        color: #dddddd;
+        font-size: 14px;
+    }
+
+    input:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: #dddddd;
+        font-size: 14px;
+    }
+    input::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #dddddd;
+        font-size: 14px;
+    }
+
+    input:-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: #dddddd;
+        font-size: 14px;
+    }
+
+    button.keep {
+        width: 66px;
+        height: 32px;
+        line-height: 32px;
+        color: #ffffff;
+        font-size: 13px;
+        background-color: #25c16f;
+        border-radius: 16px;
+    }
+
+    .del-icon {
+        margin-left: 50px;
+        cursor: pointer;
+    }
+
+    .button {
+        height: 32px;
+        width: 120px;
+        line-height: 32px;
+        text-align: center;
+        font-size: 13px;
+        color: #25c16f;
+        border: 1px solid #25c16f;
+        border-radius: 16px;
+        cursor: pointer;
+    }
+
+    .layui-form-switch {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .layui-form-onswitch i {
+        margin-left: -18px;
+    }
+
+    .layui-form-switch i {
+        top: 1px;
+        left: 3px;
+    }
+
+    .layui-form-switch em {
+        margin-left: 28px;
+    }
+
+    .layui-form-switch.layui-form-onswitch i {
+        left: 100%;
+    }
+
+    .layui-form-switch.layui-form-onswitch em {
+        margin-left: 8px;
+    }
+
+    .layui-input {
+        padding: 3px 10px;
+        font-size: 14px;
+        border-radius: 10px;
+        border: 1px solid #e5e3e9;
+        height: 36px;
+        width: 95px;
+    }
+
+    .layui-form-select dl dd.layui-this {
+        background-color: #2E9FFF;
+    }
+
+    .text-reply {
+        border-radius: 8px;
+        border: 1px solid #E6E4EA;
+        padding: 10px;
+    }
+
+    .week-item {
+        height: 36px;
+        width: 72px;
+        text-align: center;
+        line-height: 36px;
+        border-radius: 10px;
+        font-size: 14px;
+        border: 1px solid #E6E4EA;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .week-item.active {
+        border: 1px solid #25c16f;
+        color: #25c16f;
+    }
+
+    #container {
+        background-color: #fff;
+    }
+</style>
+
+<div id="container" style="padding-bottom: 42px">
+    <h2 class="page-header" style="font-size: 18px;color: #555555;"> 下班设置</h2>
+    <div class="handler">
+        <a href="{:url('admin/index/set')}">
+            <div class="back">
+                <i class="img"></i>
+                <span>返回设置</span>
+            </div>
+        </a>
+    </div>
+    <div class="layui-form" v-show="loading">
+        <div class="layui-form-item">
+            <label class="layui-form-label">下班回复弹窗</label>
+            <div class="layui-input-block">
+                <input id="dialog" type="checkbox" name="switch" lay-skin="switch" lay-filter="dialog">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">上班日期</label>
+            <div style="display: flex;padding-left: 30px;">
+                <div @click="add('1')" class="week-item" :class="form.week.indexOf('1') > -1 ? 'active' :''">星期一</div>
+                <div @click="add('2')" class="week-item" :class="form.week.indexOf('2') > -1 ? 'active' :''">星期二</div>
+                <div @click="add('3')" class="week-item" :class="form.week.indexOf('3') > -1 ? 'active' :''">星期三</div>
+                <div @click="add('4')" class="week-item" :class="form.week.indexOf('4') > -1 ? 'active' :''">星期四</div>
+                <div @click="add('5')" class="week-item" :class="form.week.indexOf('5') > -1 ? 'active' :''">星期五</div>
+                <div @click="add('6')" class="week-item" :class="form.week.indexOf('6') > -1 ? 'active' :''">星期六</div>
+                <div @click="add('7')" class="week-item" :class="form.week.indexOf('7') > -1 ? 'active' :''">星期日</div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">上班时间</label>
+            <div style="display: flex;align-items: center;padding-left: 30px;">
+                <select id="start_hour" name="hour" lay-filter="startHour">
+                    <option v-for="item in hour" :value="item">{{item}}</option>
+                </select>
+                <span style="margin-left: 10px;margin-right: 20px;">时</span>
+                <select id="start_minutes" name="minutes" lay-filter="startMinutes">
+                    <option value="00">00</option>
+                    <option value="30">30</option>
+                    <option value="30">59</option>
+                </select>
+                <span style="margin-left: 10px">分</span>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">下班时间</label>
+            <div style="display: flex;align-items: center;padding-left: 30px;">
+                <select id="off_hour" name="hour" lay-filter="offHour">
+                    <option v-for="item in hour" :value="item">{{item}}</option>
+                </select>
+                <span style="margin-left: 10px;margin-right: 20px;">时</span>
+                <select id="off_minutes" name="minutes" lay-filter="offMinutes">
+                    <option value="00">00</option>
+                    <option value="30">30</option>
+                    <option value="30">59</option>
+                </select>
+                <span style="margin-left: 10px;">分</span>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">回复文本</label>
+            <div class="layui-input-block">
+                <textarea name="reply" v-model="form.reply" id="reply" class="text-reply" cols="60" rows="4"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名输入框</label>
+            <div class="layui-input-block">
+                <input id="name_input" type="checkbox" name="switch" lay-skin="switch" lay-filter="name_input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系方式输入框</label>
+            <div class="layui-input-block">
+                <input id="tel_input" type="checkbox" name="switch" lay-skin="switch" lay-filter="tel_input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn keep" @click="saveSetting">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#container',
+        data() {
+            return {
+                hour: [],
+                loading: false,
+                form: {
+                    dialog: false,
+                    name_input: false,
+                    tel_input: false,
+                    reply: '',
+                    week: [],
+                    start: {
+                        hour:'',
+                        minutes: ''
+                    },
+                    off: {
+                        hour:'',
+                        minutes: ''
+                    }            
+                }
+            };
+        },
+        created() {
+            let that  = this;
+            that.getSetting();
+        },
+        methods: {
+            add(row) {
+                let index = this.form.week.indexOf(row);
+                if(index > -1) {
+                    this.form.week.splice(index,1)
+                }else {
+                    this.form.week.push(row)
+                }
+            },
+            getSetting () {
+                let that = this;
+                for(let i = 0;i < 24;i++) {
+                    if(i < 10) {
+                        i = '0'+i;
+                    }
+                    that.hour.push(i)
+                }
+                $.ajax({
+                    url: YMWL_ROOT_URL + '/admin/rest/getSetting',
+                    type: 'get',
+                    data: {
+                    },
+                    success: function (res) {
+                        that.loading = true;
+                        if (res.code == 0) {
+                            if(res.data != null) {
+                                that.form = res.data;
+                                if(that.form.dialog) {
+                                    $("#dialog+.layui-form-switch").addClass('layui-form-onswitch')
+                                    $("#dialog").attr('checked',true)
+                                }
+                                if(that.form.name_input) {
+                                    $("#name_input+.layui-form-switch").addClass('layui-form-onswitch')
+                                    $("#name_input").attr('checked',true)
+                                }
+                                if(that.form.tel_input) {
+                                    $("#tel_input+.layui-form-switch").addClass('layui-form-onswitch')
+                                    $("#tel_input").attr('checked',true)
+                                }
+                                $('#off_hour').val(that.form.off.hour)
+                                $('#off_minutes').val(that.form.off.minutes)
+                                $('#start_hour').val(that.form.start.hour)
+                                $('#start_minutes').val(that.form.start.minutes)
+                                layui.form.render("select");
+                            }
+                        }
+                    },
+                    error:function(res) {
+                        that.loading = true;
+                    }
+                });
+            },
+            saveSetting() {
+                console.log(this.form)
+                $.ajax({
+                    url: YMWL_ROOT_URL + '/admin/rest/saveSetting',
+                    type: 'post',
+                    data: this.form,
+                    success: function (res) {
+                        if (res.code == 0) {
+                            layer.msg('保存成功');
+                        }else {
+                            layer.alert(res.msg);
+                        }
+                    },
+                    error:function(res) {
+
+                    }
+                });
+            }
+        }
+    });
+    layui.use(['form'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+        //监听指定开关
+        form.on('switch(dialog)', function(data){
+            if(this.checked){
+                app.form.dialog = true;
+            }else{
+                app.form.dialog = false;
+            }
+        });
+        form.on('switch(tel_input)', function(data){
+            if(this.checked){
+                app.form.tel_input = true;
+            }else{
+                app.form.tel_input = false;
+            }
+        });
+        form.on('switch(name_input)', function(data){
+            if(this.checked){
+                app.form.name_input = true;
+            }else{
+                app.form.name_input = false;
+            }
+        });
+        form.on('select(offHour)', function(data){
+          app.form.off.hour = data.value;
+        });
+        form.on('select(offMinutes)', function(data){
+          app.form.off.minutes = data.value;
+        });
+        form.on('select(startHour)', function(data){
+          app.form.start.hour = data.value;
+        });
+        form.on('select(startMinutes)', function(data){
+          app.form.start.minutes = data.value;
+        });
+    });
+</script>
+{include file="public/footer"/}

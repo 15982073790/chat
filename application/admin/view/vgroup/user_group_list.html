@@ -1,0 +1,9 @@
+<div class="checkbox-list">
+    {volist name="group" id="vo"}
+    <div class="checkbox-item">
+        <input class="checkbox" name="group" value="{$vo.id}"
+               type="checkbox" <?php if(in_array($vo['id'],$user_groups))echo 'checked="checked"'; ?>>
+        <span style="margin-left: 15px;">{$vo.group_name}</span>
+    </div>
+    {/volist}
+</div>

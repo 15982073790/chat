@@ -1,0 +1,13 @@
+2022-04-24 15:51:32 pid:6335 Workerman[start.php] start in DAEMON mode
+2022-04-24 15:53:39 pid:6426 Workerman[start.php] start in DAEMON mode
+2022-04-24 16:45:45 pid:6428 Workerman[start.php] stopping ...
+2022-04-24 16:47:47 pid:6429 worker[6429] remains 4 connection(s)
+2022-04-24 16:49:37 pid:6429 worker[6429] remains 2 connection(s)
+2022-04-24 17:09:42 pid:6429 worker[6429] remains 0 connection(s)
+2022-04-24 17:09:42 pid:6428 Workerman[start.php] has been stopped
+2022-04-26 17:57:31 pid:12358 Workerman[start.php] start in DEBUG mode
+2022-04-26 17:58:28 pid:12358 Workerman[start.php] stopping ...
+2022-04-26 17:58:28 pid:12358 Workerman[start.php] has been stopped
+2022-04-26 18:24:24 pid:12546 Workerman[start.php] start in DEBUG mode
+2022-04-26 18:24:47 pid:12546 Workerman[start.php] stopping ...
+2022-04-26 18:24:47 pid:12546 Workerman[start.php] has been stopped

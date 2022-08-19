@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <title>谈话页面</title>
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+    <script src="__libs__/layui/layui.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/jquery/jquery.cookie.js?v=__lkversion__" type="text/javascript"></script>
+    <link href="__libs__/layui/css/layui.css?v=__lkversion__" rel="stylesheet">
+    <script src="__libs__/push/pusher.min.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/layer/layer.js?v=__lkversion__" type="text/javascript"></script>
+    <script src="__libs__/jquery/jquery.form.min.js?v=__lkversion__" type="text/javascript"></script>
+
+    <script type="text/javascript" src="__libs__/webrtc/recorder.js?v=__lkversion__"></script>
+
+    <style>
+        * {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .foot_msg {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .msg-toolbar {
+            width: 80%;
+            height: 34px;
+            position: relative;
+            top: 0px;
+        }
+
+        .msg-toolbar a {
+            float: left;
+            margin-right: 5px;
+        }
+        .input-but {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            width: 30px;
+            height: 30px;
+
+        }
+
+        .size {
+            min-width: 30px;
+            height: 25px;
+            line-height: 30px;
+            border: none;
+        }
+
+        .fileinput {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer;
+        }
+
+        .edit-ipt {
+            border: 2px solid #ddd;
+            width: 78%;
+            outline: none;
+            text-indent: 10px;
+            border-radius: 6px;
+            /*margin-left: 2px;*/
+            background-color: #fff;
+            padding-top: 6px;
+            font-weight: normal;
+            font-size: 16px;
+            overflow-y: auto;
+            height: auto;
+            min-height: 32px;
+            overflow-x: hidden;
+            word-break: break-all;
+            font-style: normal;
+        }
+
+        .outer-right {
+            float: right;
+            width: 80%;
+            position: relative;
+            right: 16%;
+            clear: both;
+            font-size: 14px;
+        }
+
+        .outer-left {
+            float: right;
+            width: 80%;
+            position: relative;
+            clear: both;
+            right: 5%;
+            font-size: 14px;
+        }
+
+        .outer-iframe-left {
+            float: left;
+            position: relative;
+            clear: both;
+            padding-top: 5px;
+        }
+
+        .outer-right:before, .outer-right > i {
+            width: 0;
+            height: 1px;
+            border-width: 6px 7px;
+            border-style: dashed solid dashed solid;
+            /*border-color: #66afe9 transparent transparent;*/
+            border-color: transparent transparent transparent #5FB878;
+            _border-color: #fff #19CAA6 #fff #eee;
+            font-size: 0;
+            line-height: 0;
+            content: "";
+            position: absolute;
+            top: 15px;
+            right: -12px;
+        }
+
+        .outer-left:before, .outer-left > i {
+            width: 0;
+            height: 1px;
+            border-width: 6px 7px;
+            border-style: dashed solid dashed solid;
+            border-color: transparent #eee transparent transparent;
+            _border-color: #fff #fff #fff #eee;
+            font-size: 0;
+            line-height: 0;
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: -12px;
+            left: -11px \9;
+            *left: -11px;
+
+        }
+
+        .service {
+            /* margin-right: 10px;*/
+            margin-top: 5px;
+            background-color: #5FB878;
+            display: inline-block;
+            padding: 10px 10px;
+            float: right;
+            word-break: break-all;
+            word-wrap: break-word;
+            color: #fff;;
+            border-radius: 3px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        .customer {
+            margin-top: 5px;
+            *margin-top: 10px;
+            background-color: #eee;
+            display: inline-block;
+            padding: 10px 10px;
+            float: left;
+            word-break: break-all;
+            word-wrap: break-word;
+            color: #000;
+            border-radius: 3px;
+            position: relative;
+            left: 0px;
+            max-width: 100%;
+        }
+
+        .chatmsg {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .chatmsg_notice {
+            position: relative;
+        }
+
+        .chatmsg img {
+            max-width: 100%;
+            cursor: pointer;
+        }
+        .chatmsg:after, .chatmsg p {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .service-name {
+            float: left;
+            display: block;
+            position: relative;
+            font-size: 12px;
+            color: #8D8D8D;
+        }
+
+        .showtime {
+            color: #D2D2D2;
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 12px;
+            text-align: center;
+            height: 15px;
+        }
+
+        .content {
+            position: absolute;
+            top: 52px;
+            width: 100%;
+            height: 77%;
+            overflow-y: auto;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .newmsg {
+            position: absolute;
+            left: 23px;
+            top: 10px;
+            display: inline-block;
+            line-height: 18px;
+            color: #0C0C0C;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background: #ddd;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .tool_box {
+            width: 100%;
+            height: auto;
+            position: relative;
+            display: none;
+            background-color: #fff;
+        }
+
+        .wl_faces_main ul {
+            margin: 5px 5px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .wl_faces_main ul li {
+            float: left;
+            height: 30px;
+            width: 26px;
+            text-align: center;
+
+        }
+
+        .wl_faces_main ul li img {
+            width: 22px;
+            height: 22px;
+            padding: 0px;
+        }
+
+
+    </style>
+    <script>
+        var pic ='{$avatar}';
+        var imghead='{$img}';
+        var num=0;
+      //标记已看消息
+        function getwatch(cha) {
+            $.ajax({
+                url:YMWL_ROOT_URL+"/admin/set/getwatch",
+                type: "post",
+                data: {visiter_id: cha}
+            });
+        }
+
+
+        // new pusher 链接websocket
+        var wolive_connect = function () {
+            var pusher = new Pusher('{$app_key}', {
+                encrypted: {$value}
+                , enabledTransports: ['ws']
+                , wsHost: '{$whost}'
+                , {$port}: {$wport}
+                , authEndpoint: '/auth.php'
+                ,disableStats: true
+            });
+
+            var value = "{$arr['service_id']}";
+            var channel = pusher.subscribe("kefu" + value);
+            channel.bind("cu-event", function (data) {
+                var showtime='';
+                if (data.message.visiter_id == "{$data['visiter_id']}") {
+                    var msg = '';
+                    msg += '<li class="chatmsg"><div class="showtime">' + showtime + '</div><div style="position: absolute;left:3px;">';
+                    msg += '<img class="my-circle  se_pic" src="' + pic + '" ></div>';
+                    msg += "<div class='outer-left'><div class='customer'>";
+                    msg += "<pre>" + data.message.content + "</pre>";
+                    msg += "</div></div>";
+                    msg += "</li>";
+                    $('.conversation').append(msg);
+                    getwatch(data.message.visiter_id);
+                } else {
+                    num++;
+                    if(num > 0){
+                        $(".newmsg").removeClass('hide');
+                    }else{
+                        $(".newmsg").addClass('hide');
+                    }
+                    $(".newmsg").text(num);
+                }
+                var div = document.getElementById("wrap");
+                div.scrollTop = div.scrollHeight;
+            });
+
+            channel.bind('logout', function () {
+                $("#status").text('离线');
+            });
+
+            channel.bind('geton', function () {
+                $("#status").text('');
+            });
+
+
+
+            pusher.connection.bind('state_change', function(states) {
+                // states = {previous: 'oldState', current: 'newState'}
+                if(states.current == 'unavailable' || states.current == "disconnected" || states.current == "failed" ){
+//                    pusher.disconnect();
+                    pusher.unsubscribe("kefu" + value);
+                    pusher.unsubscribe("all" + all);
+                    $.cookie("hid",'');
+                    wolive_connect();
+                }
+
+            });
+
+            pusher.connection.bind('connected', function() {
+                 $(".chatmsg").remove();
+                 $.cookie('hid','');
+                 getdata();
+            });
+        }
+    </script>
+</head>
+<body>
+<header style="width: 100%;height: 50px;background: #3c3c3c;color: #fff9ec;position:absolute;line-height: 45px;">
+    <span class="newmsg hide"></span>
+    <i class="layui-icon" style="position: absolute;left:5px;font-size: 20px;" onclick="loginout()">&#xe603;</i>
+    <span id="customer"
+          style="position:absolute;left:40%;font-size: 18px;font-weight: bold;">{$data.visiter_name}</span><span
+        id="status"></span>
+</header>
+<section class="content" id="wrap">
+    <ul class="conversation">
+    </ul>
+</section>
+<footer style="position:absolute;bottom: 5px;width: 100%;height: auto;">
+    <div class="tool_box">
+        <div class="wl_faces_content">
+            <div class="wl_faces_main">
+            </div>
+        </div>
+    </div>
+    <div class="foot_msg">
+        <div class="msg-toolbar">
+            <a id="face_icon" href="javascript:" onclick="faceon()"><i class="layui-icon" style="font-size: 26px;">&#xe60c;</i></a>
+
+            {if $atype == 'open'}
+            <a onclick="getaudio()"><i class="layui-icon" style="font-size: 22px;cursor: pointer;">&#xe688;</i></a>
+            {/if}
+
+
+            <a id="images" href="javascript:">
+                <form id="picture" enctype="multipart/form-data">
+                    <div class="layui-box input-but  size">
+                        <i class="layui-icon" style="font-size: 30px;">&#xe60d;</i>
+                        <input type="file" name="upload" class="fileinput" onchange="put()"/>
+                    </div>
+                </form>
+            </a>
+            <a id="files" href="javascript:">
+                <form id="file" enctype="multipart/form-data">
+                    <div class="layui-box input-but  size">
+                        <i class="layui-icon" style="font-size: 25px;">&#xe61d;</i>
+                        <input type="file" name="folder" class="fileinput" onchange="putfile()"/>
+                    </div>
+                </form>
+            </a>
+        </div>
+
+        <div class="footer">
+            <input type="text" id="text_in" class="layui-input" style="margin-top: 1px;margin-left:5px;width: 80%"/>
+            <button class="layui-btn layui-btn-normal" style="position: absolute;right: 5px;bottom:2px;width: 17.5%"
+                    onclick="send()">发送
+            </button>
+        </div>
+    </div>
+</footer>
+<script>
+    var se = '{$se.nick_name}';
+  
+    var visiter_id='{$data.visiter_id}';
+    var img ='{$data.avatar}';
+    
+     var getaudio =function(){
+
+          //音频先加载
+                var audio_context;
+                var recorder;
+                var wavBlob;
+                //创建音频
+                try {
+                    // webkit shim
+                    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+                    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.mediaDevices.getUserMedia;
+                    window.URL = window.URL || window.webkitURL;
+
+                    audio_context = new AudioContext;
+
+                    if (!navigator.getUserMedia) {
+                        console.log('语音创建失败');
+                    }
+                    ;
+                } catch (e) {
+                    console.log(e);
+                    return;
+                }
+                navigator.getUserMedia({audio: true}, function (stream) {
+                    var input = audio_context.createMediaStreamSource(stream);
+                    recorder = new Recorder(input);
+
+                    var falg = window.location.protocol;
+                    if (falg == 'https:') {
+                        recorder && recorder.record();
+
+                        //示范一个公告层
+                        layui.use(['jquery', 'layer'], function () {
+                            var layer = layui.layer;
+
+                            layer.msg('录音中...', {
+                                icon: 16
+                                , shade: 0.01
+                                , skin: 'layui-layer-lan'
+                                , time: 0 //20s后自动关闭
+                                , btn: ['发送', '取消']
+                                , yes: function (index, layero) {
+                                    //按钮【按钮一】的回调
+                                    recorder && recorder.stop();
+                                    recorder && recorder.exportWAV(function (blob) {
+                                        wavBlob = blob;
+                                        var fd = new FormData();
+                                        var wavName = encodeURIComponent('audio_recording_' + new Date().getTime() + '.wav');
+                                        fd.append('wavName', wavName);
+                                        fd.append('file', wavBlob);
+
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.onreadystatechange = function () {
+                                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                                jsonObject = JSON.parse(xhr.responseText);
+
+                                                voicemessage = '<div style="cursor:pointer;text-align:center;" onclick="getstate(this)" data="play"><audio src="'+jsonObject.data.src+'"></audio><i class="layui-icon" style="font-size:25px;">&#xe652;</i><p>音频消息</p></div>';
+
+                                                    var sid = $('#channel').text();
+                                                    var pic = $("#se_avatar").attr('src');
+                                                    var time;
+
+                                                    var sdata = $.cookie('cu_com');
+
+                                                    if (sdata) {
+                                                        var json = $.parseJSON(sdata);
+                                                        var img = json.avater;
+
+                                                    }
+
+                                                    if($.cookie("time") == ""){
+                                                        var myDate = new Date();
+                                                            time = myDate.getHours()+":"+myDate.getMinutes();
+                                                        var timestamp = Date.parse(new Date());
+                                                        $.cookie("time",timestamp/1000);
+
+                                                    }else{
+
+                                                        var timestamp = Date.parse(new Date());
+
+                                                        var lasttime =$.cookie("time");
+                                                        if((timestamp/1000 - lasttime) >30){
+                                                            var myDate =new Date(timestamp*1000);
+                                                            time = myDate.getHours()+":"+myDate.getMinutes();
+                                                        }else{
+                                                            time ="";
+                                                        }
+
+                                                        $.cookie("time",timestamp/1000);
+                                                    }
+                                               
+                                                var str = '';
+                                                    str += '<li class="chatmsg"><div class="showtime">' + time + '</div>';
+                                                    str += '<div style="float: right;"><img  class="my-circle se_pic" src="' + pic + '" width="50px" height="50px"></div>';
+                                                    str += "<div class='outer-right'><div class='service'>";
+                                                    str += "<pre>" +  voicemessage + "</pre>";
+                                                    str += "</div></div>";
+                                                    str += "</li>";
+
+                                                    $(".conversation").append(str);
+                                                    $("#text_in").empty();
+
+                                                    var div = document.getElementById("wrap");
+                                                    div.scrollTop = div.scrollHeight;
+
+                                                    $.ajax({
+                                                        url:YMWL_ROOT_URL+"/admin/set/chats",
+                                                        type: "post",
+                                                        data: {visiter_id:visiter_id,content:  voicemessage, avatar: img}
+                                                    });
+                                            }
+                                        };
+                                        xhr.open('POST', '/admin/event/uploadVoice');
+                                        xhr.send(fd);
+                                    });
+                                    recorder.clear();
+                                    layer.close(index);
+                                }
+                                , btn2: function (index, layero) {
+                                    //按钮【按钮二】的回调
+                                    recorder && recorder.stop();
+                                    recorder.clear();
+                                    audio_context.close();
+                                    layer.close(index);
+                                }
+                            });
+
+                        });
+                    } else {
+                        
+                       layer.msg('音频输入只支持https协议！');
+                    }
+
+                }, function (e) {
+                     layer.msg('音频输入只支持https协议！');
+                });
+    }
+
+var getstate =function(obj){
+       
+       var c=obj.children[0];
+ 
+       var state=$(obj).attr('data');
+   
+       if(state == 'play'){
+         c.play();
+         $(obj).attr('data','pause');
+         $(obj).find('i').html("&#xe651;");
+       
+       }else if(state == 'pause'){
+          c.pause();
+         $(obj).attr('data','play');
+          $(obj).find('i').html("&#xe652;");
+       }
+
+        c.addEventListener('ended', function () {  
+         $(obj).attr('data','play');
+         $(obj).find('i').html("&#xe652;");
+        
+       }, false);
+    }
+
+    var loginout =function () {
+        history.go(-1);
+    }
+
+    var init=function () {
+        // 获取历史消息
+        $.cookie("hid",'');
+        getdata();
+        getwatch(visiter_id);
+        wolive_connect();
+    }
+   
+
+   function getdata() {
+
+    var showtime="";
+    var curentdata =new Date();
+    var time =curentdata.toLocaleDateString();
+   
+   if($.cookie("hid") != "" ){
+        var cid =$.cookie("hid");
+    }else{
+        var cid ="";
+
+    }
+       $.ajax({
+           url:YMWL_ROOT_URL+"/weixin/chat/chatdata",
+           type: "post",
+           data: {visiter_id:visiter_id,hid:cid},
+           success: function (res) {
+
+               //添加 最近的 聊天 记录
+               if(res.code == 0){
+               var str = '';
+               $.each(res.data, function (k, v) {
+                   if(getdata.puttime){
+
+                       if((v.timestamp - getdata.puttime) > 60){
+                           var myDate = new Date(v.timestamp*1000);
+                           let year = myDate.getFullYear();
+                           let month = myDate.getMonth()+1;
+                           let date = myDate.getDate();
+                           let hours = myDate.getHours();
+                           let minutes = myDate.getMinutes();
+                           if(hours < 10 ) {
+                               minutes = '0'+minutes.toString();
+                           }
+                           if(minutes < 10 ) {
+                               minutes = '0'+minutes.toString();
+                           }
+                           var puttime =myDate.toLocaleDateString();
+                           if(puttime == time){
+                               showtime =hours+":"+minutes;
+
+                           }else{
+                               showtime =year+"-"+month+"-"+date+" "+hours+":"+minutes;
+                           }
+
+                       }else{
+                           showtime = "";
+                       }
+
+                   }else{
+
+                       var myDate = new Date(v.timestamp*1000);
+                       var puttime =myDate.toLocaleDateString();
+                       if(puttime == time){
+                           showtime =myDate.getHours()+":"+myDate.getMinutes();
+
+                       }else{
+
+                           showtime =myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+" "+myDate.getHours()+":"+myDate.getMinutes();
+                       }
+
+                   }
+
+                   getdata.puttime = v.timestamp;
+
+                  if (v.direction == 'to_service') {
+
+                         
+                            str += '<li class="chatmsg"><div class="showtime">' +showtime+ '</div><div class="" style="position: absolute;left:3px;">';
+                            str += '<img class="my-circle  se_pic" src="' + v.avatar + '" ></div>';
+                            str += "<div class='outer-left'><div class='customer'>";
+                            str += "<pre>" + v.content + "</pre>";
+                            str += "</div></div>";
+                            str += "</li>";
+
+                   } else {
+
+                           str += '<li class="chatmsg"><div class="showtime">'+showtime+'</div>';
+                            str += '<div class="" style="float: right;"><img  class="my-circle cu_pic" src="' +v.avatar  + '" ></div>';
+                            str += "<div class='outer-right'><div class='service'>";
+                            str += "<pre>" + v.content + "</pre>";
+                            str += "</div></div>";
+                            str += "</li>";
+
+                         
+                       
+                   }
+               });
+
+               var div = document.getElementById("wrap");
+               if($.cookie("hid") == ""){
+
+                   $(".conversation").append(str);
+                   if(div){
+                       div.scrollTop = div.scrollHeight;
+                   }
+               }else{
+
+                   $(".conversation").prepend(str);
+                   if(res.length <= 2){
+                       $("#top_div").remove();
+                       $(".conversation").prepend("<div id='top_div' class='showtime'>已没有数据</div>");
+                       if(div){
+                           div.scrollTop =0;
+                       }
+                   }else{
+                       if(div){
+                           div.scrollTop =div.scrollHeight/3;
+                       }
+                   }
+               }
+               if(res.length >2){
+                   $.cookie("hid",data[0]['cid']);
+                   $(".chatmsg_notice").remove();
+               }
+
+               }
+               
+           }
+       });
+}
+    window.onload =init();
+  
+
+   var e={'羊驼':'emo_01','神马':'emo_02','浮云':'emo_03','给力':'emo_04','围观':'emo_05','威武':'emo_06','熊猫':'emo_07','兔子':'emo_08','奥特曼':'emo_09','囧':'emo_10','互粉':'emo_11','礼物':'emo_12','微笑':'emo_13','嘻嘻':'emo_14','哈哈':'emo_15','可爱':'emo_16','可怜':'emo_17','抠鼻':'emo_18','吃惊':'emo_19','害羞':'emo_20','调皮':'emo_21','闭嘴':'emo_22','鄙视':'emo_23','爱你':'emo_24','流泪':'emo_25','偷笑':'emo_26','亲亲':'emo_27','生病':'emo_28','太开心':'emo_29','白眼':'emo_30','右哼哼':'emo_31','左哼哼':'emo_32','嘘':'emo_33','衰':'emo_34','委屈':'emo_35','呕吐':'emo_36','打哈欠':'emo_37','抱抱':'emo_38','怒':'emo_39','问号':'emo_40','馋':'emo_41','拜拜':'emo_42','思考':'emo_43','汗':'emo_44','打呼':'emo_45','睡':'emo_46','钱':'emo_47','失望':'emo_48','酷':'emo_49','好色':'emo_50','生气':'emo_51','鼓掌':'emo_52','晕':'emo_53','悲伤':'emo_54','抓狂':'emo_55','黑线':'emo_56','阴险':'emo_57','怒骂':'emo_58','心':'emo_59','伤心':'emo_60'};
+
+var faceon = function () {
+    $(".wl_faces_main").empty();
+    var str =""
+    str +='<ul>';
+    str +='<li><img title="羊驼" src="/upload/emoji/emo_01.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="神马" src="/upload/emoji/emo_02.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="浮云" src="/upload/emoji/emo_03.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="给力" src="/upload/emoji/emo_04.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="围观" src="/upload/emoji/emo_05.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="威武" src="/upload/emoji/emo_06.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="熊猫" src="/upload/emoji/emo_07.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="兔子" src="/upload/emoji/emo_08.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="奥特曼" src="/upload/emoji/emo_09.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="囧" src="/upload/emoji/emo_10.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="互粉" src="/upload/emoji/emo_11.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="礼物" src="/upload/emoji/emo_12.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="微笑" src="/upload/emoji/emo_13.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="嘻嘻" src="/upload/emoji/emo_14.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="哈哈" src="/upload/emoji/emo_15.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="可爱" src="/upload/emoji/emo_16.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="可怜" src="/upload/emoji/emo_17.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="抠鼻" src="/upload/emoji/emo_18.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="吃惊" src="/upload/emoji/emo_19.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="害羞" src="/upload/emoji/emo_20.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="调皮" src="/upload/emoji/emo_21.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="闭嘴" src="/upload/emoji/emo_22.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="鄙视" src="/upload/emoji/emo_23.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="爱你" src="/upload/emoji/emo_24.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="流泪" src="/upload/emoji/emo_25.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="偷笑" src="/upload/emoji/emo_26.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="亲亲"  src="/upload/emoji/emo_27.gif"  onclick="emoj(this)"/></li>';
+    str +='<li><img title="生病" src="/upload/emoji/emo_28.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="太开心" src="/upload/emoji/emo_29.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="白眼" src="/upload/emoji/emo_30.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="右哼哼" src="/upload/emoji/emo_31.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="左哼哼" src="/upload/emoji/emo_32.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="嘘" src="/upload/emoji/emo_33.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="衰" src="/upload/emoji/emo_34.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="委屈" src="/upload/emoji/emo_35.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="呕吐" src="/upload/emoji/emo_36.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="打哈欠" src="/upload/emoji/emo_37.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="抱抱" src="/upload/emoji/emo_38.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="怒" src="/upload/emoji/emo_39.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="问号" src="/upload/emoji/emo_40.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="馋" src="/upload/emoji/emo_41.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="拜拜" src="/upload/emoji/emo_42.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="思考" src="/upload/emoji/emo_43.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="汗" src="/upload/emoji/emo_44.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="打呼" src="/upload/emoji/emo_45.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="睡" src="/upload/emoji/emo_46.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="钱" src="/upload/emoji/emo_47.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="失望" src="/upload/emoji/emo_48.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="酷" src="/upload/emoji/emo_49.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="好色" src="/upload/emoji/emo_50.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="生气" src="/upload/emoji/emo_51.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="鼓掌" src="/upload/emoji/emo_52.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="晕" src="/upload/emoji/emo_53.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="悲伤" src="/upload/emoji/emo_54.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="抓狂" src="/upload/emoji/emo_55.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="黑线" src="/upload/emoji/emo_56.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="阴险" src="/upload/emoji/emo_57.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="怒骂" src="/upload/emoji/emo_58.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="心" src="/upload/emoji/emo_59.gif" onclick="emoj(this)"/></li>';
+    str +='<li><img title="伤心" src="/upload/emoji/emo_60.gif" onclick="emoj(this)"/></li>';
+    str +="</ul>";
+    $(".wl_faces_main").append(str);
+    $(".tool_box").toggle();
+}
+
+
+   var emoj=function (obj) {
+    var a=  $(obj).attr("title");
+    var str=$("#text_in").val();
+    var reg = new RegExp( '<' , "g" )
+        str =str.replace(reg,'&lt;');
+
+    var reg2 = new RegExp( '>' , "g" )     
+
+        str =str.replace(reg2,'&gt;'); 
+    var b = "";
+    b += str+" face["+a+"]";
+    $("#text_in").val(b);
+    $(".tool_box").hide()
+
+}
+
+    // 图片上传
+function put() {
+
+    var value = $('input[name="upload"]').val();
+    var index1=value.lastIndexOf(".");
+    var index2=value.length;
+    var suffix=value.substring(index1+1,index2);
+    var debugs =suffix.toLowerCase();
+
+    if (debugs == "jpg" || debugs == "gif" ||debugs == "png" ||debugs == "jpeg") {
+
+        $("#picture").ajaxSubmit({
+            url:YMWL_ROOT_URL+'/admin/set/upload',
+            type: "post",
+            dataType:'json',
+            success: function (res) {
+               if(res.code == 0){
+
+                    var msg = '<img src="' + res.data +'"  >';
+                  
+                    var se = $("#chatmsg_submit").attr('name');
+                    var customer = $("#customer").text();
+                    var time;
+
+                    if($.cookie("time") == ""){
+                        var myDate = new Date();
+                            time = myDate.getHours()+":"+myDate.getMinutes();
+                        var timestamp = Date.parse(new Date());
+                        $.cookie("time",timestamp/1000);
+
+                    }else{
+
+                        var timestamp = Date.parse(new Date());
+
+                        var lasttime =$.cookie("time");
+                        if((timestamp/1000 - lasttime) >30){
+                            var myDate =new Date(timestamp);
+                            time = myDate.getHours()+":"+myDate.getMinutes();
+                        }else{
+                            time ="";
+                        }
+
+                        $.cookie("time",timestamp/1000);
+
+                    }
+                    var str = '';
+                        str += '<li class="chatmsg"><div class="showtime">' + time + '</div>';
+                        str += '<div style="float: right;"><img  class="my-circle se_pic" src="' +imghead+ '" width="50px" height="50px"></div>';
+                        str += "<div class='outer-right'><div class='service'>";
+                        str += "<pre>" + msg + "</pre>";
+                        str += "</div></div>";
+                        str += "</li>";
+
+                    $(".conversation").append(str);
+                    var div = document.getElementById("wrap");
+                    div.scrollTop = div.scrollHeight;
+                
+                   $.ajax({
+                        url:YMWL_ROOT_URL+"/admin/set/chats",
+                        type: "post",
+                        data: {visiter_id:visiter_id,content: msg, avatar: img},
+                        success:function(res){
+                             if(res.code != 0){
+                                layer.msg(res.msg,{icon:2});
+                            }
+                        }
+                    });
+               }else{
+                   layer.msg(res.msg,{icon:2});
+               }
+            }
+        });
+
+    } else {
+
+        layer.msg("请选择图片", {icon: 2});
+    }
+}
+
+
+    // 文件上传
+function putfile() {
+
+    var value = $('input[name="folder"]').val();
+    var sarr = value.split('\\');
+    var name = sarr[sarr.length - 1];
+    var arr = value.split(".");
+
+    if (arr[1] == "js" || arr[1] == "css" || arr[1] == "html" || arr[1] == "php") {
+        layer.msg("不支持该格式的文件", {icon: 2});
+
+    } else {
+
+        var myDate = new Date();
+        var time =  myDate.getHours()+":"+myDate.getMinutes();
+
+        $("#file").ajaxSubmit({
+            url:YMWL_ROOT_URL+'/admin/set/uploadfile',
+            type: 'post',
+            datatype:'json',
+            success: function (res) {
+                if(res.code == 0){
+                    var str = '';
+                    str += '<li class="chatmsg"><div class="showtime">' + time + '</div>';
+                    str += '<div class="" style="float: right;"><img  class="my-circle cu_pic" src="'+imghead+'" ></div>';
+                    str += "<div class='outer-right'><div class='service'>";
+                    str += "<pre><div>";
+                    str += "<a href='" + res.data + "' style='display: inline-block;text-align: center;min-width: 70px;text-decoration: none;' download='" + name + "'><i class='layui-icon' style='font-size: 60px;'>&#xe61e;</i><br>" + name + "</a>";
+                    str += "</div></pre>";
+                    str += "</div></div>";
+                    str += "</li>";
+
+                    $(".conversation").append(str);
+                    var div = document.getElementById("wrap");
+                    div.scrollTop = div.scrollHeight;
+
+                    var msg = "<div><a href='" + res.data + "' style='display: inline-block;text-align: center;min-width: 70px;text-decoration: none;' download='" + name + "'><i class='layui-icon' style='font-size: 60px;'>&#xe61e;</i><br>" + name + "</a></div>";
+
+                    var sid = $('#channel').text();
+                    var se = $("#chatmsg_submit").attr('name');
+                    var customer = $("#customer").text();
+                    $.ajax({
+                        url:YMWL_ROOT_URL+"/admin/set/chats",
+                        type: "post",
+                        data: {visiter_id:visiter_id,content: msg, avatar: img}
+                    });
+                }else{
+                    layer.msg(res.msg,{icon:2});
+                }
+
+            }
+        });
+
+    }
+}
+
+
+
+//发送消息
+var send = function () {
+    //获取 游客id
+    var msg = $("#text_in").val();
+
+
+    var reg = new RegExp( '<' , "g" )
+        msg =msg.replace(reg,'&lt;');
+
+    var reg2 = new RegExp( '>' , "g" )     
+        msg =msg.replace(reg2,'&gt;'); 
+
+    if(msg.indexOf("face[")!=-1){
+
+       msg=msg.replace(/face\[([^\s\[\]]+?)\]/g,function (i) {
+         var a = i.replace(/^face/g, "");
+             a=a.replace('[','');
+             a=a.replace(']','');  
+         return '<img src="/upload/emoji/'+e[a]+'.gif"/>'
+      });
+
+    }
+    
+    if (msg == "") {
+        layer.msg('请输入信息');
+    } else {
+      
+        var se = $("#chatmsg_submit").attr('name');
+        var customer = $("#customer").text();
+        var time;
+
+        if($.cookie("time") == ""){
+            var myDate = new Date();
+                time = myDate.getHours()+":"+myDate.getMinutes();
+            var timestamp = Date.parse(new Date());
+            $.cookie("time",timestamp/1000);
+
+        }else{
+
+            var timestamp = Date.parse(new Date());
+
+            var lasttime =$.cookie("time");
+            if((timestamp/1000 - lasttime) >30){
+                var myDate =new Date(timestamp);
+                time = myDate.getHours()+":"+myDate.getMinutes();
+            }else{
+                time ="";
+            }
+
+            $.cookie("time",timestamp/1000);
+
+        }
+    
+        var str = '';
+        str += '<li class="chatmsg"><div class="showtime">' + time + '</div>';
+        str += '<div style="float: right;"><img  class="my-circle se_pic" src="' + imghead + '" width="50px" height="50px"></div>';
+        str += "<div class='outer-right'><div class='service'>";
+        str += "<pre>" + msg + "</pre>";
+        str += "</div></div>";
+        str += "</li>";
+
+        $(".conversation").append(str);
+        $("#text_in").val('');
+
+
+        var div = document.getElementById("wrap");
+        div.scrollTop = div.scrollHeight;
+
+        $.ajax({
+            url:YMWL_ROOT_URL+"/admin/set/chats",
+            type: "post",
+            data: {visiter_id:visiter_id,content: msg, avatar: img}
+        });
+    }
+}
+
+  document.getElementById("wrap").onscroll = function(){
+        var t =  document.getElementById("wrap").scrollTop;
+        if( t == 0 ) {
+           
+            if($.cookie("hid") != ""){
+                getdata();
+            }
+        }
+    }
+
+
+
+    function getbig(obj) {
+        var text = $(obj).attr('src');
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 1,
+            area: '70%',
+            shadeClose: true,
+            content: "<img src='" + text + "' width='100%' height='100%'>"
+        });
+    }
+
+
+</script>
+</body>
+</html>

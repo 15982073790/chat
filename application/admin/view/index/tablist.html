@@ -1,0 +1,114 @@
+{include file="public/header"/}
+<style>
+    #container {
+        background-color: #fff;
+    }
+
+    .handler .back .img {
+        width: 16px;
+        height: 16px;
+        margin: 6px 0 0 16px;
+        float: left;
+        background: url("__image__/admin/B/back-system.png");
+    }
+
+    .tablist .layui-layer-ico {
+        height: 24px;
+        width: 24px;
+        background: url("__image__/admin/B/cha.png") no-repeat;
+    }
+
+    .recycle {
+        width: 20px;
+        height: 20px;
+        background: url("__image__/admin/B/delete.png");
+        cursor: pointer;
+    }
+</style>
+<div id="container" style="padding-bottom: 42px">
+
+    <h2 class="page-header" style="font-size: 18px;color: #555555;"> Tab编辑</h2>
+    <div class="handler">
+        <a href="{:url('admin/index/set')}">
+            <div class="back">
+                <i class="img"></i>
+                <span>返回设置</span>
+            </div>
+        </a>
+
+        <a onclick="addtab()" class="" data-pjax>
+            <div class="button">
+                +添加Tab
+            </div>
+        </a>
+    </div>
+
+    <table class="layui-table">
+
+        <colgroup>
+            <col width="740">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>Tab名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {foreach $tablist as $v}
+        <tr>
+            <td>{$v.title}</td>
+
+            <td>
+                <a onclick="addtab({$v.tid})">
+                    <img src="__image__/admin/A/edit.png" alt="编辑" title="编辑">
+                </a>
+                <a onclick="getdelete({$v.tid})">
+                    <img src="__image__/admin/A/delete.png" alt="删除" title="删除">
+                </a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+
+
+    function addtab(id) {
+
+        layer.open({
+            type: 2,
+            skin:"tablist",
+            title: '编辑',
+            area: ['800px', '560px'],
+            content: YMWL_ROOT_URL + '/admin/index/editertab?tid=' + id
+        });
+    }
+
+    function getdelete(id) {
+        $.ajax({
+            url: YMWL_ROOT_URL + '/admin/set/getdeleteTab',
+            type: 'post',
+            data: {tid: id},
+            success: function (res) {
+                if (res.code == 0) {
+                    layer.msg(res.msg, {
+                        icon: 1, end: function () {
+                            location.reload();
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+
+</script>
+
+
+{include file="public/footer"/}

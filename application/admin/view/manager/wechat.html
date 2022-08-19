@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增客服</title>
+
+    <link rel="stylesheet" type="text/css" href="__libs__/layer/skin/layer.css?v=__lkversion__"/>
+    <link rel="stylesheet" type="text/css" href="__libs__/amaze/css/amazeui.min.css?v=__lkversion__"/>
+
+    <script>
+        YMWL_ROOT_URL = '{$baseroot}';
+
+    </script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.form.min.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/jquery/jquery.cookie.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/layer/layer.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/amaze/js/amazeui.min.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/layui/layui.js?v=__lkversion__"></script>
+    <link rel="stylesheet" type="text/css" href="__libs__/layui/css/layui.css?v=__lkversion__"/>
+    <link rel="stylesheet" type="text/css" href="__libs__/bootstrap/bootstrap.min.css?v=__lkversion__"/>
+
+    <link rel="stylesheet" type="text/css" href="__style__/admin/common.css?v=__lkversion__"/>
+    <link rel="stylesheet" type="text/css" href="__style__/admin/reload.css?v=__lkversion__"/>
+    <script type="text/javascript" src="__script__/admin/functions.js?v=__lkversion__"></script>
+    <link rel="stylesheet" type="text/css" href="__style__/admin/index.css?v=__lkversion__"/>
+    <link rel="stylesheet" type="text/css" href="__style__/admin/index_me.css?v=__lkversion__"/>
+
+    <script type="text/javascript" src="__script__/admin/common_me.js?v=__lkversion__"></script>
+    <script type="text/javascript" src="__libs__/push/pusher.min.js?v=__lkversion__"></script>
+
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .layui-form-label {
+            float: left;
+            display: block;
+            padding: 9px 15px;
+            width: 100px;
+            font-weight: 400;
+            line-height: 20px;
+            text-align: right;
+        }
+
+        .no_chats-pic {
+            display: inline-block;
+            width: 138px;
+            height: 67px;
+            background: url('__image__/admin/bgspirt.png') no-repeat;
+            background-position: -286px;
+            position: absolute;
+            top: 300px;
+            left: 250px;
+        }
+
+        .no_history_icon {
+            display: inline-block;
+            width: 90px;
+            height: 67px;
+            background: url('__image__/admin/bgspirt.png') no-repeat;
+            background-position: -90px;
+            position: absolute;
+            top: 300px;
+            left: 44%;
+        }
+
+        #test button {
+            background: #25c16f;;
+            height: 32px;
+            margin: 0 10px;
+            border-radius: 16px;
+            color: white;
+        }
+
+        #test .btn:focus, #test .btn:active:focus {
+            outline: 0;
+        }
+    </style>
+<body>
+<div style="width: 90%;height: 100%;margin:10px auto;">
+    <fieldset style="width: 70%;margin:5px auto;">
+        <form id="img_form" class="am-form am-form-horizontal am-form-xs am-g-fixed" method="post">
+            <div class="am-form-group am-form-file">
+                <label class="layui-form-label">头像</label>
+
+                <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                    <img class="am-circle" id="imgs" src="{$user['headimgurl']}" width="50px"
+                         height="50px">
+                </div>
+            </div>
+        </form>
+
+        <div style="width: 70%;">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-block">
+                    <input type="text" id="nickname" readonly value="{$user['nickname']}" autocomplete="off"
+                           style="width:80%;" class="layui-input">
+                </div>
+
+            </div>
+        </div>
+
+        <div id="test" style="padding: 30px;">
+            <button type="button" class="btn" data-type="visitor_tpl">测试新访客提醒模板消息</button>
+            <button type="button" class="btn" data-type="msg_tpl">测试新消息提醒模板消息</button>
+        </div>
+    </fieldset>
+</div>
+</body>
+<script>
+    $('#test').on('click','button',function(){
+        $this = $(this);
+        var type = $this.data('type');
+        var url = "{:url('admin/set/testtpl')}";
+        var open_id = "{:input('open_id')}";
+        var service_id = "{:input('service_id')}";
+        $.post(url,{type:type,open_id:open_id,service_id:service_id},function(res){
+            if (res.code == 0){
+                layer.msg('发送成功,请让已绑定微信的客服查收', {icon: 1});
+            } else {
+                layer.msg(res.msg);
+            }
+        });
+    });
+</script>

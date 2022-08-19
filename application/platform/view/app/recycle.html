@@ -1,0 +1,168 @@
+<style>
+    .recycle-list {
+        border: 0;
+        border-top: 1px solid #f7f7f7;
+    }
+
+    .recycle-list thead, .recycle-list thead tr {
+        border: 0;
+    }
+
+    .recycle-list thead th {
+        background-color: #fff;
+        height: 40px;
+        border: 0;
+    }
+
+    .recycle-list tbody td {
+        height: 56px;
+        line-height: 56px;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top: 1px solid #f7f7f7;
+    }
+
+    .operate a {
+        margin-top: 12px;
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        border-radius: 16px;
+        background-color: #f5f5f5;
+        margin-right: 10px;
+    }
+
+    .operate a img {
+        display: block;
+        margin: 6px;
+        height: 20px;
+        width: 20px;
+    }
+
+    .search {
+        width: 196px;
+        height: 54px;
+        padding-left: 16px;
+        padding-top: 10px;
+        position: relative;
+        display: inline-block;
+        border-radius: 15px;
+    }
+
+    .search input {
+        border-radius: 15px;
+        width: 180px !important;
+        height: 30px;
+        padding-left: 12px;
+    }
+
+    .search .btn {
+        height: 14px;
+        width: 14px;
+        padding: 0;
+        line-height: normal;
+        border: 0;
+        margin-left: -28px;
+    }
+</style>
+
+<div class="search">
+    <form method="get" class="form-inline">
+        <input type="hidden" name="r" value="">
+        <input value="{$keyword}" placeholder="名称" type="text" name="keyword"
+               class="form-control form-control-sm">
+        <button style="cursor: pointer" class="btn btn-link btn-sm"><img src="__image__/admin/A/search.png" alt="">
+        </button>
+    </form>
+</div>
+
+<table class="recycle-list table bg-white">
+    <thead>
+    <tr style="font-size: 13px;color: #555555">
+        <th></th>
+        <th>ID</th>
+        <th>名称</th>
+        <th>域名</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    {if condition="count($list) == 0"}
+    <tr>
+        <td colspan="5" class="text-center p-5 text-muted">回收站暂无内容</td>
+    </tr>
+    {/if}
+    {volist name="list" id="item"}
+    <col style="width: 32px">
+    <col style="width: 80px">
+    <col style="width: 164px">
+    <col style="width: 224px">
+    <col>
+    <tr>
+        <td></td>
+        <td>{$item['id']}</td>
+        <td style="overflow: hidden">{$item['business_name']}</td>
+        <td>{:url('admin/login/index',['business_id'=>$item['id']],true,true)}</td>
+        <td class="operate">
+            <a class="recycle-btn"
+               href="{:url('app/setRecycle', ['id' => $item['id'],'action'=>0])}"><img
+                    src="__image__/admin/A/restore.png" alt=""></a>
+            <a class="delete-btn"
+               href="{:url('app/delete', ['id' => $item['id']])}"><img src="__image__/admin/A/delete.png" alt=""></a>
+        </td>
+    </tr>
+    {/volist}
+</table>
+<script>
+    $(document).on("click", ".delete-btn", function () {
+        var href = $(this).attr("href");
+        $.myConfirm({
+            content: "确认删除客服系统？此操作将不可恢复！",
+            confirm: function () {
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    dataType: "json",
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                            callback: function () {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+
+            }
+        });
+        return false;
+    });
+
+    $(document).on("click", ".recycle-btn", function () {
+        var href = $(this).attr("href");
+        $.myConfirm({
+            content: "确认恢复客服系统？",
+            confirm: function () {
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    dataType: "json",
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                            callback: function () {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        return false;
+    });
+</script>

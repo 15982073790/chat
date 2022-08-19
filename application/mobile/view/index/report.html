@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <title>投诉</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="__assets__/css/bootstrap.min.css?v=__lkversion__"/>
+    <script>
+        YMWL_ROOT_URL = '{$baseroot}';
+    </script>
+    <style>
+        body {
+            background-color: #ebebeb;
+        }
+
+        .content {
+            min-height: 250px;
+            padding: 0 15px;
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .form-group {
+            background: #fff;
+            padding: 15px 0;
+        }
+
+        .form-group .control-label {
+            font-weight: normal;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .report-type {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .report-type li {
+            margin-bottom: 15px;
+        }
+
+        .report-type li span {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 20px;
+            background: #eaeaea;
+        }
+
+        .report-type li.active span {
+            background: #5bc0de;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" method="POST" action="" onsubmit="return false">
+                <div class="form-group" style="padding-bottom:0px;">
+                    <label class="col-md-12 control-label">投诉类型</label>
+                    <div>
+                        <ul class="report-type clearfix">
+                            <?php foreach($type as $key => $v){ ?>
+                            <li class="col-xs-4" data-id="<?php echo $key; ?>"><span><?php echo $v; ?></span></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12 control-label">投诉内容</label>
+                    <div class="col-md-12">
+                        <textarea class="report-content form-control" placeholder="内容描述得越详细，越有助于我们更快的处理问题"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12 control-label">请留下你的联系方式</label>
+                    <div class="col-md-12">
+                        <input class="report-mobile form-control" placeholder="手机号/微信号"/>
+                    </div>
+                    <div class="col-md-12" style="margin-top:40px;">
+                        <button type="submit" class="btn btn-info btn-block submits">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="__libs__/jquery/jquery.min.js?v=__lkversion__"></script>
+<script src="__libs__/layer/layer.js?v=__lkversion__" type="text/javascript"></script>
+<script>
+    $(function(){
+        $('body').off('click', '.report-type li');
+        $('body').on('click', '.report-type li', function(event){
+            var _this = $(this);
+            _this.siblings().removeClass("active");
+            _this.addClass("active");
+        });
+        $('body').off('click', '.submits');
+        $('body').on('click', '.submits', function(event){
+            var _this = $(this);
+
+            if( !$('.report-type li').hasClass('active') ){
+                layer.msg('请选择投诉投诉类型');
+                return false;
+            }
+
+            var content=$.trim($('.report-content').val());
+            if( content === '' ){
+                layer.msg('请填写投诉内容');
+                return false;
+            }
+
+            var contact=$.trim($('.report-mobile').val());
+            if( contact === '' ){
+                layer.msg('请填写联系方式');
+                return false;
+            }
+            $('.submits').attr("disabled","disabled");
+            $.ajax({
+                url: YMWL_ROOT_URL + '/mobile/index/report',
+                type: 'post',
+                data: {business_id: '{$business_id}',type:$('.report-type .active').data('id'), content: content, contact: contact},
+                success: function (res) {
+
+                    if (res.code > 0) {
+                        //表示成功
+                        layer.msg(res.msg);
+                        setTimeout(function (){
+                            window.location.href="javascript:history.go(-1)";
+                        },2000);
+
+                    } else {
+                        layer.msg(res.msg, {
+                            icon: 2
+                        });
+                    }
+                }
+            });
+            setTimeout(function (){
+                $('.submits').removeAttr("disabled");
+            },1500);
+        });
+    })
+</script>
+</body>
+</html>

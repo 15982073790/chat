@@ -1,0 +1,167 @@
+<style>
+    form {
+        position: relative;
+    }
+
+    .form-input {
+        font-size: 16px;
+        line-height: 36px;
+        min-width: 500px;
+    }
+
+    .update-btn {
+        padding: 0;
+        height: 32px;
+        line-height: 32px;
+        width: 88px;
+        border-radius: 16px;
+        font-size: 13px;
+        color: #fff;
+        background-color: #25c16f;
+        border: 1px solid #25c16f;
+    }
+
+    .history {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    .update-history {
+        border-top: 1px dashed #e2e2e2;
+    }
+
+    .update-history:first-of-type {
+        border-top: 0;
+    }
+
+    .update-form-body .form-submit .btn-secondary, .update-form-body .form-submit .auto-form-btn {
+        display: inline-block;
+        height: 32px;
+        line-height: 32px;
+        width: 66px;
+        border-radius: 16px;
+        font-size: 13px;
+        color: #555555;
+        background-color: #f7f7f7;
+        padding: 0;
+        border: 1px solid #f7f7f7;
+        cursor: pointer;
+    }
+
+    .update-form-body .form-submit .auto-form-btn {
+        color: #fff;
+        background-color: #25c16f;
+        border: 1px solid #25c16f;
+        margin-right: 20px;
+    }
+
+    .update-label {
+        width: 155px;
+        padding-left: 35px;
+        text-align: left;
+        margin: 0;
+        float: left;
+    }
+
+    .checkbox-label {
+        padding-left: 35px;
+    }
+</style>
+
+<form method="post" return="{:url('platform/update/index')}" class="auto-submit-form">
+    <div class="card-body">
+        <div style="margin-bottom: 24px;"><b>更新版本</b></div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">当前系统版本</label>
+            <div class="form-input">{$data.local_version}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">下个版本</label>
+            {if condition="isset($data['next_version'])"}
+            <div class="form-input">
+                <div>{$data.next_version.version}</div>
+                <div>{$data.next_version.add_time}</div>
+                <div>{$data.next_version.content}</div>
+                <div class="form-input offset-sm-3">
+                    <a id="status" class="btn btn-primary update-btn" href="javascript:" data-toggle="modal"
+                       data-target="#update-modal">立即更新</a>
+                </div>
+                <div style="color: #E6A23C">更新过程请勿关闭或刷新页面！</div>
+            </div>
+            {else/}
+            <span style="padding-top: 7px">暂无新版本</span>
+            {/if}
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">更新记录</label>
+            <div class="form-input history">
+                {if condition="isset($data['list'])"}
+                {volist name="$data.list" id="vo"}
+                <div class="update-history">
+                    <div>{$vo.version}</div>
+                    <div>{$vo.add_time}</div>
+                    <div>{$vo.content}</div>
+                </div>
+                {/volist}
+                {/if}
+            </div>
+        </div>
+    </div>
+    <div class="modal update-modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" style="min-width: 550px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title" id="myModalLabel"><b>提示</b></div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="update-form-body modal-body">
+                    <div class="form-group row" style="margin-top: 20px">
+                        <label class="update-label">确认升级到版本: </label>
+                        <div>{$data.next_version.version|default=""}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="update-label">更新协议：</label>
+                        <label class="checkbox-label">
+                            <input id="check" name="temp" type="checkbox" class="custom-control-input">
+                            <span class="label-icon"></span>
+                            <span class="label-text">已经做好了相关文件和数据库的备份工作，并自愿承担更新所存在的风险</span>
+                        </label>
+                    </div>
+                    <div class="form-group row form-submit">
+                        <label class="update-label"></label>
+                        <a id="update" class="btn btn-primary auto-form-btn" href="javascript:">确定</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    var url = "{:url('platform/update/update')}";
+    $("#update").click(function(){
+        if ( $('#check').is(':checked')) {
+            $('#update-modal').modal('hide');
+            $('#status').html('更新中...');
+            $.post(url,{},function(res){
+                if (res.code == 0) {
+                    $.myToast({
+                        content: "更新成功，正在跳转...",
+                    });
+                    setTimeout(function(){
+                        window.location.reload(true);
+                    },3000)
+                } else {
+                    $.myToast({
+                        content: res.msg,
+                    });
+                }
+            });
+        } else {
+            $.myToast({
+                content: '请先确认更新协议',
+            });
+        }
+    });
+</script>

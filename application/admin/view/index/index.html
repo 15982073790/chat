@@ -1,0 +1,173 @@
+{include file="public/header"/}
+<script type="text/javascript" src='__libs__/echarts/echarts.min.js'></script>
+<div id="container" style="overflow-y: auto">
+    <div class="layui-fluid">
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header" style="font-size:20px;">
+                    数据总览
+                </div>
+            </div>
+        </div>
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-sm6 layui-col-md3">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        当前咨询用户数
+                        <span class="layui-badge layui-bg-blue layuiadmin-badge">咨询</span>
+                    </div>
+                    <div class="layui-card-body layuiadmin-card-list">
+                        <p class="layuiadmin-big-font">{$talking}</p>
+                        {if condition="$admins['level']=='super_manager'"}
+                        <p>
+                            当前在线客服数
+                            <span class="layuiadmin-span-color">{$services} <i class="layui-icon">&#xe63a;</i></span>
+                        </p>
+                        {else}
+                        <p>
+                            当前在线用户数
+                            <span class="layuiadmin-span-color">{$visiter_online} <i
+                                    class="layui-icon">&#xe63a;</i></span>
+                        </p>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-sm6 layui-col-md3">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        当前排队用户数
+                        <span class="layui-badge layui-bg-cyan layuiadmin-badge">排队</span>
+                    </div>
+                    <div class="layui-card-body layuiadmin-card-list">
+                        <p class="layuiadmin-big-font">{$waiter}</p>
+                        <p>
+                            接待总用户数
+                            <span class="layuiadmin-span-color">{$getinall} <i class="layui-icon">&#xe610;</i></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-sm6 layui-col-md3">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        今日聊天消息数
+                        <span class="layui-badge layui-bg-green layuiadmin-badge">消息</span>
+                    </div>
+                    <div class="layui-card-body layuiadmin-card-list">
+
+                        <p class="layuiadmin-big-font">{$nowchats}</p>
+                        <p>
+                            聊天消息总数
+                            <span class="layuiadmin-span-color">{$chatsall} <i class="layui-icon">&#xe667;</i></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-sm6 layui-col-md3">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        今日评价用户数
+                        <span class="layui-badge layui-bg-orange layuiadmin-badge">评价</span>
+                    </div>
+                    <div class="layui-card-body layuiadmin-card-list">
+
+                        <p class="layuiadmin-big-font">{$nowcomments}</p>
+                        <p>
+                            总评价用户数
+                            <span class="layuiadmin-span-color">{$allcomments}<i class="layui-icon">&#xe600;</i></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header" style="font-size:20px; margin-top: 20px;">
+                    今日客服服务数据趋势
+                </div>
+            </div>
+        </div>
+        <div id="wolivedatas" class="shujubiao" style="width: 100%;height:500px;margin-top: 69px;"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  
+
+ 
+var myChart = echarts.init(document.getElementById('wolivedatas'));
+
+var option = {
+    title: {
+        text: '',
+        padding: '10,0,0,0'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    color:['#ff5c5c','#25c16f','#8bd8ab'],
+    legend: {
+        y: '400px',
+        zlevel:'99',
+        data: [{name:'会话总量',textStyle: {color: '#555555'}}, {name:'接入会话总量',textStyle: {color: '#555555'}}]
+    },
+    grid: {
+        top: '50',
+        left: '3%',
+        right: '4%',
+        bottom: '125',
+        width: '100%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        splitLine: {
+            show: true,
+            lineStyle:{
+                type:'dashed'
+            }
+        },
+        type: 'category',
+        boundaryGap: false,
+        data: ['08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '00:00']
+    },
+    yAxis: {
+        splitLine: {
+            show: true,
+            lineStyle:{
+                type:'dashed'
+            }
+        },
+        type: 'value',
+        max: 'dataMax',
+        min: "dataMin",
+    },
+    series: [
+
+        {
+            name: '会话总量',
+            type: 'line',
+            smooth: true,
+            data: [{$chatsdata[0]}, {$chatsdata[1]}, {$chatsdata[2]}, {$chatsdata[3]}, {$chatsdata[4]}, {$chatsdata[5]}, {$chatsdata[6]}, {$chatsdata[7]}, {$chatsdata[8]}]
+        },
+        {
+            name: '接入会话总量',
+            type: 'line',
+            smooth: true,
+            data: [{$getindata[0]}, {$getindata[1]}, {$getindata[2]}, {$getindata[3]}, {$getindata[4]}, {$getindata[5]}, {$getindata[6]}, {$getindata[7]}, {$getindata[8]}]
+        }
+    ]
+};
+
+
+myChart.setOption(option);	
+	
+</script>
+
+
+{include file="public/footer"/}

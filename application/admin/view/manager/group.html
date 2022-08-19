@@ -1,0 +1,232 @@
+{include file="public/header"/}
+
+<style>
+    .handler .back .img {
+        width: 16px;
+        height: 16px;
+        margin: 6px 0 0 16px;
+        float: left;
+        background: url("__image__/admin/B/back-system.png");
+    }
+
+    .group .layui-layer-ico {
+        height: 24px;
+        width: 24px;
+        background: url("__image__/admin/B/cha.png") no-repeat;
+    }
+
+    .recycle {
+        width: 20px;
+        height: 20px;
+        background: url("__image__/admin/B/delete.png");
+        cursor: pointer;
+    }
+
+    .layui-layer label {
+        width: 100px;
+    }
+
+    .group .layui-input-block {
+        padding-top: 5px;
+    }
+
+    #container {
+        background-color: #fff;
+    }
+
+    .shanchu {
+        width: 20px;
+        height: 20px;
+    }
+</style>
+<div id="container" style="padding-bottom: 42px">
+
+    <h2 class="page-header" style="font-size: 18px;color: #555555;"> 分组管理</h2>
+    <div class="handler">
+        <a href="{:url('admin/index/set')}">
+            <div class="back">
+                <i class="img"></i>
+                <span>返回设置</span>
+            </div>
+        </a>
+
+        <a onclick="add()" class="" data-pjax>
+            <div class="button">
+                +添加分组
+            </div>
+        </a>
+    </div>
+
+
+    <div style="height:40px;line-height:40px;padding-left:16px;color: #555555;font-size: 14px;border-radius: 8px;background: #F5FAFF;margin: 20px 0 20px 0;">
+        每添加或删除分组，都需要再次去生成新的前端部署代码
+    </div>
+
+    <table class="layui-table">
+
+        <colgroup>
+            <col width="740">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>分组名</th>
+            <th>排序</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {volist name='group' id='g'}
+        <tr>
+            <td>{$g.groupname}</td>
+            <td>{$g.sort}</td>
+            <td>
+                <a onclick='edit({$g.id},"{$g.groupname}","{$g.sort}")'><img src="__image__/admin/A/edit.png" alt="编辑"
+                                                                             title="编辑"></a>
+                <a onclick="getdelete({$g.id})" title="删除"><img src="/assets/images/admin/B/delete.png" class="shanchu"></a>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    {$page}
+</div>
+<script>
+    function edit(id,groupname,sort) {
+        var html  ='';
+        html +='<form class="layui-form" style="margin-top:30px;padding: 0 40px;">';
+        html +='<div class="layui-form-item"><label class="layui-form-label" style="font-size: 13px;color: #999999;">分组名:</label>';
+        html +='<div class="layui-input-block">';
+        html +=' <input type="text" id="classname" required placeholder="请输入分组名" autocomplete="off" class="layui-input" style="width:260px;" value="'+groupname+'"></div>';
+        html +='</div>';
+        html +='<div class="layui-form-item"><label class="layui-form-label" style="font-size: 13px;color: #999999;">排序:</label>';
+        html +='<div class="layui-input-block">';
+        html +=' <input type="text" id="sort" placeholder="请输入排序数字(数字越大,越靠前)：" autocomplete="off" class="layui-input" value="'+sort+'" style="width:280px;"></div>';
+        html +='</div>';
+        html +='</form>';
+
+        var lock = false;
+        layer.open({
+            skin: 'group',
+            type:1,
+            title:'添加分组',
+            area:['501px','300px'],
+            content:html,
+            btn: ['提交', '取消'],
+            yes:function(){
+
+                var name =$("#classname").val().trim();
+                var sort =$("#sort").val().trim();
+                if (!name) {
+                    layer.msg('分组名不能为空',{icon:2});
+                    return false;
+                }
+
+                if (!lock) {
+                    lock = true;
+                    $.ajax({
+                        url:'{:url("admin/manager/editgroup")}',
+                        type:'post',
+                        data:{groupname:name,sort:sort,id:id},
+                        dataType:'json',
+                        success:function(res){
+
+                            if(res.code == 0){
+                                layer.msg(res.msg,{icon:1,end:function(){
+                                        location.reload();
+                                    }});
+                            }else{
+                                layer.msg(res.msg,{icon:2});
+                            }
+                        }
+                    });
+                }
+            }
+        })
+    }
+	 var getdelete =function(id){
+         layer.open({
+             type: 1,
+             title: '删除',
+             area: ['260px', '180px'],
+             content: "<div><center><p style='font-size:15px;margin:33px auto;'>确定删除该分组吗</p></center></div>",
+             btn: ['确定', '取消'],
+             yes: function () {
+                 $.ajax({
+                     url:YMWL_ROOT_URL+'/admin/manager/delclass',
+                     type:'post',
+                     data:{cid:id},
+                     success:function(res){
+
+                         if(res.code == 0){
+                             layer.msg(res.msg,{icon:1,end:function(){
+                                     location.href = "{:url('admin/manager/group')}";
+                                 }});
+                         }else{
+                             layer.msg(res.msg,{icon:2});
+                         }
+                     }
+                 });
+             }
+         });
+
+
+    }
+
+   function add(){
+   	var html  ='';
+   	    html +='<form class="layui-form" style="margin-top:30px;padding: 0 40px;">';
+   	    html +='<div class="layui-form-item"><label class="layui-form-label" style="font-size: 13px;color: #999999;">分组名:</label>';
+   	    html +='<div class="layui-input-block">';
+   	    html +=' <input type="text" id="classname" required placeholder="请输入分组名" autocomplete="off" class="layui-input" style="width:260px;"></div>';
+   	    html +='</div>';
+       html +='<div class="layui-form-item"><label class="layui-form-label" style="font-size: 13px;color: #999999;">排序:</label>';
+       html +='<div class="layui-input-block">';
+       html +=' <input type="text" id="sort" placeholder="请输入排序数字(数字越大,越靠前)：" autocomplete="off" class="layui-input" value="0" style="width:280px;"></div>';
+       html +='</div>';
+   	    html +='</form>';
+
+   	    var lock = false;
+   	  layer.open({
+        skin: 'group',
+   	  	type:1,
+   	  	title:'添加分组',
+   	  	area:['501px','300px'],
+   	  	content:html,
+   	  	btn: ['提交', '取消'],
+   	  	yes:function(){
+
+            var name =$("#classname").val().trim();
+            var sort =$("#sort").val().trim();
+            if (!name) {
+                layer.msg('分组名不能为空',{icon:2});
+                return false;
+            }
+
+            if (!lock) {
+                lock = true;
+                $.ajax({
+                    url:'{:url("admin/manager/addclass")}',
+                    type:'post',
+                    data:{groupname:name,sort:sort},
+                    dataType:'json',
+                    success:function(res){
+
+                        if(res.code == 0){
+                            layer.msg(res.msg,{icon:1,end:function(){
+                                    location.reload();
+                                }});
+                        }else{
+                            layer.msg(res.msg,{icon:2});
+                        }
+                    }
+                });
+            }
+   	  	}
+   	  })
+   }
+
+</script>
+
+{include file="public/footer"/}

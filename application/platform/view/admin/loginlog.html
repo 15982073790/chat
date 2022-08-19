@@ -1,0 +1,193 @@
+<style>
+    .account-search {
+        width: 196px;
+        height: 54px;
+        padding-left: 16px;
+        position: relative;
+    }
+
+    .account-search input {
+        margin-top: 12px;
+        width: 180px !important;
+        height: 30px;
+        border-radius: 15px;
+        padding-left: 12px;
+    }
+
+    .account-search .btn {
+        position: absolute;
+        height: 14px;
+        width: 14px;
+        padding: 0;
+        line-height: normal;
+        top: 20px;
+        border: 0;
+        right: 12px;
+    }
+
+    .account-search .btn img {
+        height: 14px;
+        width: 14px;
+    }
+
+    .account-list {
+        border: 0;
+        border-top: 1px solid #f7f7f7;
+    }
+
+    .account-list thead, .account-list thead tr {
+        border: 0;
+    }
+
+    .account-list thead th {
+        background-color: #fff;
+        height: 40px;
+        border: 0;
+    }
+
+    .account-list tbody td {
+        height: 56px;
+        line-height: 56px;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top: 1px solid #f7f7f7;
+    }
+
+    .operate a {
+        margin-top: 12px;
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        border-radius: 16px;
+        background-color: #f5f5f5;
+        margin-right: 10px;
+    }
+
+    .operate a img {
+        display: block;
+        margin: 6px;
+        height: 20px;
+        width: 20px;
+    }
+
+    .account-list .remark {
+        line-height: normal;
+        margin-top: -18px;
+    }
+</style>
+<div class="account-search">
+
+</div>
+<table class="account-list table bg-white">
+    <thead>
+    <tr style="font-size: 13px;color: #555555">
+        <th>用户名</th>
+        <th>登录IP</th>
+        <th>登录地址</th>
+        <th>登录端</th>
+        <th>登录时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name='list' id='admins'}
+    <tr>
+        <td>{$admins.name}</td>
+        <td>{$admins.ip}</td>
+        <td>{$admins.area}</td>
+        <td><?php if($admins['login_side']==2){echo '手机端登录';}else{echo '电脑端登录';} ?></td>
+        <td>{:date('Y-m-d H:i:s',$admins['createtime'])}</td>
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+{$list->render()}
+<script>
+    $(document).on("click", ".modify-password", function () {
+        var href = $(this).attr("href");
+        var username = $(this).attr("data-name");
+        var id = $.randomString();
+        var html = '';
+        html += '<div class="modal fade" data-backdrop="static" id="' + id + '">';
+        html += '<div class="modal-dialog modal-sm" role="document">';
+        html += '<div class="modal-content" style="box-shadow: 0 1px 5px rgba(0,0,0,.25)">';
+        html += '<div class="modal-header">';
+        html += '<h6 class="modal-title">修改用户名或密码</h6>';
+        html += '</div>';
+        html += '<div class="modal-body">';
+        html += '<div>请输入用户名：</div>';
+        html += '<div class="mt-3"><input name="username" value="'+ username +'" class="form-control form-control-sm"></div>';
+        html += '<div style="margin-top: 10px">请输入密码（必填）：</div>';
+        html += '<div class="mt-3"><input name="password" class="form-control form-control-sm"></div>';
+        html += '</div>';
+        html += '<div class="modal-footer">';
+        html += '<button type="button" class="btn btn-sm btn-secondary alert-cancel-btn">取消</button>';
+        html += '<button type="button" class="btn btn-sm btn-primary alert-confirm-btn">确认</button>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        $("body").append(html);
+        $("#" + id).modal("show");
+        $(document).on("click", "#" + id + " .alert-confirm-btn", function () {
+            $("#" + id).modal("hide");
+            var username = $("#" + id).find('[name="username"]').val();
+            var val = $("#" + id).find('[name="password"]').val();
+            if (!val) {
+                $.myToast({
+                    content: "密码不能为空",
+                });
+                return;
+            }
+            $.myLoading({
+                title: "正在提交",
+            });
+            $.ajax({
+                url: href,
+                type: "post",
+                dataType: "json",
+                data: {
+                    username: username,
+                    password: val,
+                },
+                success: function (res) {
+                    $.myLoadingHide();
+                    $.myToast({
+                        content: res.msg,
+                    });
+                    if (res.code == 0) {
+                        location.reload();
+                    }
+                }
+            });
+        });
+        $(document).on("click", "#" + id + " .alert-cancel-btn", function () {
+            $("#" + id).modal("hide");
+        });
+        return false;
+    });
+    $(document).on("click", ".delete", function () {
+        var href = $(this).attr("href");
+        $.myConfirm({
+            content: "确认删除此用户？此操作将不可恢复！",
+            confirm: function () {
+                $.myLoading({
+                    title: "正在提交",
+                });
+                $.ajax({
+                    url: href,
+                    type: "post",
+                    dataType: "json",
+                    success: function (res) {
+                        $.myLoadingHide();
+                        $.myToast({
+                            content: res.msg,
+                        });
+                        location.reload();
+                    }
+                });
+
+            }
+        });
+        return false;
+    });
+</script>
