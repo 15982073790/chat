@@ -425,7 +425,7 @@ CREATE TABLE `wolive_attachment_data`
     KEY          `inputtime` (`inputtime`) USING BTREE,
     KEY          `fileext` (`fileext`) USING BTREE,
     KEY          `uid` (`service_id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='附件归档表';
+) DEFAULT CHARSET=utf8 COMMENT='附件归档表';
 
 DROP TABLE IF EXISTS `wolive_weixin`;
 CREATE TABLE `wolive_weixin`
@@ -440,7 +440,7 @@ CREATE TABLE `wolive_weixin`
     PRIMARY KEY (`wid`),
     KEY              `business_id` (`business_id`),
     KEY              `app_id` (`app_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+)DEFAULT CHARSET=utf8;
 DROP TABLE IF EXISTS `wolive_login_log`;
 CREATE TABLE `wolive_login_log`
 (
@@ -466,7 +466,7 @@ CREATE TABLE `wolive_report`
     `business_id` INT(10) NOT NULL DEFAULT '0' COMMENT '商家ID',
     `createtime`  INT(10) NOT NULL DEFAULT '0' COMMENT '登录时间',
     PRIMARY KEY (`id`)
-)COMMENT='访客投诉表' COLLATE='utf8_general_ci' ENGINE=MyISAM;
+)COMMENT='访客投诉表' COLLATE='utf8_general_ci';
 
 SET
 FOREIGN_KEY_CHECKS = 1;
